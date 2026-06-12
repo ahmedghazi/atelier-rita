@@ -1,0 +1,57 @@
+.card {
+  &--project {
+    // aspect-ratio: 3 / 4;
+
+    color: var(--color-bg);
+    .perspective {
+      perspective: 600px;
+      display: block;
+    }
+    &.is-active {
+      .card--project__inner {
+        transform: rotateY(var(--flip-deg, 180deg));
+      }
+    }
+    &__inner {
+      position: relative;
+      transition: transform 0.3s ease-in-out;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+    .recto {
+      backface-visibility: hidden;
+    }
+    .verso {
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+      position: absolute;
+      inset: 0;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: var(--spacing-sm);
+      .header,
+      .footer {
+        display: flex;
+        justify-content: space-between;
+      }
+      .body {
+        position: absolute;
+        left: var(--spacing-sm);
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    img {
+      aspect-ratio: 238 / 317 !important;
+      height: 100% !important;
+      object-fit: cover;
+    }
+  }
+  &--project--text {
+    gap: var(--spacing-sm);
+    padding: 0.5em 0;
+    border-bottom: var(--border);
+  }
+}

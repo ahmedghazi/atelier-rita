@@ -1,0 +1,37 @@
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translate(0, 0);
+  will-change: transform;
+  visibility: hidden;
+  pointer-events: none;
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  width: 315px;
+  height: 420px;
+  z-index: 99;
+}
+.modal__open {
+  visibility: visible;
+  pointer-events: all;
+}
+.modal__close {
+  position: absolute;
+  bottom: var(--spacing-sm);
+  right: var(--spacing-sm);
+  cursor: pointer;
+}
+.modal__close svg {
+  width: 1rem;
+  height: 1rem;
+}
+.modal__close svg path {
+  fill: white;
+}
+.modal__body {
+  padding: var(--spacing-sm);
+  max-height: 100%;
+  overflow-y: auto;
+  padding-bottom: 2rem;
+}

@@ -1,0 +1,13 @@
+.locales-switcher {
+  display: flex;
+  justify-content: flex-end;
+  li {
+    &.is-current {
+      display: none;
+    }
+    button {
+      height: unset;
+      line-height: unset;
+    }
+  }
+}

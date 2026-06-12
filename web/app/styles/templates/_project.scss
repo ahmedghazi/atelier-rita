@@ -1,0 +1,86 @@
+@use "../variables";
+
+.template--project {
+  .content--project {
+    &.slider-ended .slider {
+      .keen-slider-container {
+        clip-path: polygon(0 0, 70% 0, 70% 100%, 0 100%);
+      }
+      .related {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    .slider {
+      position: relative;
+      overflow: hidden;
+      .flex {
+        gap: var(--spacing-gutter);
+      }
+      .keen-slider-container,
+      .related {
+        transition: clip-path 0.3s ease;
+      }
+      .keen-slider-container {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+      .related {
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translateX(70%);
+        overflow: hidden;
+
+        display: flex;
+        gap: var(--spacing-gutter);
+        align-items: center;
+        h2 {
+          white-space: nowrap;
+        }
+        .image-cover {
+          flex-shrink: 0;
+        }
+      }
+    }
+    .footer {
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      padding: calc(var(--spacing-md) * 0.6) var(--spacing-md);
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      align-items: baseline;
+      .title {
+        max-width: 20rem;
+        grid-column: span 2 / span 2;
+      }
+      .toggle {
+        text-align: left;
+        align-self: end;
+        cursor: pointer;
+      }
+    }
+    .project-infos {
+      .header,
+      .text {
+        margin-bottom: var(--spacing-md);
+        position: relative;
+      }
+      .year {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+      .fiche-technique {
+        li {
+          display: flex;
+          gap: 0.4em;
+        }
+      }
+    }
+    @media all and (max-width: variables.$md) {
+    }
+  }
+}

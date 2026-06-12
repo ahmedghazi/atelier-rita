@@ -1,0 +1,21 @@
+// @use "reset";
+@use "variables";
+// @use "vendor/flexboxgrid/flexboxgrid";
+// @use 'vendor/slickslider/slick';
+
+@use "mixins";
+@use "utils";
+
+@use "typography";
+
+@use "layout";
+
+@use "components/header";
+@use "components/footer";
+@use "components/card";
+@use "components/slider";
+@use "components/ui/locales-switcher";
+
+@use "templates/project";
+@use "templates/projects";
+@use "templates/atelier";

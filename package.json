@@ -1,0 +1,9 @@
+{
+  "name": "www",
+  "private": true,
+  "scripts": {
+    "sanity:schema": "cd studio && pnpm exec sanity schema extract --path ../web/schema.json",
+    "sanity:typegen": "cd studio && pnpm exec sanity typegen generate",
+    "sanity:types": "npm run sanity:schema && npm run sanity:typegen"
+  }
+}

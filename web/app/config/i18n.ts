@@ -1,0 +1,36 @@
+const i18n = {
+  fr: {
+    default: true,
+    label: "Fr",
+    path: "fr",
+    locale: "fr",
+    siteLanguage: "fr",
+    ogLang: "fr_FR",
+    text: "Texte",
+    name: "Nom",
+    programme: "Programme",
+    location: "Lieu",
+    client: "Client",
+    numbers: "Chiffres",
+    year: "Année",
+    nextProject: "Projet suivant",
+  },
+  en: {
+    default: false,
+    label: "En",
+    path: "en",
+    locale: "en",
+    siteLanguage: "en",
+    ogLang: "en_GB",
+    text: "Text",
+    name: "Name",
+    programme: "Program",
+    location: "Location",
+    client: "Client",
+    numbers: "Numbers",
+    year: "Year",
+    nextProject: "Next project",
+  },
+};
+
+export default i18n;

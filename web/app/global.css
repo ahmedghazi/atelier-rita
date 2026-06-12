@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+[data-theme="theme-xyz"] {
+  --header-height: 43.5px;
+  --color-bg: #fff;
+  --color-primary: red;
+  --color-secondary: #aaaaaa;
+  --color-hover: #333;
+  --color-accent: #ff0000;
+  --color-red: #ff0000;
+
+  --font-primary:
+    "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman",
+    "Helvetica Neue Roman", "TeXGyreHerosRegular", "Helvetica", "Arial",
+    sans-serif;
+  --font-secondary:
+    "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman",
+    "Helvetica Neue Roman", "TeXGyreHerosRegular", "Helvetica", "Arial",
+    sans-serif;
+
+  --spacing-sm: 0.625em;
+  --spacing-md: 0.938rem;
+  --spacing-lg: 1.875rem;
+  --spacing-gutter: 0.938rem;
+
+  --text-md: 0.813rem;
+  --text-lg: 1.5rem;
+
+  --cubic: cubic-bezier(0.87, 0, 0.13, 1);
+
+  /* --text-xl: clamp(26px, 5.21vw, 75px);*/
+
+  --border-width: 1px;
+  --border: var(--border-width) solid;
+  --border-width-lg: 2px;
+  --border-lg: var(--border-width-lg) solid;
+
+  --gutter: 0.4em;
+
+  --screen-sm: 768px;
+  --screen-md: 1080px;
+  --screen-lg: 1441px;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-hover: var(--color-hover);
+  --color-accent: var(--color-accent);
+  --color-red: var(--color-red);
+
+  --font-primary: var(--font-primary);
+  --font-secondary: var(--font-secondary);
+
+  --spacing-sm: var(--spacing-sm);
+  --spacing-md: var(--spacing-md);
+  --spacing-lg: var(--spacing-lg);
+  --spacing-gutter: var(--spacing-gutter);
+
+  --text-md-mobile: var(--text-md-mobile);
+
+  --text-md: var(--text-md);
+  --text-lg: var(--text-lg);
+
+  --cubic: var(--cubic);
+
+  --border-width: var(--border-width);
+  --border: var(--border);
+  --border-width-lg: var(--border-width-lg);
+  --border-lg: var(--border-lg);
+
+  --gutter: var(--gutter);
+
+  --screen-sm: var(--screen-sm);
+  --screen-md: var(--screen-md);
+  --screen-lg: var(--screen-lg);
+}

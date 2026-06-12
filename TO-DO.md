@@ -1,0 +1,8 @@
+- # seo auto gen
+- sanity preview
+- # project > next
+- atelier slider
+- # home infos
+- # home logo anime
+- typo
+- micro interactions

@@ -1,0 +1,12 @@
+@use "../variables";
+
+.template--home {
+  .content--home {
+    // perspective: 1000px;
+  }
+}
+
+@media all and (max-width: variables.$sm) {
+  .template--home {
+  }
+}

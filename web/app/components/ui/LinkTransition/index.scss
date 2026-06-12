@@ -1,0 +1,58 @@
+/*
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none !important;
+}
+
+::view-transition-group(root) {
+  z-index: auto !important;
+}
+
+::view-transition-image-pair(root) {
+  isolation: isolate;
+  will-change: transform, opacity, clip-path;
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 10000;
+  animation: none !important;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+  animation: none !important;
+}
+
+*/
+header {
+  view-transition-name: anything;
+}
+main .template {
+  view-transition-name: the-main;
+}
+
+::view-transition-old(the-main),
+::view-transition-new(the-main) {
+  animation: none !important;
+}
+
+::view-transition-group(the-main) {
+  z-index: auto !important;
+}
+
+::view-transition-image-pair(the-main) {
+  isolation: isolate;
+  will-change: transform, opacity, clip-path;
+  z-index: 1;
+}
+
+::view-transition-new(the-main) {
+  z-index: 10000;
+  animation: none !important;
+}
+
+::view-transition-old(the-main) {
+  z-index: 1;
+  animation: none !important;
+}

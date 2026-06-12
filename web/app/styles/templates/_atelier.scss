@@ -1,0 +1,35 @@
+@use "../variables";
+
+.template--atelier {
+  .content--atelier {
+    position: relative;
+  }
+  .slider {
+    .keen-slider__slide {
+      width: auto !important;
+      flex-shrink: 0;
+    }
+    img {
+      height: 60vh !important;
+      width: auto !important;
+    }
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .item {
+      &:active {
+        z-index: 999;
+      }
+    }
+  }
+}
+
+@media all and (max-width: variables.$sm) {
+  .page-home {
+  }
+}

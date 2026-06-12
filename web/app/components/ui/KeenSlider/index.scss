@@ -1,0 +1,22 @@
+.keen-slider-container {
+  position: relative;
+  .keen-slider {
+    &__controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      // margin-top: 1rem;
+      position: absolute;
+      inset: 0;
+      .control {
+        width: 50%;
+        &.next {
+          cursor: e-resize;
+        }
+        &.prev {
+          cursor: w-resize;
+        }
+      }
+    }
+  }
+}

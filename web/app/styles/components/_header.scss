@@ -1,0 +1,75 @@
+@use "../variables";
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: var(--spacing-md);
+  z-index: 50;
+
+  font-size: var(--text-lg);
+  .rita-logo {
+    transform-origin: top left;
+    svg {
+      width: 100%;
+      path {
+        fill: var(--color-primary);
+      }
+    }
+  }
+  nav {
+    & > ul.menu {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--spacing-gutter);
+
+      .locales-switcher {
+        grid-column: span 2 / span 2;
+        display: flex;
+        li {
+          width: 50%;
+        }
+      }
+    }
+  }
+  @media all and (max-width: variables.$md) {
+    padding: var(--spacing-sm);
+  }
+}
+
+body.is-home header {
+  // position: fixed;
+  // & + main {
+  //   padding-top: var(--header-h);
+  // }
+  .description,
+  nav {
+    transition:
+      transform 0.6s var(--cubic),
+      opacity 0.6s var(--cubic);
+  }
+  .description {
+    position: absolute;
+  }
+  nav {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  &.scroll-up {
+    .description {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    nav {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+body:not(.is-home) header {
+  .rita-logo {
+    transition: width 0.2s var(--cubic);
+    max-width: var(--gridder-1_5);
+  }
+}

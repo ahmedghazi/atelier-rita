@@ -1,0 +1,254 @@
+@use "variables";
+@use "mixins";
+
+// @font-face {
+//   font-family: "NTBau-Regular";
+//   src: url("./fonts/NTBau-Regular.woff") format("woff"),
+//     url("./fonts/NTBau-Regular.woff2") format("woff2");
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: "Lastik-Free";
+//   src: url("./fonts/Lastik-Free.woff") format("woff"),
+//     url("./fonts/Lastik-Free.woff2") format("woff2");
+//   font-display: swap;
+// }
+
+//ABCDiatype-Regular
+body {
+  color: var(--color-primary);
+  font-family: var(--font-serif);
+  font-size: var(--text-md);
+  line-height: 1.25;
+  // text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.02rem;
+
+  @media all and (min-width: 1080px) {
+    font-size: var(--text-md);
+  }
+}
+
+html {
+  font-size: 12px;
+}
+@media all and (min-width: 1080px) {
+  html {
+    font-size: 16px;
+    // font-size: 20px;
+  }
+}
+@media all and (min-width: 1920px) {
+  html {
+    font-size: 1vw;
+  }
+}
+
+.text-lg {
+  line-height: 1.1;
+}
+.italic {
+  font-style: italic;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  // font-size: var(--text-md);
+  font-weight: normal;
+}
+.headline {
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+.titraille-sep {
+  border-top: var(--border);
+  border-bottom: var(--border);
+  text-align: center;
+  padding: toRem(16) 0 toRem(13);
+  font-size: var(--text-lg);
+}
+
+button {
+  cursor: pointer;
+}
+/* Buttons */
+.btn {
+  border-radius: 1em;
+  padding: 0 var(--space-lg);
+  line-height: 1.65625;
+  line-height: 1.68;
+  height: 1.65625em;
+  &.btn--primary {
+    background-color: var(--color-blue);
+    color: white;
+    border: 1px solid var(--color-blue);
+    &:hover {
+      background-color: white;
+      color: var(--color-blue);
+      // border-color: white;
+    }
+  }
+  &.btn--lg {
+    font-size: var(--text-lg);
+    // line-height: toRem(53);
+  }
+}
+/* Links */
+a,
+a[aria-current="page"] {
+  text-decoration: none;
+  // &:focus,
+  // &:active,
+  &:hover {
+    // color: var(--color-hover);
+    color: var(--color-hover);
+  }
+  &.is-active {
+    color: var(--color-hover);
+  }
+  &.is-current-page {
+    color: var(--color-hover);
+  }
+}
+a[aria-current="page"],
+a.is-current,
+button.is-current {
+  color: var(--color-blue);
+}
+
+/* Text elements */
+p,
+.text p {
+  font-family: var(--font-secondary);
+
+  margin-bottom: 1em;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &:empty {
+    display: none;
+  }
+  a {
+    font-family: var(--font-primary);
+  }
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.information {
+  white-space: pre;
+}
+.sep-dash {
+  padding: 0 0.3em;
+}
+
+.text {
+  h2,
+  h3 {
+    margin-bottom: 1em;
+  }
+  p {
+    // text-indent: 1em;
+    margin-bottom: 1em;
+    line-height: 1.2;
+    @media all and (min-width: var(--screen-md)) {
+      line-height: 1.12;
+    }
+  }
+  // p:first-child {
+  //   text-indent: 0;
+  // }
+}
+
+.tabnum {
+  font-feature-settings:
+    "tnum" on,
+    "lnum" on,
+    "case" on;
+}
+
+.strong,
+strong {
+  font-weight: bold;
+}
+// em {
+//   // font-style: italic;
+// }
+
+button {
+  background: transparent;
+}
+
+input {
+  // padding: 0.5em 0;
+  background-color: transparent;
+  border-bottom: 1px solid;
+  &::placeholder {
+    color: white;
+    text-transform: capitalize;
+  }
+}
+
+input[type="submit"] {
+  background-color: white;
+  color: black;
+  width: 100%;
+  padding: 0.5em;
+}
+
+hr {
+  background-color: var(--color-primary);
+  border: 0;
+  height: 1px;
+  margin: 1.1em calc(var(--space-sm) * -1);
+}
+
+pre {
+  background: #cfcfcf;
+  line-height: 1.5;
+  margin-bottom: 1.5em;
+  overflow: auto;
+  padding: 0.75em 1.5em;
+}
+
+abbr,
+acronym,
+dfn {
+  border-bottom: var(--border);
+  cursor: help;
+}
+address {
+  display: block;
+  font-style: initial;
+}
+ins {
+  background: #fff9c0;
+  text-decoration: none;
+}
+sup,
+sub {
+  font-size: 10px;
+  height: 0;
+  line-height: 1;
+  position: relative;
+  // vertical-align: baseline;
+  vertical-align: text-top;
+}
+sup {
+  bottom: 1ex;
+}
+sub {
+  top: 0.5ex;
+}
+
+@media all and (max-width: variables.$sm) {
+}

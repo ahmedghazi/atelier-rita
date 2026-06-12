@@ -1,0 +1,16 @@
+.slider {
+  gap: var(--spacing-gutter);
+  .keen-slider-container {
+  }
+  .keen-slider__slide {
+    width: auto !important;
+    flex-shrink: 0;
+  }
+  img {
+    height: 60vh !important;
+    width: auto !important;
+  }
+  .caption {
+    padding: 0.5em 0;
+  }
+}

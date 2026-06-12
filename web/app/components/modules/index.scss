@@ -1,0 +1,90 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.modules {
+  section {
+    width: 100%;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &.module--list-projects-ui {
+      .grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+
+        @media all and (min-width: variables.$md) {
+          column-gap: calc(var(--space-md) + var(--border-width) * 1);
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        @media all and (min-width: variables.$xl) {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          // .card--project {
+          //   grid-column: span 2 / span 2;
+          // }
+        }
+        @media all and (min-width: variables.$xxl) {
+          // grid-template-columns: repeat(4, minmax(0, 1fr));
+          // grid-template-columns: repeat(3, minmax(0, 1fr));
+          // grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    }
+
+    &.module--texts-ui {
+      font-size: var(--text-lg);
+      // min-height: calc(var(--row-size) * 2 - var(--border-width) * 1);
+      .inner {
+        padding: calc(var(--space-md) * 0.7) var(--space-md);
+        background-color: var(--color-primary);
+        color: var(--color-white);
+      }
+      .text {
+        p {
+          line-height: 1;
+        }
+        br {
+          display: initial;
+        }
+      }
+      @media all and (max-width: variables.$md) {
+        font-size: var(--text-lg--mobile);
+      }
+    }
+    &.module--list-key-val-ui {
+      font-size: var(--text-lg);
+      // min-height: calc(var(--row-size) * 2 - var(--border-width) * 1);
+      min-height: calc(var(--vh) * 100 - var(--header-height));
+      .inner {
+        padding: calc(var(--space-md) * 0.7) var(--space-md);
+        color: var(--color-white);
+        background-color: var(--color-primary);
+        color: var(--color-white);
+      }
+      @media all and (max-width: variables.$md) {
+        font-size: var(--text-lg--mobile);
+      }
+      .text {
+        p {
+          line-height: 1;
+          margin-bottom: 0;
+        }
+        br {
+          display: initial;
+        }
+      }
+      .extra {
+        position: absolute;
+        right: -2em;
+        bottom: -0.1em;
+      }
+    }
+
+    @media all and (min-width: variables.$md) {
+      .scrollable {
+        // background-color: var(--color-primary);
+        // height: calc(var(--vh) * 100 - var(--header-height));
+        height: calc(var(--rowRef-height) * 2 - var(--border-width) * 1);
+        overflow-y: auto;
+      }
+    }
+  }
+}
