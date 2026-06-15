@@ -1,14 +1,12 @@
 import "./styles/index.scss";
 import "./global.css";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 import website from "./config/website";
 import { PageContextProvider } from "./context/PageContext";
 import { getSettings } from "./sanity-api/sanity-queries";
 import { LocaleContextProvider } from "./context/LocaleContext";
 import { draftMode } from "next/headers";
-import DesignSystem from "./components/ui/DS";
-import { VisualEditing } from "next-sanity/visual-editing";
+import VisualEditingClient from "./components/VisualEditingClient";
 import Gridder from "./components/ui/Gridder";
 
 export const metadata = {
@@ -38,11 +36,7 @@ export default async function RootLayout({
               {/* <DesignSystem /> */}
               <main>{children}</main>
               {/* <Footer settings={settings} /> */}
-              {isEnabled && (
-                <VisualEditing
-                  zIndex={1000} // Optional
-                />
-              )}
+              {isEnabled && <VisualEditingClient />}
             </PageContextProvider>
           </LocaleContextProvider>
         </div>
