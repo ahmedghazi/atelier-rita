@@ -101,7 +101,8 @@ button {
 }
 /* Links */
 a,
-a[aria-current="page"] {
+a[aria-current="page"],
+button {
   text-decoration: none;
   // &:focus,
   // &:active,

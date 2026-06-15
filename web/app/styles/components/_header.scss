@@ -51,6 +51,11 @@ body.is-home header {
   svg path {
     fill: var(--color-white);
   }
+  a:hover,
+  button:hover {
+    color: var(--color-white);
+    opacity: 0.5;
+  }
 
   .description,
   nav {
