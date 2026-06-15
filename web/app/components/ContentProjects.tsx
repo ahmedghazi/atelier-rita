@@ -19,7 +19,9 @@ const ContentProjects = ({ input }: Props) => {
 
   const { items } = input;
   const [thumbnail, setThumbnail] =
-    React.useState<ProjectImageCoverAsset | null>(null);
+    React.useState<ProjectImageCoverAsset | null>(
+      items?.[0]?.imageCover?.asset || null,
+    );
   return (
     <div className='content content--projects'>
       <div className='grid grid-cols-5 gap-gutter '>

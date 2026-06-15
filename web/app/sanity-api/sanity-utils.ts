@@ -1,4 +1,4 @@
-import createImageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 // import { definePreview } from 'next-sanity/preview'
 import { sanityConfig } from "./sanity.client";
 import { SanityImageAsset } from "sanity-codegen";

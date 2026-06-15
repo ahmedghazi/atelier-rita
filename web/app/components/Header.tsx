@@ -32,7 +32,11 @@ const Header = ({ settings }: Props) => {
     return true;
   });
 
-  const [randomIndex] = useState(() => Math.floor(Math.random() * 100000));
+  const [randomIndex, setRandomIndex] = useState(0);
+
+  useEffect(() => {
+    setRandomIndex(Math.floor(Math.random() * 100000));
+  }, []);
 
   const descriptions = settings?.siteDescriptions ?? [];
 

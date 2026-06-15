@@ -7,13 +7,16 @@ import React, {
   useState,
 } from "react";
 import { usePathname } from "next/navigation";
+import { Settings, SETTINGS_QUERY_RESULT } from "../types/sanity.types";
+import { useRandomItem } from "../hooks/useRandomItem";
 // import { getSettings } from "../utils/sanity-queries";
 
 type ContextProps = {
   layoutReady: boolean;
-  settings: {
-    pathname: string;
-  };
+  // settings: {
+  //   pathname: string;
+  // };
+  settings: SETTINGS_QUERY_RESULT;
   modalZIndex: number;
   setModalZIndex: (zIndex: number | ((prev: number) => number)) => void;
 };
@@ -24,22 +27,34 @@ const PageContext = createContext<ContextProps>({} as ContextProps);
 interface PageContextProps {
   // location?: object;
   children: ReactNode;
+  settings: SETTINGS_QUERY_RESULT;
   // pageContext: object;
 }
 
 export const PageContextProvider = (props: PageContextProps) => {
-  const { children } = props;
+  const { children, settings } = props;
   const pathname = usePathname();
   // console.log(pathname);
   const [layoutReady, setLayoutReady] = useState<boolean>(false);
   const [modalZIndex, setModalZIndex] = useState<number>(99);
-  const settings = {
-    pathname,
+
+  const _randomColor = () => {
+    if (!settings) return;
+    const colors = settings.colors;
+    if (!colors) return;
+    const _randomColor = colors[Math.floor(Math.random() * colors.length)];
+    console.log(_randomColor);
+    document.documentElement.style.setProperty(
+      "--color-accent",
+      _randomColor?.hex || "red",
+    );
+    const rgb = `${_randomColor?.rgb?.r}, ${_randomColor?.rgb?.g}, ${_randomColor?.rgb?.b}`;
+    document.documentElement.style.setProperty("--color-accent-rgb", rgb);
   };
 
   const _format = () => {
     // const wh = window.innerHeight;
-
+    setLayoutReady(false);
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
     // document.documentElement.style.setProperty("--app-height", wh + "px");
@@ -74,6 +89,7 @@ export const PageContextProvider = (props: PageContextProps) => {
   };
 
   useEffect(() => {
+    _randomColor();
     _format();
     window.addEventListener("resize", _format);
 
@@ -85,6 +101,9 @@ export const PageContextProvider = (props: PageContextProps) => {
   useEffect(() => {
     document.body.classList.toggle("is-home", pathname === "/");
     _format();
+    setTimeout(() => {
+      _format();
+    }, 150);
   }, [pathname]);
 
   useEffect(() => {

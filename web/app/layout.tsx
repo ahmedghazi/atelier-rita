@@ -24,13 +24,14 @@ export default async function RootLayout({
 }) {
   const settings = await getSettings();
   const { isEnabled } = await draftMode();
+  const { colors } = settings || {};
 
   return (
     <html lang='fr'>
       <body className={"is-loading"} data-theme='theme-xyz'>
         <div id='page'>
           <LocaleContextProvider>
-            <PageContextProvider>
+            <PageContextProvider settings={settings}>
               <Gridder />
               <Header settings={settings} />
               {/* <DesignSystem /> */}

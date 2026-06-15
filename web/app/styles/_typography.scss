@@ -17,7 +17,7 @@
 
 //ABCDiatype-Regular
 body {
-  color: var(--color-primary);
+  color: var(--color-accent);
   font-family: var(--font-serif);
   font-size: var(--text-md);
   line-height: 1.25;
@@ -105,15 +105,13 @@ a[aria-current="page"] {
   text-decoration: none;
   // &:focus,
   // &:active,
-  &:hover {
-    // color: var(--color-hover);
-    color: var(--color-hover);
-  }
-  &.is-active {
-    color: var(--color-hover);
-  }
+  &:hover,
+  &:active,
+  &.is-active,
   &.is-current-page {
-    color: var(--color-hover);
+    // color: var(--color-hover);
+    // color: var(--color-hover);
+    color: rgba(var(--color-accent-rgb), 0.5);
   }
 }
 a[aria-current="page"],
@@ -125,8 +123,7 @@ button.is-current {
 /* Text elements */
 p,
 .text p {
-  font-family: var(--font-secondary);
-
+  line-height: 1;
   margin-bottom: 1em;
   &:last-child {
     margin-bottom: 0;
@@ -149,24 +146,6 @@ p,
 }
 .sep-dash {
   padding: 0 0.3em;
-}
-
-.text {
-  h2,
-  h3 {
-    margin-bottom: 1em;
-  }
-  p {
-    // text-indent: 1em;
-    margin-bottom: 1em;
-    line-height: 1.2;
-    @media all and (min-width: var(--screen-md)) {
-      line-height: 1.12;
-    }
-  }
-  // p:first-child {
-  //   text-indent: 0;
-  // }
 }
 
 .tabnum {

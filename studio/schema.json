@@ -1429,6 +1429,28 @@
         },
         "optional": true
       },
+      "colors": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "object",
+            "attributes": {
+              "_key": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                }
+              }
+            },
+            "rest": {
+              "type": "inline",
+              "name": "color"
+            }
+          }
+        },
+        "optional": true
+      },
       "customCss": {
         "type": "objectAttribute",
         "value": {

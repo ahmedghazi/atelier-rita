@@ -8,13 +8,18 @@ header {
   z-index: 50;
 
   font-size: var(--text-lg);
+  color: var(--color-accent);
+  svg path {
+    fill: var(--color-accent);
+  }
   .rita-logo {
     transform-origin: top left;
+    max-width: 100%;
     svg {
       width: 100%;
-      path {
-        fill: var(--color-primary);
-      }
+      // path {
+      //   fill: var(--color-accent);
+      // }
     }
   }
   nav {
@@ -42,6 +47,11 @@ body.is-home header {
   // & + main {
   //   padding-top: var(--header-h);
   // }
+  color: var(--color-white);
+  svg path {
+    fill: var(--color-white);
+  }
+
   .description,
   nav {
     transition:

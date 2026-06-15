@@ -6,7 +6,7 @@
   --color-primary: red;
   --color-secondary: #aaaaaa;
   --color-hover: #333;
-  --color-accent: #ff0000;
+  /* --color-accent: #ff0000; */
   --color-red: #ff0000;
 
   --font-primary:
@@ -18,19 +18,20 @@
     "Helvetica Neue Roman", "TeXGyreHerosRegular", "Helvetica", "Arial",
     sans-serif;
 
-  --spacing-sm: 0.625em;
-  --spacing-md: 0.938rem;
-  --spacing-lg: 1.875rem;
-  --spacing-gutter: 0.938rem;
+  --spacing-xs: 0.438em; /* 10px */
+  --spacing-sm: 0.625em; /* 10px */
+  --spacing-md: 0.938rem; /* 15px */
+  --spacing-lg: 1.875rem; /* 30px */
+  --spacing-gutter: 0.938rem; /* 15px */
 
-  --text-md: 0.813rem;
-  --text-lg: 1.5rem;
+  --text-md: 0.813rem; /* 13px */
+  --text-lg: 1.5rem; /* 24px */
 
   --cubic: cubic-bezier(0.87, 0, 0.13, 1);
 
   /* --text-xl: clamp(26px, 5.21vw, 75px);*/
 
-  --border-width: 1px;
+  --border-width: 1.5px;
   --border: var(--border-width) solid;
   --border-width-lg: 2px;
   --border-lg: var(--border-width-lg) solid;
@@ -47,7 +48,7 @@
   --color-primary: var(--color-primary);
   --color-secondary: var(--color-secondary);
   --color-hover: var(--color-hover);
-  --color-accent: var(--color-accent);
+  /* --color-accent: var(--color-accent); */
   --color-red: var(--color-red);
 
   --font-primary: var(--font-primary);

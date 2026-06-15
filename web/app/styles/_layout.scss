@@ -16,8 +16,11 @@ body {
   &.is-loading {
     opacity: 0;
   }
+  --color-bg: white;
+  --color-primary: var(--color-accent);
+
   &.is-home {
-    --color-bg: red;
+    --color-bg: var(--color-accent);
     --color-primary: white;
   }
 }

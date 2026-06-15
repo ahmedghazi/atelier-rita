@@ -272,6 +272,11 @@ export type Settings = {
   labelNewsletter?: LocaleString;
   msgNewsletter?: LocaleText;
   message404?: BlockContent;
+  colors?: Array<
+    {
+      _key: string;
+    } & Color
+  >;
   customCss?: string;
 };
 
@@ -612,6 +617,11 @@ export type SETTINGS_QUERY_RESULT = {
   labelNewsletter?: LocaleString;
   msgNewsletter?: LocaleText;
   message404?: BlockContent;
+  colors?: Array<
+    {
+      _key: string;
+    } & Color
+  >;
   customCss?: string;
 } | null;
 

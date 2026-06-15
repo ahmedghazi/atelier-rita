@@ -64,15 +64,16 @@ const Modal = ({
         transform: `translate(${position.x}px, ${position.y}px)`,
         zIndex,
       }}>
+      <div className={clsx(styles.modal__body, "hide-sb")}>{children}</div>
       <div
         className={clsx(
+          "modal__close",
           styles.modal__close,
           bigClose && styles.modal__close__big,
         )}
         onClick={onClose}>
         <Icon name='x' />
       </div>
-      <div className={clsx(styles.modal__body, "hide-sb")}>{children}</div>
     </div>
   );
 };

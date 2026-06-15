@@ -1,10 +1,12 @@
 - # seo auto gen
-- sanity preview
+- # sanity preview
 - # project > next
 - atelier slider
 - # home infos
 - # home logo anime
 - typo
 - micro interactions
-- site descriptions
-- news
+- # site descriptions
+- # news
+- # random palette
+- # hover (rfg, 0.5)

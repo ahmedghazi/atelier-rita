@@ -139,6 +139,19 @@ export default defineType({
     }),
 
     defineField({
+      name: 'colors',
+      title: 'Couteurs',
+      description: 'Palette de couleurs',
+      type: 'array',
+      of: [
+        {
+          type: 'color',
+        },
+      ],
+      group: 'design',
+    }),
+
+    defineField({
       name: 'customCss',
       type: 'text',
       group: 'design',
