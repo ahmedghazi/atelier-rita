@@ -21,6 +21,15 @@ export default defineField({
   preview: {
     select: {
       title: `key.${baseLanguage}`,
+      text: `value.${baseLanguage}`,
+    },
+    prepare(selection) {
+      const {title, text} = selection
+      const firstWords = text?.[0]?.children?.[0]?.text?.split(' ').slice(0, 3).join(' ')
+      return {
+        title: title,
+        subtitle: firstWords,
+      }
     },
   },
 })

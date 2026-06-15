@@ -10,7 +10,7 @@ import {resolveProductionUrl} from './src/actions/resolveProductionUrl'
 import {media} from 'sanity-plugin-media'
 // import {defaultDocumentNode} from './src/defaultDocumentNode'
 
-const remoteURL = 'https://marie-seguret.vercel.app'
+const remoteURL = 'https://preprod-rita.vercel.app'
 const localURL = 'http://localhost:3000'
 const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 
@@ -20,7 +20,6 @@ const plugins = [
   visionTool(),
   colorInput(),
   // ...(isDev ? devOnlyPlugins : []),
-  // media(),
   presentationTool({
     title: 'Live preview',
     resolve: linkResolverPreview,

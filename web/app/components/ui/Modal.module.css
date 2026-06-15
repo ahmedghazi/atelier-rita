@@ -29,6 +29,15 @@
 .modal__close svg path {
   fill: white;
 }
+.modal__close__big {
+  bottom: var(--spacing-md);
+  right: 50%;
+  transform: translateX(50%);
+}
+.modal__close__big svg {
+  width: 2rem;
+  height: 2rem;
+}
 .modal__body {
   padding: var(--spacing-sm);
   max-height: 100%;

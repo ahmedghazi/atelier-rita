@@ -104,6 +104,7 @@ export default defineType({
       title: 'Chiffres',
       description: '1 270 m² 9,2 M € HT',
       type: 'text',
+      rows: 2,
       group: 'metas',
     }),
     defineField({
@@ -111,6 +112,7 @@ export default defineType({
       title: 'Année',
       description: '2017 Concours',
       type: 'text',
+      rows: 2,
       group: 'metas',
     }),
     defineField({

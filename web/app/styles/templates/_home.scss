@@ -3,6 +3,20 @@
 .template--home {
   .content--home {
     // perspective: 1000px;
+    .modal {
+      background-color: var(--color-primary) !important;
+      color: var(--color-bg) !important;
+      svg path {
+        fill: var(--color-bg) !important;
+      }
+      .news-item {
+        text-align: center;
+        padding: 1rem;
+        .text {
+          margin-bottom: 1em;
+        }
+      }
+    }
   }
 }
 

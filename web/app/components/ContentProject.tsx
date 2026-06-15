@@ -44,7 +44,7 @@ const ContentProject = ({ input }: Props) => {
       unsubscribe(tokenEnded);
     };
   }, [slides]);
-  console.log(modalOpen);
+
   return (
     <div
       className={clsx(
@@ -81,7 +81,7 @@ const ContentProject = ({ input }: Props) => {
       </div>
       <div className='footer'>
         <h1 className='title col-span-2 text-lg'>
-          {_localizeField(locale, title)}, <span className='city'>{city}</span>
+          {_localizeField(locale, title)}, <span className='city'>{city}</span>{" "}
           <span className='zip'>{zip}</span>
         </h1>
         <button className='toggle ' onClick={() => setModalOpen(!modalOpen)}>

@@ -11,7 +11,6 @@ import type {
 
 export const SETTINGS_QUERY = defineQuery(`*[_type == "settings"][0]{
   ...,
-
   navPrimary[]{
     ...,
     _type == 'linkInternal' => {
@@ -22,29 +21,6 @@ export const SETTINGS_QUERY = defineQuery(`*[_type == "settings"][0]{
       }
     }
   },
-  navSecondary[]{
-    ...,
-    _type == 'linkInternal' => {
-      ...,
-      link->{
-        _type,
-        slug
-      }
-    }
-  },
-  navTertiary[]{
-    ...,
-    _type == 'linkInternal' => {
-      ...,
-      link->{
-        _type,
-        slug
-      }
-    }
-  },
-  licenseSizes[]{
-    ...
-  }
 }`);
 
 export async function getSettings(): Promise<SETTINGS_QUERY_RESULT> {

@@ -7,10 +7,17 @@ type Props = {
   children: React.ReactNode;
   open?: boolean;
   onClose?: () => void;
-  zIndex: number;
+  zIndex?: number;
+  bigClose?: boolean;
 };
 
-const Modal = ({ children, open = false, onClose, zIndex = 99 }: Props) => {
+const Modal = ({
+  children,
+  open = false,
+  onClose,
+  zIndex = 99,
+  bigClose = false,
+}: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const { modalZIndex, setModalZIndex } = usePageContext();
   // const [delayOpen, setDelayOpen] = useState(false);
@@ -19,10 +26,17 @@ const Modal = ({ children, open = false, onClose, zIndex = 99 }: Props) => {
     y: 0,
   });
 
+  useEffect(() => {
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        onClose?.();
+      }
+    });
+  }, []);
+
   const _randomlyPlaceModal = () => {
     const el = ref.current?.getBoundingClientRect();
     if (!el) return;
-    console.log(el);
     const maxX = window.innerWidth - el.width;
     const maxY = window.innerHeight - el.height;
     const randX = Math.random() * maxX;
@@ -33,6 +47,7 @@ const Modal = ({ children, open = false, onClose, zIndex = 99 }: Props) => {
   //   const modals = document.querySelectorAll(".modal");
   //   return 99 + modals.length;
   // };
+
   useEffect(() => {
     if (open) {
       return;
@@ -44,12 +59,17 @@ const Modal = ({ children, open = false, onClose, zIndex = 99 }: Props) => {
   return (
     <div
       ref={ref}
-      className={clsx(styles.modal, open && styles.modal__open)}
+      className={clsx("modal", styles.modal, open && styles.modal__open)}
       style={{
         transform: `translate(${position.x}px, ${position.y}px)`,
         zIndex,
       }}>
-      <div className={styles.modal__close} onClick={onClose}>
+      <div
+        className={clsx(
+          styles.modal__close,
+          bigClose && styles.modal__close__big,
+        )}
+        onClick={onClose}>
         <Icon name='x' />
       </div>
       <div className={clsx(styles.modal__body, "hide-sb")}>{children}</div>

@@ -15,6 +15,10 @@ export default {
     title: lang.title,
     name: lang.id,
     type: 'text',
+    rows: 2,
+    options: {
+      // rows: 2,
+    },
     fieldset: lang.isDefault ? null : 'translations',
   })),
 }

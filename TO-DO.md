@@ -6,3 +6,5 @@
 - # home logo anime
 - typo
 - micro interactions
+- site descriptions
+- news

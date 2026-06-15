@@ -241,6 +241,11 @@ export type Settings = {
   _rev: string;
   siteName?: string;
   siteDescription?: LocaleString;
+  siteDescriptions?: Array<
+    {
+      _key: string;
+    } & LocaleString
+  >;
   navPrimary?: Array<
     | ({
         _key: string;
@@ -544,7 +549,7 @@ export type AllSanitySchemaTypes =
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
 // Variable: SETTINGS_QUERY
-// Query: *[_type == "settings"][0]{  ...,  navPrimary[]{    ...,    _type == 'linkInternal' => {      ...,      link->{        _type,        slug      }    }  },  navSecondary[]{    ...,    _type == 'linkInternal' => {      ...,      link->{        _type,        slug      }    }  },  navTertiary[]{    ...,    _type == 'linkInternal' => {      ...,      link->{        _type,        slug      }    }  },  licenseSizes[]{    ...  }}
+// Query: *[_type == "settings"][0]{  ...,  navPrimary[]{    ...,    _type == 'linkInternal' => {      ...,      link->{        _type,        slug      }    }  },}
 export type SETTINGS_QUERY_RESULT = {
   _id: string;
   _type: "settings";
@@ -553,6 +558,11 @@ export type SETTINGS_QUERY_RESULT = {
   _rev: string;
   siteName?: string;
   siteDescription?: LocaleString;
+  siteDescriptions?: Array<
+    {
+      _key: string;
+    } & LocaleString
+  >;
   navPrimary: Array<
     | {
         _key: string;
@@ -589,45 +599,20 @@ export type SETTINGS_QUERY_RESULT = {
       _key: string;
     } & LinkIcon
   >;
-  navSecondary: Array<
-    | {
+  navSecondary?: Array<
+    | ({
         _key: string;
-        _type: "linkExternal";
-        label?: string;
-        link?: string;
-      }
-    | {
+      } & LinkExternal)
+    | ({
         _key: string;
-        _type: "linkInternal";
-        label?: LocaleString;
-        link:
-          | {
-              _type: "atelier";
-              slug: Slug | null;
-            }
-          | {
-              _type: "home";
-              slug: Slug | null;
-            }
-          | {
-              _type: "project";
-              slug: Slug | null;
-            }
-          | {
-              _type: "projects";
-              slug: Slug | null;
-            }
-          | null;
-      }
-  > | null;
+      } & LinkInternal)
+  >;
   baseline?: LocaleBlockContent;
   contact?: string;
   labelNewsletter?: LocaleString;
   msgNewsletter?: LocaleText;
   message404?: BlockContent;
   customCss?: string;
-  navTertiary: null;
-  licenseSizes: null;
 } | null;
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
@@ -925,7 +910,7 @@ export type ATELIER_QUERY_RESULT = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"settings\"][0]{\n  ...,\n\n  navPrimary[]{\n    ...,\n    _type == 'linkInternal' => {\n      ...,\n      link->{\n        _type,\n        slug\n      }\n    }\n  },\n  navSecondary[]{\n    ...,\n    _type == 'linkInternal' => {\n      ...,\n      link->{\n        _type,\n        slug\n      }\n    }\n  },\n  navTertiary[]{\n    ...,\n    _type == 'linkInternal' => {\n      ...,\n      link->{\n        _type,\n        slug\n      }\n    }\n  },\n  licenseSizes[]{\n    ...\n  }\n}": SETTINGS_QUERY_RESULT;
+    "*[_type == \"settings\"][0]{\n  ...,\n  navPrimary[]{\n    ...,\n    _type == 'linkInternal' => {\n      ...,\n      link->{\n        _type,\n        slug\n      }\n    }\n  },\n}": SETTINGS_QUERY_RESULT;
     '*[_type == "home"][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n  projects[]->{\n    \n\t_id,\n  _type,\n  slug,\n  title,\n\tprogramme,\n\tyear,\n\tcity,\n\tzip,\n\tnumbers,\n\tclient,\n\timageCover{\n\t\t\n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle\n\t}\n\n\t}\n\n  },\n  news[]{\n    ...\n  }\n}': HOME_QUERY_RESULT;
     '\n  *[_type == "project" && slug.current == $slug][0]{\n    ...,\n    seo{\n      \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n    },\n    imageCover{\n      \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle\n\t}\n\n    },\n    images[]{\n      \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle\n\t}\n\n    },\n    fiche_technique[]{\n      ...\n    },\n    related->{\n      _type,\n      slug,\n      imageCover{\n        \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle\n\t}\n\n      }\n    }\n  }\n': PROJECT_QUERY_RESULT;
     '*[_type == "projects"][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n  items[]->{\n    \n\t_id,\n  _type,\n  slug,\n  title,\n\tprogramme,\n\tyear,\n\tcity,\n\tzip,\n\tnumbers,\n\tclient,\n\timageCover{\n\t\t\n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle\n\t}\n\n\t}\n\n  }\n}': PROJECTS_QUERY_RESULT;

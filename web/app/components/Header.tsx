@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Nav from "./Nav";
-import { SETTINGS_QUERY_RESULT } from "../types/sanity.types";
+import { LocaleString, SETTINGS_QUERY_RESULT } from "../types/sanity.types";
 import Link from "next/link";
 import website from "../config/website";
 import RitaLogo from "./RitaLogo";
@@ -19,15 +19,25 @@ type Props = {
 
 const Header = ({ settings }: Props) => {
   const { locale } = useLocale();
+  // const [randomDescription, setRandomDescription] =
+  //   useState<LocaleString | null>(null);
   const { scrollDirection, scrollY } = useScroll();
   const pathname = usePathname();
   const isHome = pathname === "/";
+
   const [isFirstVisit] = useState(() => {
     if (typeof window === "undefined") return false;
     if (sessionStorage.getItem(FIRST_VISIT_KEY)) return false;
     sessionStorage.setItem(FIRST_VISIT_KEY, "1");
     return true;
   });
+
+  const [randomIndex] = useState(() => Math.floor(Math.random() * 100000));
+
+  const descriptions = settings?.siteDescriptions ?? [];
+
+  const randomDescription =
+    descriptions[randomIndex % descriptions.length] ?? "";
 
   return (
     <header
@@ -40,14 +50,14 @@ const Header = ({ settings }: Props) => {
         <div className='md:col-span-3'>
           <div className='site-name'>
             <Link href='/'>
-              <RitaLogo animated={isHome} playIntro={isFirstVisit} />
+              <RitaLogo animated={isHome} playIntro={isHome} />
             </Link>
           </div>
         </div>
         <div className='md:col-span-2'>
           {isHome && (
             <div className='description text-md'>
-              {_localizeField(locale, settings?.siteDescription)}
+              {_localizeField(locale, randomDescription)}
             </div>
           )}
           <Nav input={settings} />

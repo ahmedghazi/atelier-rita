@@ -18,25 +18,25 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/color-input": "^6.0.6",
+    "@sanity/color-input": "^6.0.7",
     "@sanity/icons": "^3.7.4",
     "@sanity/ui": "^3.2.0",
-    "@sanity/vision": "^5.31.1",
+    "@sanity/vision": "^6.0.0",
     "add": "^2.0.6",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "react-icons": "^5.6.0",
     "react-player": "^3.4.0",
-    "sanity": "^5.31.1",
+    "sanity": "^6.0.0",
     "sanity-plugin-media": "^4.3.1",
-    "styled-components": "^6.1.18"
+    "styled-components": "^6.4.2"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^6.0.0",
-    "@types/react": "^19.2.14",
-    "eslint": "^9.28",
-    "prettier": "^3.5",
-    "typescript": "^5.8"
+    "@types/react": "^19.2.17",
+    "eslint": "^10.5",
+    "prettier": "^3.8",
+    "typescript": "^6.0"
   },
   "prettier": {
     "bracketSpacing": false,

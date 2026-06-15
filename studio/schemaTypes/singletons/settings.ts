@@ -53,22 +53,19 @@ export default defineType({
       type: 'localeString',
       group: 'header',
     }),
-    // defineField({
-    //   name: 'description',
-    //   title: 'Description',
-    //   type: 'localeBlockContent',
-    //   description: "Visible en page d'accueil header",
-    //   group: 'header',
-    // }),
-    // defineField({
-    //   name: 'logo',
-    //   title: 'Logo',
-    //   type: 'image',
-    //   options: {
-    //     accept: 'image/svg+xml',
-    //   },
-    //   group: 'header',
-    // }),
+    defineField({
+      name: 'siteDescriptions',
+      title: 'Descriptions du site',
+      description: 'Random',
+      type: 'array',
+      of: [
+        {
+          type: 'localeString',
+        },
+      ],
+      group: 'header',
+    }),
+
     defineField({
       name: 'navPrimary',
       title: 'Naviguation Primary',
