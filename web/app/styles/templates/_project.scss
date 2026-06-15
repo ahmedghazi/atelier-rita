@@ -1,5 +1,7 @@
 @use "../variables";
-
+body:has(.template--project) {
+  overflow: hidden;
+}
 .template--project {
   .content--project {
     &.slider-ended .slider {

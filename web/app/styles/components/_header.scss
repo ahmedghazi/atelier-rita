@@ -12,6 +12,9 @@ header {
   svg path {
     fill: var(--color-accent);
   }
+  .site-name:hover a {
+    opacity: 1 !important;
+  }
   .rita-logo {
     transform-origin: top left;
     max-width: 100%;

@@ -53,7 +53,7 @@ const ContentProject = ({ input }: Props) => {
       )}>
       <div className='slider'>
         <div className='flex'>
-          <KeenSlider loop={false}>
+          <KeenSlider loop={false} wheelControl={true}>
             {slides.map((image, index: number) => (
               <div key={index + 1} className='keen-slider__slide'>
                 <Figure asset={image?.asset} alt={image?.asset?.altText} />

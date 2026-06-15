@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import "./index.scss";
@@ -8,9 +8,16 @@ type Props = {
   children: ReactNode;
   perView?: number | "auto";
   loop?: boolean;
+  wheelControl?: boolean;
 };
 
-const KeenSlider = ({ children, perView = "auto", loop = true }: Props) => {
+const KeenSlider = ({
+  children,
+  perView = "auto",
+  loop = true,
+  wheelControl = false,
+}: Props) => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
@@ -32,17 +39,7 @@ const KeenSlider = ({ children, perView = "auto", loop = true }: Props) => {
       }
       publish("SLIDER_ENDED", current === last);
     },
-    animationEnded(slider) {
-      // const current = slider.track.details.rel;
-      // const last = slider.track.details.slides.length - 1;
-      // console.log(current, last);
-      // if (current === last) {
-      //   console.log("Dernière slide atteinte");
-      //   publish("SLIDER_ENDED", current);
-      //   // startMyAnimation();
-      // } else {
-      // }
-    },
+
     created() {
       setLoaded(true);
     },
@@ -64,9 +61,40 @@ const KeenSlider = ({ children, perView = "auto", loop = true }: Props) => {
     };
   }, [loaded, currentSlide]);
 
+  useEffect(() => {
+    if (!wheelControl || !loaded) return;
+    const container = containerRef.current;
+    if (!container) return;
+    let wheelLocked = false;
+
+    const handleWheel = (e: WheelEvent) => {
+      const delta =
+        Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (Math.abs(delta) < 10 || wheelLocked) return;
+      e.preventDefault();
+      wheelLocked = true;
+
+      if (delta > 0) {
+        instanceRef.current?.next();
+      } else {
+        instanceRef.current?.prev();
+      }
+
+      setTimeout(() => {
+        wheelLocked = false;
+      }, 500);
+    };
+
+    container.addEventListener("wheel", handleWheel, { passive: false });
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+    };
+  }, [wheelControl, loaded, instanceRef]);
+
   return (
-    <div className='keen-slider-container'>
+    <div className='keen-slider-container' ref={containerRef}>
       <div ref={sliderRef} className='keen-slider'>
+        {children}
         {children}
       </div>
       <div className='keen-slider__controls'>
