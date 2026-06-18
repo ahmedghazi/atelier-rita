@@ -330,8 +330,10 @@ export type Project = {
     _key: string;
   }>;
   text?: LocaleBlockContent;
+  type?: LocaleText;
   programme?: LocaleText;
   client?: string;
+  team?: string;
   city?: string;
   zip?: string;
   numbers?: string;
@@ -762,8 +764,10 @@ export type PROJECT_QUERY_RESULT = {
     } | null;
   }> | null;
   text?: LocaleBlockContent;
+  type?: LocaleText;
   programme?: LocaleText;
   client?: string;
+  team?: string;
   city?: string;
   zip?: string;
   numbers?: string;

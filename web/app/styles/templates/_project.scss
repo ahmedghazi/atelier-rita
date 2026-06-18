@@ -79,7 +79,11 @@ body:has(.template--project) {
       .fiche-technique {
         li {
           display: flex;
+          align-items: baseline;
           gap: 0.4em;
+          .key {
+            min-width: 6rem;
+          }
         }
       }
     }

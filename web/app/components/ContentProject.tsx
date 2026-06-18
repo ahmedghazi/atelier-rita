@@ -22,8 +22,22 @@ type Props = {
 
 const ContentProject = ({ input }: Props) => {
   const { locale } = useLocale();
-  const { imageCover, images, title, city, zip, year, text, metas, related } =
-    input;
+  const {
+    imageCover,
+    images,
+    title,
+    type,
+    programme,
+    city,
+    zip,
+    client,
+    team,
+    year,
+    numbers,
+    text,
+    metas,
+    related,
+  } = input;
   const [caption, setCaption] = useState<string>("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [sliderEnded, setSliderEnded] = useState<boolean>(false);
@@ -44,6 +58,37 @@ const ContentProject = ({ input }: Props) => {
       unsubscribe(tokenEnded);
     };
   }, [slides]);
+
+  const ficheTechnique = [
+    {
+      key: _localizeText(locale, "type"),
+      value: _localizeField(locale, type),
+    },
+    {
+      key: _localizeText(locale, "programme"),
+      value: _localizeField(locale, programme),
+    },
+    {
+      key: _localizeText(locale, "client"),
+      value: client,
+    },
+    {
+      key: _localizeText(locale, "team"),
+      value: team,
+    },
+    {
+      key: _localizeText(locale, "city"),
+      value: city,
+    },
+    {
+      key: _localizeText(locale, "numbers"),
+      value: numbers,
+    },
+    {
+      key: _localizeText(locale, "year"),
+      value: year,
+    },
+  ];
 
   return (
     <div
@@ -109,6 +154,17 @@ const ContentProject = ({ input }: Props) => {
             />
           </div>
           <ul className='fiche-technique'>
+            {ficheTechnique.map((item, i) => (
+              <li key={i}>
+                {item.value && (
+                  <>
+                    <div className='key'>{item.key}</div>
+                    <div className='value'>{item.value}</div>
+                  </>
+                )}
+              </li>
+            ))}
+
             {metas?.map((item, i) => (
               <li key={item._key}>
                 <div className='key'>{_localizeField(locale, item.key)}</div>

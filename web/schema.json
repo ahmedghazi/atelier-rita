@@ -1786,6 +1786,14 @@
         },
         "optional": true
       },
+      "type": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "localeText"
+        },
+        "optional": true
+      },
       "programme": {
         "type": "objectAttribute",
         "value": {
@@ -1795,6 +1803,13 @@
         "optional": true
       },
       "client": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "team": {
         "type": "objectAttribute",
         "value": {
           "type": "string"

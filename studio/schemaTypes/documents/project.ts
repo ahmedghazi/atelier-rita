@@ -39,20 +39,8 @@ export default defineType({
       type: 'string',
       title: 'Soustitre',
       group: 'editorial',
+      hidden: true,
     }),
-
-    // defineField({
-    //   name: 'tags',
-    //   title: 'Tags',
-    //   type: 'array',
-    //   of: [
-    //     {
-    //       type: 'reference',
-    //       to: [{type: 'tag'}],
-    //     },
-    //   ],
-    //   group: 'editorial',
-    // }),
 
     defineField({
       name: 'imageCover',
@@ -77,6 +65,11 @@ export default defineType({
       group: 'editorial',
     }),
     defineField({
+      name: 'type',
+      type: 'localeText',
+      group: 'metas',
+    }),
+    defineField({
       name: 'programme',
       type: 'localeText',
       group: 'metas',
@@ -84,6 +77,13 @@ export default defineType({
     defineField({
       name: 'client',
       type: 'string',
+      group: 'metas',
+    }),
+    defineField({
+      name: 'team',
+      title: 'Équipe',
+      type: 'text',
+      rows: 2,
       group: 'metas',
     }),
     defineField({
@@ -102,7 +102,7 @@ export default defineType({
     defineField({
       name: 'numbers',
       title: 'Chiffres',
-      description: '1 270 m² 9,2 M € HT',
+      description: '1 270 m² 9,2 M € HT. En majuscule',
       type: 'text',
       rows: 2,
       group: 'metas',
