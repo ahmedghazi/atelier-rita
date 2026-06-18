@@ -79,11 +79,11 @@ button {
 }
 /* Buttons */
 .btn {
-  border-radius: 1em;
-  padding: 0 var(--space-lg);
-  line-height: 1.65625;
-  line-height: 1.68;
-  height: 1.65625em;
+  // border-radius: 1em;
+  // padding: 0 var(--space-lg);
+  // line-height: 1.65625;
+  // line-height: 1.68;
+  // height: 1.65625em;
   &.btn--primary {
     background-color: var(--color-blue);
     color: white;

@@ -4,7 +4,7 @@
 - atelier slider
 - # home infos
 - # home logo anime
-- typo
+- # typo
 - micro interactions
 - # site descriptions
 - # news

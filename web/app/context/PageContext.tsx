@@ -13,9 +13,7 @@ import { useRandomItem } from "../hooks/useRandomItem";
 
 type ContextProps = {
   layoutReady: boolean;
-  // settings: {
-  //   pathname: string;
-  // };
+  layoutVersion: number;
   settings: SETTINGS_QUERY_RESULT;
   modalZIndex: number;
   setModalZIndex: (zIndex: number | ((prev: number) => number)) => void;
@@ -36,6 +34,7 @@ export const PageContextProvider = (props: PageContextProps) => {
   const pathname = usePathname();
   // console.log(pathname);
   const [layoutReady, setLayoutReady] = useState<boolean>(false);
+  const [layoutVersion, setLayoutVersion] = useState(0);
   const [modalZIndex, setModalZIndex] = useState<number>(99);
 
   const _randomColor = () => {
@@ -86,6 +85,7 @@ export const PageContextProvider = (props: PageContextProps) => {
     }
 
     setLayoutReady(true);
+    setLayoutVersion((v) => v + 1);
   };
 
   useEffect(() => {
@@ -112,7 +112,13 @@ export const PageContextProvider = (props: PageContextProps) => {
 
   return (
     <PageContext.Provider
-      value={{ settings, layoutReady, modalZIndex, setModalZIndex }}>
+      value={{
+        settings,
+        layoutReady,
+        layoutVersion,
+        modalZIndex,
+        setModalZIndex,
+      }}>
       {children}
     </PageContext.Provider>
   );

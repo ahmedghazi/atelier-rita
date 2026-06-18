@@ -2,55 +2,46 @@ import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePageContext } from "../context/PageContext";
+import { useGridShrinkRange } from "../hooks/useGridShrinkRange";
 
 gsap.registerPlugin(ScrollTrigger);
-
 type Props = {
   animated?: boolean;
   playIntro?: boolean;
+  startVar?: string;
+  endVar?: string;
 };
 
-const RitaLogo = ({ animated = false, playIntro = false }: Props) => {
+const RitaLogo = ({
+  animated = false,
+  playIntro = false,
+  startVar = "--gridder-3_5",
+  endVar = "--gridder-1_5",
+}: Props) => {
   const logoRef = useRef<HTMLDivElement>(null);
-  const { layoutReady } = usePageContext();
+  const { layoutReady, layoutVersion } = usePageContext();
+  const shrink = useGridShrinkRange(
+    startVar,
+    endVar,
+    layoutReady,
+    layoutVersion,
+  );
 
   useEffect(() => {
-    if (!animated || !layoutReady || !logoRef.current) return;
+    if (!animated || !layoutReady || !logoRef.current || !shrink) return;
 
-    const endWidth = parseFloat(
-      getComputedStyle(document.documentElement).getPropertyValue(
-        "--gridder-1_5",
-      ),
-    );
     if (!playIntro) {
-      gsap.set(logoRef.current, { width: endWidth });
+      gsap.set(logoRef.current, { width: shrink.endWidth });
       return;
     }
 
-    const startWidth = parseFloat(
-      getComputedStyle(document.documentElement).getPropertyValue(
-        "--gridder-3_5",
-      ),
-    );
-
-    const logoRatio = 744 / 191;
-    const startHeight = startWidth / logoRatio;
-    const endHeight = endWidth / logoRatio;
-    const range = startHeight - endHeight;
-
     const tween = gsap.fromTo(
       logoRef.current,
+      { width: shrink.startWidth },
       {
-        width: startWidth,
-      },
-      {
-        width: endWidth,
+        width: shrink.endWidth,
         ease: "none",
-        scrollTrigger: {
-          start: 0,
-          end: range,
-          scrub: true,
-        },
+        scrollTrigger: { start: 0, end: shrink.range, scrub: true },
       },
     );
 
@@ -58,7 +49,7 @@ const RitaLogo = ({ animated = false, playIntro = false }: Props) => {
       tween.scrollTrigger?.kill();
       tween.kill();
     };
-  }, [animated, playIntro, layoutReady]);
+  }, [animated, playIntro, layoutReady, shrink]);
 
   return (
     <div className='rita-logo' ref={logoRef}>

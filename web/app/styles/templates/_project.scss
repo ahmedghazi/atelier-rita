@@ -57,6 +57,7 @@ body:has(.template--project) {
       .title {
         max-width: 20rem;
         grid-column: span 2 / span 2;
+        line-height: 1;
       }
       .toggle {
         text-align: left;

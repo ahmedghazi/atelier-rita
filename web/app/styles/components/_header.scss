@@ -10,7 +10,7 @@ header {
 
   font-size: var(--text-lg);
   color: var(--color-accent);
-  // @include mixins.debugFiletY(calc(var(--header-h) - var(--spacing-xs)));
+  // @include mixins.debugFiletY(var(--spacing-md));
   svg path {
     fill: var(--color-accent);
   }
@@ -28,6 +28,23 @@ header {
     }
   }
   nav {
+    height: 100%;
+    // background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // transform: translateX(-10rem);
+    a,
+    button {
+      line-height: 1;
+      display: inline-block;
+    }
+    ul.locales-switcher li {
+      transform: translateY(-0.27em);
+    }
+    ul.menu li {
+      transform: translateY(0.27em);
+    }
     & > ul.menu {
       display: flex;
       justify-content: space-between;
@@ -83,12 +100,12 @@ body.is-home header {
     position: absolute;
   }
   nav {
-    transform: translateY(100%);
+    transform: translateY(1rem);
     opacity: 0;
   }
   &.scroll-up {
     .description {
-      transform: translateY(-100%);
+      transform: translateY(-1rem);
       opacity: 0;
     }
     nav {
