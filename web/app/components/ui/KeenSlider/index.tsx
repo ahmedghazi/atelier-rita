@@ -3,6 +3,7 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import "./index.scss";
 import { publish } from "pubsub-js";
+import useDeviceDetect from "@/app/hooks/useDeviceDetect";
 
 type Props = {
   children: ReactNode;
@@ -20,6 +21,8 @@ const KeenSlider = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
+  const { isMobile } = useDeviceDetect();
+  console.log({ isMobile });
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     // initial: 0,
     mode: "free-snap",
@@ -27,7 +30,7 @@ const KeenSlider = ({
     rtl: false,
     slides: {
       perView: perView,
-      spacing: 20,
+      spacing: isMobile ? 10 : 20,
     },
     slideChanged(slider) {
       const current = slider.track.details.rel;

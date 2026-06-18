@@ -13,10 +13,10 @@
     "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman",
     "Helvetica Neue Roman", "TeXGyreHerosRegular", "Helvetica", "Arial",
     sans-serif;
-  --font-secondary:
+  /* --font-secondary:
     "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman",
     "Helvetica Neue Roman", "TeXGyreHerosRegular", "Helvetica", "Arial",
-    sans-serif;
+    sans-serif; */
 
   --spacing-xs: 0.438em; /* 10px */
   --spacing-sm: 0.625em; /* 10px */
@@ -26,6 +26,7 @@
 
   --text-md: 0.813rem; /* 13px */
   --text-lg: 1.5rem; /* 24px */
+  --text-lg--sm: 1.063rem; /* 24px */
 
   --cubic: cubic-bezier(0.87, 0, 0.13, 1);
 
@@ -63,6 +64,7 @@
 
   --text-md: var(--text-md);
   --text-lg: var(--text-lg);
+  --text-lg--sm: var(--text-lg--sm);
 
   --cubic: var(--cubic);
 

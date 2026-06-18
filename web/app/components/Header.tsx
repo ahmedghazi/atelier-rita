@@ -50,7 +50,7 @@ const Header = ({ settings }: Props) => {
         isFirstVisit && "is-first-visit",
         isHome ? `scroll-${scrollDirection}` : "",
       )}>
-      <div className='grid grid-cols-5 gap-gutter'>
+      <div className='grid grid-cols-2 md:grid-cols-5 gap-xs md:gap-gutter'>
         <div className='md:col-span-3'>
           <div className='site-name'>
             <Link href='/'>

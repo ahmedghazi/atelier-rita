@@ -8,6 +8,24 @@ import { LocaleContextProvider } from "./context/LocaleContext";
 import { draftMode } from "next/headers";
 import VisualEditingClient from "./components/VisualEditingClient";
 import Gridder from "./components/ui/Gridder";
+import localFont from "next/font/local";
+
+const selecta = localFont({
+  // src: './styles/fonts/Selecta-Medium.woff2',
+  variable: "--font-primary",
+  src: [
+    {
+      path: "./styles/fonts/Selecta-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./styles/fonts/Selecta-Medium-Italic.woff2",
+      weight: "500",
+      style: "italic",
+    },
+  ],
+});
 
 export const metadata = {
   metadataBase: new URL(website.url),
@@ -24,11 +42,13 @@ export default async function RootLayout({
 }) {
   const settings = await getSettings();
   const { isEnabled } = await draftMode();
-  const { colors } = settings || {};
+  // const { colors } = settings || {};
 
   return (
     <html lang='fr'>
-      <body className={"is-loading"} data-theme='theme-xyz'>
+      <body
+        className={["is-loading", selecta.className].join(" ")}
+        data-theme='theme-xyz'>
         <div id='page'>
           <LocaleContextProvider>
             <PageContextProvider settings={settings}>

@@ -56,14 +56,18 @@ const ContentProject = ({ input }: Props) => {
           <KeenSlider loop={false} wheelControl={true}>
             {slides.map((image, index: number) => (
               <div key={index + 1} className='keen-slider__slide'>
-                <Figure asset={image?.asset} alt={image?.asset?.altText} />
+                <Figure
+                  asset={image?.asset}
+                  alt={image?.asset?.altText}
+                  title={image?.asset?.title || undefined}
+                />
               </div>
             ))}
           </KeenSlider>
 
           {related && (
             <div className='related'>
-              <h2 className='text-lg'>
+              <h2 className='text-lg--sm md:text-lg'>
                 {_localizeText(locale, "nextProject")}
               </h2>
               <div className='image-cover'>
@@ -77,10 +81,10 @@ const ContentProject = ({ input }: Props) => {
             </div>
           )}
         </div>
-        <div className='caption '>{caption}</div>
+        <div className='caption hidden-sm'>{caption}</div>
       </div>
       <div className='footer'>
-        <h1 className='title col-span-2 text-lg'>
+        <h1 className='title col-span-4 md:col-span-2 text-lg--sm md:text-lg'>
           {_localizeField(locale, title)}, <span className='city'>{city}</span>{" "}
           <span className='zip'>{zip}</span>
         </h1>

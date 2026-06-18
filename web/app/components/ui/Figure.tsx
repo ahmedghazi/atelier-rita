@@ -6,11 +6,12 @@ import { SanityImageAsset } from "sanity-codegen";
 
 type Props = {
   asset: SanityImageAsset | any;
+  title?: string;
   width?: number;
   alt?: string | any;
 };
 
-const Figure = ({ asset, width = 1000, alt = website.title }: Props) => {
+const Figure = ({ asset, width = 1000, alt = website.title, title }: Props) => {
   return (
     <figure>
       <Image
@@ -29,6 +30,7 @@ const Figure = ({ asset, width = 1000, alt = website.title }: Props) => {
         // placeholder='blur'
         placeholder={asset?.metadata?.lqip}
       />
+      {title && <figcaption className='sm-only'>{title}</figcaption>}
     </figure>
   );
 };

@@ -24,48 +24,60 @@ const ContentProjects = ({ input }: Props) => {
     );
   return (
     <div className='content content--projects'>
-      <div className='grid grid-cols-5 gap-gutter '>
+      <div className='grid md:grid-cols-5 gap-gutter '>
         <div className='items md:col-span-3'>
-          <div className='header grid md:grid-cols-6 gap-gutter'>
-            <div className='title'>{_localizeText(locale, "name")}</div>
-            <div className='programme'>
-              {_localizeText(locale, "programme")}
+          <div className='thead'>
+            <div className='tr grid grid-cols-3 md:grid-cols-6 gap-gutter'>
+              <div className='th title'>{_localizeText(locale, "name")}</div>
+              <div className='th programme'>
+                {_localizeText(locale, "programme")}
+              </div>
+              <div className='th location'>
+                {_localizeText(locale, "location")}
+              </div>
+              <div className='th client hidden-sm'>
+                {_localizeText(locale, "client")}
+              </div>
+              <div className='th numbers hidden-sm'>
+                {_localizeText(locale, "numbers")}
+              </div>
+              <div className='th year hidden-sm'>
+                {_localizeText(locale, "year")}
+              </div>
             </div>
-            <div className='location'>{_localizeText(locale, "location")}</div>
-            <div className='client'>{_localizeText(locale, "client")}</div>
-            <div className='numbers'>{_localizeText(locale, "numbers")}</div>
-            <div className='year'>{_localizeText(locale, "year")}</div>
           </div>
-          {items?.map((item, index) => (
-            <CardProjectTxt
-              input={item as NonNullable<PROJECT_QUERY_RESULT>}
-              key={index}
-              setThumbnail={setThumbnail}
-            />
-          ))}
-          {items?.map((item, index) => (
-            <CardProjectTxt
-              input={item as NonNullable<PROJECT_QUERY_RESULT>}
-              key={index}
-              setThumbnail={setThumbnail}
-            />
-          ))}
-          {items?.map((item, index) => (
-            <CardProjectTxt
-              input={item as NonNullable<PROJECT_QUERY_RESULT>}
-              key={index}
-              setThumbnail={setThumbnail}
-            />
-          ))}
-          {items?.map((item, index) => (
-            <CardProjectTxt
-              input={item as NonNullable<PROJECT_QUERY_RESULT>}
-              key={index}
-              setThumbnail={setThumbnail}
-            />
-          ))}
+          <div className='tbody'>
+            {items?.map((item, index) => (
+              <CardProjectTxt
+                input={item as NonNullable<PROJECT_QUERY_RESULT>}
+                key={index}
+                setThumbnail={setThumbnail}
+              />
+            ))}
+            {items?.map((item, index) => (
+              <CardProjectTxt
+                input={item as NonNullable<PROJECT_QUERY_RESULT>}
+                key={index}
+                setThumbnail={setThumbnail}
+              />
+            ))}
+            {items?.map((item, index) => (
+              <CardProjectTxt
+                input={item as NonNullable<PROJECT_QUERY_RESULT>}
+                key={index}
+                setThumbnail={setThumbnail}
+              />
+            ))}
+            {items?.map((item, index) => (
+              <CardProjectTxt
+                input={item as NonNullable<PROJECT_QUERY_RESULT>}
+                key={index}
+                setThumbnail={setThumbnail}
+              />
+            ))}
+          </div>
         </div>
-        <div className='tbumnail md:col-span-2'>
+        <div className='tbumnail md:col-span-2 hidden-sm'>
           {thumbnail && <Figure asset={thumbnail} />}
         </div>
       </div>

@@ -1,4 +1,5 @@
 @use "../variables";
+@use "../mixins";
 
 header {
   position: fixed;
@@ -9,6 +10,7 @@ header {
 
   font-size: var(--text-lg);
   color: var(--color-accent);
+  // @include mixins.debugFiletY(calc(var(--header-h) - var(--spacing-xs)));
   svg path {
     fill: var(--color-accent);
   }
@@ -41,7 +43,18 @@ header {
     }
   }
   @media all and (max-width: variables.$md) {
-    padding: var(--spacing-sm);
+    padding: var(--spacing-xs);
+    font-size: var(--text-lg--sm);
+    nav {
+      height: 100%;
+      // background-color: red;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .menu li {
+        transform: translateY(0.28em);
+      }
+    }
   }
 }
 
@@ -89,5 +102,8 @@ body:not(.is-home) header {
   .rita-logo {
     transition: width 0.2s var(--cubic);
     max-width: var(--gridder-1_5);
+    @media all and (max-width: variables.$md) {
+      max-width: var(--gridder-5_10);
+    }
   }
 }

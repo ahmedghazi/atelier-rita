@@ -18,7 +18,7 @@
 //ABCDiatype-Regular
 body {
   color: var(--color-accent);
-  font-family: var(--font-serif);
+  font-family: var(--font-primary);
   font-size: var(--text-md);
   line-height: 1.25;
   // text-rendering: optimizeLegibility;
@@ -31,7 +31,7 @@ body {
 }
 
 html {
-  font-size: 12px;
+  // font-size: 12px;
 }
 @media all and (min-width: 1080px) {
   html {
@@ -131,9 +131,6 @@ p,
   }
   &:empty {
     display: none;
-  }
-  a {
-    font-family: var(--font-primary);
   }
 }
 .ellipsis {

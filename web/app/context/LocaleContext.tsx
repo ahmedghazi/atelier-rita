@@ -19,7 +19,7 @@ const LocaleContext = createContext<ContextProps>({} as ContextProps);
 // const LocaleContext = createContext({});
 
 export const LocaleContextProvider = ({ children }: LocaleContextProps) => {
-  const [locale, dispatch] = useState<string>("en");
+  const [locale, dispatch] = useState<string>("fr");
 
   //detect user lang
   // useEffect(() => {

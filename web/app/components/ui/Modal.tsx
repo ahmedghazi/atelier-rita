@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import styles from "./Modal.module.css";
+import styles from "./Modal.module.scss";
 import clsx from "clsx";
 import Icon from "./Icon";
 import { usePageContext } from "@/app/context/PageContext";
+import useDeviceDetect from "@/app/hooks/useDeviceDetect";
 type Props = {
   children: React.ReactNode;
   open?: boolean;
@@ -20,6 +21,7 @@ const Modal = ({
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const { modalZIndex, setModalZIndex } = usePageContext();
+  const { isMobile } = useDeviceDetect();
   // const [delayOpen, setDelayOpen] = useState(false);
   const [position, setPosition] = useState<{ x: number; y: number }>({
     x: 0,
@@ -52,6 +54,7 @@ const Modal = ({
     if (open) {
       return;
     } else {
+      if (isMobile) return;
       _randomlyPlaceModal();
     }
   }, [open, setModalZIndex, zIndex]);

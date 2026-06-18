@@ -4,14 +4,17 @@ import React from "react";
 type Props = {};
 
 const Gridder = (props: Props) => {
-  const grids = [5];
+  const grids = [5, 10];
   return (
     <div className='gridder'>
       <div className='px-md'>
         {grids.map((grid, i) => (
           <div
             key={i}
-            className={clsx("grid gap-gutter", `md:grid-cols-${grid}`)}>
+            className={clsx(
+              "grid gap-sm md:gap-gutter",
+              `md:grid-cols-${grid}`,
+            )}>
             {[...Array(grid).keys()].map((cell, i) => (
               <div
                 key={i}

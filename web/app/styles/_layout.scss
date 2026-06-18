@@ -48,23 +48,36 @@ main {
   }
 }
 
-@media all and (min-width: variables.$md) {
-}
-
 .sm-only {
   display: none;
 }
+
+@for $i from 1 through 12 {
+  .col-span-#{$i} {
+    grid-column: span $i / span $i;
+  }
+}
+
+@media all and (min-width: variables.$md) {
+  @for $i from 1 through 12 {
+    .md\:col-span-#{$i} {
+      grid-column: span $i / span $i;
+    }
+  }
+}
+
 @media all and (max-width: variables.$md) {
+  body {
+    --app-h: calc(100vh - calc(var(--header-h) + var(--spacing-sm) * 0.6));
+  }
   .sm-only {
     display: block;
   }
   .hidden-sm {
     display: none;
   }
-}
-
-@for $i from 1 through 12 {
-  .col-span-#{$i} {
-    grid-column: span $i / span $i;
+  main {
+    padding: var(--spacing-xs);
+    padding-top: var(--header-h);
   }
 }

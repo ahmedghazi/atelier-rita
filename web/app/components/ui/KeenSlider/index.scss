@@ -1,3 +1,5 @@
+@use "@/app/styles/variables";
+
 .keen-slider-container {
   position: relative;
   .keen-slider {
@@ -17,6 +19,19 @@
           cursor: w-resize;
         }
       }
+    }
+  }
+
+  @media all and (max-width: variables.$md) {
+    max-width: calc(100dvw - calc(var(--spacing-xs) * 2));
+    img {
+      max-width: calc(100dvw - calc(var(--spacing-xs) * 2));
+      height: auto !important;
+      object-fit: contain;
+      object-position: top;
+    }
+    figcaption {
+      padding: 0.5em 0;
     }
   }
 }

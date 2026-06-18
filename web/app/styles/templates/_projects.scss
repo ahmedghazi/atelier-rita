@@ -2,13 +2,26 @@
 
 .template--projects {
   .content--projects {
-    .header {
-      padding: 0.8462em 0;
+    .thead {
+      // padding: 0.8462em 0;
       border-top: var(--border);
       border-bottom: var(--border);
     }
-  }
+    .thead .tr,
+    .tbody .tr a {
+      padding: 0.8462em 0;
+    }
+    .tbody {
+      .card--project--text {
+        border-bottom: var(--border);
+      }
+    }
 
-  @media all and (max-width: variables.$md) {
+    @media all and (max-width: variables.$md) {
+      .thead .tr,
+      .tbody .tr a {
+        padding: 0.5462em 0;
+      }
+    }
   }
 }

@@ -30,6 +30,10 @@
 }
 
 @media all and (max-width: variables.$sm) {
-  .page-home {
+  .template--atelier {
+    .footer {
+      flex-direction: column;
+      // padding: calc(var(--spacing-xs) * 0.6) var(--spacing-xs);
+    }
   }
 }
