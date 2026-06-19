@@ -15,6 +15,7 @@ import { PortableText } from "next-sanity";
 import Modal from "./ui/Modal";
 import clsx from "clsx";
 import Link from "next/link";
+import CityAndZip from "./CityAndZip";
 
 type Props = {
   input: NonNullable<PROJECT_QUERY_RESULT>;
@@ -130,8 +131,9 @@ const ContentProject = ({ input }: Props) => {
       </div>
       <div className='footer'>
         <h1 className='title col-span-4 md:col-span-2 text-lg--sm md:text-lg'>
-          {_localizeField(locale, title)}, <span className='city'>{city}</span>{" "}
-          <span className='zip'>{zip}</span>
+          {_localizeField(locale, title)}
+          <span>, </span>
+          <CityAndZip city={city} zip={zip} />
         </h1>
         <button className='toggle ' onClick={() => setModalOpen(!modalOpen)}>
           {_localizeText(locale, "text")}
@@ -140,11 +142,11 @@ const ContentProject = ({ input }: Props) => {
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <div className='project-infos'>
           <div className='header'>
-            <h1 className='title'>
-              {_localizeField(locale, title)},{" "}
-              <span className='city'>{city}</span>
-              <span className='zip'>{zip}</span>
-            </h1>
+            <div className='title'>
+              {_localizeField(locale, title)}
+              <span>, </span>
+              <CityAndZip city={city} zip={zip} />
+            </div>
             <div className='year'>{year}</div>
           </div>
           <div className='text'>

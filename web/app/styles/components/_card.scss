@@ -1,7 +1,9 @@
 .card {
   &--project {
     // aspect-ratio: 3 / 4;
-
+    a:hover {
+      color: rgba(var(--color-accent-rgb), 1);
+    }
     color: var(--color-bg);
     .perspective {
       perspective: 600px;

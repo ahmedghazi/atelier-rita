@@ -1,9 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useSyncExternalStore } from "react";
 import Nav from "./Nav";
-import { LocaleString, SETTINGS_QUERY_RESULT } from "../types/sanity.types";
+import { SETTINGS_QUERY_RESULT } from "../types/sanity.types";
 import Link from "next/link";
-import website from "../config/website";
 import RitaLogo from "./RitaLogo";
 import { useScroll } from "../hooks/useScroll";
 import clsx from "clsx";
@@ -15,9 +14,23 @@ import { usePageContext } from "../context/PageContext";
 import useDeviceDetect from "../hooks/useDeviceDetect";
 
 const FIRST_VISIT_KEY = "rita-first-visit";
+const DESC_INDEX_KEY = "rita-desc-index";
 
 type Props = {
   settings: SETTINGS_QUERY_RESULT;
+};
+
+// Stable snapshot functions for useSyncExternalStore.
+// getDescIndexSnapshot is called on the client after hydration — result is
+// cached in sessionStorage so repeated calls return the same value.
+const noop = () => () => {};
+const getServerDescIndex = () => 0;
+const getClientDescIndex = (): number => {
+  const cached = sessionStorage.getItem(DESC_INDEX_KEY);
+  if (cached !== null) return parseInt(cached, 10);
+  const idx = Math.floor(Math.random() * 100000);
+  sessionStorage.setItem(DESC_INDEX_KEY, String(idx));
+  return idx;
 };
 
 const Header = ({ settings }: Props) => {
@@ -28,18 +41,19 @@ const Header = ({ settings }: Props) => {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
-  const [isFirstVisit] = useState(() => {
-    if (typeof window === "undefined") return false;
-    if (sessionStorage.getItem(FIRST_VISIT_KEY)) return false;
-    sessionStorage.setItem(FIRST_VISIT_KEY, "1");
-    return true;
-  });
-
-  const [randomIndex, setRandomIndex] = useState(0);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    setRandomIndex(Math.floor(Math.random() * 100000));
+    if (sessionStorage.getItem(FIRST_VISIT_KEY)) return;
+    sessionStorage.setItem(FIRST_VISIT_KEY, "1");
+    headerRef.current?.classList.add("is-first-visit");
   }, []);
+
+  const randomIndex = useSyncExternalStore(
+    noop,
+    getClientDescIndex,
+    getServerDescIndex,
+  );
 
   const descriptions = settings?.siteDescriptions ?? [];
   const randomDescription =
@@ -60,9 +74,9 @@ const Header = ({ settings }: Props) => {
 
   return (
     <header
+      ref={headerRef}
       className={clsx(
         "header",
-        isFirstVisit && "is-first-visit",
         isHome && `scroll-${scrollDirection}`,
       )}>
       <div className='grid grid-cols-2 md:grid-cols-5 gap-xs md:gap-gutter'>
