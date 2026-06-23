@@ -32,17 +32,21 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: var(--spacing-sm);
+      padding: calc(var(--spacing-sm) * 0.9) var(--spacing-sm);
       .header,
       .footer {
         display: flex;
         justify-content: space-between;
+        gap: var(--spacing-lg);
+        line-height: 1;
       }
       .body {
         position: absolute;
-        left: var(--spacing-sm);
+        left: 50%;
         top: 50%;
-        transform: translateY(-50%);
+        // width: calc(100% - var(--spacing-lg));
+        transform: translate(-50%, -50%);
+        text-align: center;
       }
     }
     img {

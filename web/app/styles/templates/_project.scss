@@ -6,7 +6,12 @@ body:has(.template--project) {
   .content--project {
     &.slider-ended .slider {
       .keen-slider-container {
-        clip-path: polygon(0 0, 70% 0, 70% 100%, 0 100%);
+        clip-path: polygon(
+          0 0,
+          var(--gridder-3_5) 0,
+          var(--gridder-3_5) 100%,
+          0 100%
+        );
       }
       .related {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -31,12 +36,17 @@ body:has(.template--project) {
         position: absolute;
         right: 0;
         top: 0;
-        transform: translateX(70%);
+        width: var(--gridder-1_5);
+        // --offset: calc(100% / 5 * 3);
+        // transform: translateX(var(--offset));
         overflow: hidden;
 
-        display: flex;
-        gap: var(--spacing-gutter);
-        align-items: center;
+        a {
+          display: flex;
+          align-items: center;
+          // flex-direction: column;
+          gap: var(--spacing-gutter);
+        }
         h2 {
           white-space: nowrap;
         }

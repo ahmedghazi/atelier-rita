@@ -15,20 +15,22 @@ const Nav = ({ input }: Props) => {
   return (
     <nav>
       <LocalesSwitcher />
-
-      <ul className='menu'>
-        <li></li>
-        <li></li>
-        {input?.navPrimary?.map((item) => (
-          <li key={item._key}>
-            {item._type === "linkInternal" && (
-              <Link href={_linkResolver(item.link)}>
-                {item.label && _localizeField(locale, item.label)}
-              </Link>
-            )}
-          </li>
-        ))}
-      </ul>
+      <div className='bottom'>
+        <div className='pusher'></div>
+        <ul className='menu'>
+          {/* <li></li>
+        <li></li> */}
+          {input?.navPrimary?.map((item) => (
+            <li key={item._key}>
+              {item._type === "linkInternal" && (
+                <Link href={_linkResolver(item.link)}>
+                  {item.label && _localizeField(locale, item.label)}
+                </Link>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
     </nav>
   );
 };

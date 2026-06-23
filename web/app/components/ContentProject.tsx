@@ -113,17 +113,18 @@ const ContentProject = ({ input }: Props) => {
 
           {related && (
             <div className='related'>
-              <h2 className='text-lg--sm md:text-lg'>
-                {_localizeText(locale, "nextProject")}
-              </h2>
-              <div className='image-cover'>
-                <Link href={_linkResolver(related)}>
+              <Link href={_linkResolver(related)}>
+                <h2 className='text-lg--sm md:text-lg'>
+                  {_localizeText(locale, "nextProject")}
+                </h2>
+
+                <div className='image-cover'>
                   <Figure
                     asset={related?.imageCover?.asset}
                     alt={related?.slug?.current}
                   />
-                </Link>
-              </div>
+                </div>
+              </Link>
             </div>
           )}
         </div>

@@ -29,15 +29,21 @@ header {
   }
   nav {
     height: 100%;
-    // background-color: red;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    // transform: translateX(-10rem);
     a,
     button {
       line-height: 1;
       display: inline-block;
+    }
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      .pusher,
+      ul.menu {
+        width: var(--gridder-1_5);
+      }
     }
     ul.locales-switcher li {
       transform: translateY(-0.27em);
@@ -45,18 +51,20 @@ header {
     ul.menu li {
       transform: translateY(0.27em);
     }
-    & > ul.menu {
+    ul.menu {
       display: flex;
       justify-content: space-between;
       gap: var(--spacing-gutter);
-
-      .locales-switcher {
-        grid-column: span 2 / span 2;
-        display: flex;
-        li {
-          width: 50%;
-        }
+      li:first-child {
+        transform: translate(-0.05em, 0.27em);
       }
+      // .locales-switcher {
+      //   grid-column: span 2 / span 2;
+      //   display: flex;
+      //   li {
+      //     width: 50%;
+      //   }
+      // }
     }
   }
   @media all and (max-width: variables.$md) {
