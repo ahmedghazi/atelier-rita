@@ -11,3 +11,5 @@
 - # random palette
 - # hover (rfg, 0.5)
 - # mobile
+- build
+- deploy

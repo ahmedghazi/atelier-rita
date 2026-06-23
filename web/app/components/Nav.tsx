@@ -21,9 +21,11 @@ const Nav = ({ input }: Props) => {
         <li></li>
         {input?.navPrimary?.map((item) => (
           <li key={item._key}>
-            <Link href={_linkResolver(item.link)}>
-              {_localizeField(locale, item.label)}
-            </Link>
+            {item._type === "linkInternal" && (
+              <Link href={_linkResolver(item.link)}>
+                {item.label && _localizeField(locale, item.label)}
+              </Link>
+            )}
           </li>
         ))}
       </ul>

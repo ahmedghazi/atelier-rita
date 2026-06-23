@@ -45,7 +45,9 @@ const Item = ({ item, locale, zIndex }: ItemProps) => {
           />
         </div>
       </Modal>
-      <button onClick={handleClick}>{_localizeField(locale, item.key)}</button>
+      <button onClick={handleClick}>
+        {_localizeField(locale, item.key) as string}
+      </button>
     </div>
   );
 };

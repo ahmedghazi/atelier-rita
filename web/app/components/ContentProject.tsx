@@ -131,7 +131,7 @@ const ContentProject = ({ input }: Props) => {
       </div>
       <div className='footer'>
         <h1 className='title col-span-4 md:col-span-2 text-lg--sm md:text-lg'>
-          {_localizeField(locale, title)}
+          {_localizeField(locale, title) as string}
           <span>, </span>
           <CityAndZip city={city} zip={zip} />
         </h1>
@@ -143,7 +143,7 @@ const ContentProject = ({ input }: Props) => {
         <div className='project-infos'>
           <div className='header'>
             <div className='title'>
-              {_localizeField(locale, title)}
+              {_localizeField(locale, title) as string}
               <span>, </span>
               <CityAndZip city={city} zip={zip} />
             </div>
@@ -161,7 +161,7 @@ const ContentProject = ({ input }: Props) => {
                 {item.value && (
                   <>
                     <div className='key'>{item.key}</div>
-                    <div className='value'>{item.value}</div>
+                    <div className='value'>{item.value as string}</div>
                   </>
                 )}
               </li>
@@ -169,10 +169,12 @@ const ContentProject = ({ input }: Props) => {
 
             {metas?.map((item, i) => (
               <li key={item._key}>
-                <div className='key'>{_localizeField(locale, item.key)}</div>
+                <div className='key'>
+                  {_localizeField(locale, item.key) as string}
+                </div>
                 <div className='value'>
                   <PortableText
-                    value={_localizeField(locale, item.value)}
+                    value={_localizeField(locale, item.value) as string}
                     components={portableTextComponents}
                   />
                   {/* {_localizeField(locale, item.value)} */}

@@ -75,10 +75,7 @@ const Header = ({ settings }: Props) => {
   return (
     <header
       ref={headerRef}
-      className={clsx(
-        "header",
-        isHome && `scroll-${scrollDirection}`,
-      )}>
+      className={clsx("header", isHome && `scroll-${scrollDirection}`)}>
       <div className='grid grid-cols-2 md:grid-cols-5 gap-xs md:gap-gutter'>
         <div
           className={clsx(

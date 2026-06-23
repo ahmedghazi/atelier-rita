@@ -35,11 +35,11 @@ const ContentHome = ({ input }: Props) => {
         <Modal open={modalOpen} onClose={() => setModalOpen(false)} bigClose>
           <div className='news-item text-lg--sm md:text-lg'>
             <div className='title'>
-              {_localizeField(locale, randomNews?.title)}
+              {_localizeField(locale, randomNews?.title) as string}
             </div>
             <div className='text'>
               <PortableText
-                value={_localizeField(locale, randomNews.text)}
+                value={_localizeField(locale, randomNews.text) as string}
                 components={portableTextComponents}
               />
             </div>
@@ -48,7 +48,7 @@ const ContentHome = ({ input }: Props) => {
                 href={randomNews?.link?.link}
                 target='_blank'
                 rel='noopener noreferrer'>
-                {_localizeField(locale, randomNews?.link?.label)}
+                {randomNews?.link?.label}
               </a>
             )}
           </div>

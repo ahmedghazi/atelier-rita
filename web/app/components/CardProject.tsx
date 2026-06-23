@@ -23,7 +23,8 @@ const CardProject = ({ input }: Props) => {
     setFlipDeg(enteredFromRight ? -180 : 180);
     setActive(!active);
   };
-
+  const titleLocalized = _localizeField(locale, title) as string;
+  const programmeLocalized = _localizeField(locale, programme) as string;
   return (
     <article
       className={clsx("card card--project", { "is-active": active })}
@@ -33,20 +34,15 @@ const CardProject = ({ input }: Props) => {
         <div className='perspective'>
           <div className='card--project__inner'>
             <div className='recto'>
-              <Figure
-                asset={imageCover?.asset}
-                alt={_localizeField(locale, title)}
-              />
+              <Figure asset={imageCover?.asset} alt={titleLocalized} />
             </div>
             <div className='verso'>
               <div className='header'>
-                <div className='programme'>
-                  {_localizeField(locale, programme)}
-                </div>
+                <div className='programme'>{programmeLocalized}</div>
                 <div className='year'>{year}</div>
               </div>
               <div className='body'>
-                <h2>{_localizeField(locale, title)}</h2>
+                <h2>{titleLocalized}</h2>
               </div>
               <div className='footer'>
                 <div className='city'>{city}</div>

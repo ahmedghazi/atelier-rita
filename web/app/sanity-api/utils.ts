@@ -1,4 +1,3 @@
-import React from "react";
 import {
   LocaleBlockContent,
   LocaleString,
@@ -8,22 +7,28 @@ import {
 } from "../types/sanity.types";
 import locales from "../config/i18n";
 
+type LinkableNode = {
+  _type?: string;
+  slug?: { current?: string | null } | null;
+} | null;
+
 export const _localizeText = (locale: string, text: string) => {
-  const currentI18N = (locales as any)[`${locale}`];
-  return currentI18N[text] ? currentI18N[text] : text;
+  const currentI18N = locales[locale as keyof typeof locales];
+  return currentI18N?.[text as keyof typeof currentI18N] ?? text;
 };
 
 export const _localizeField = (
   locale: string,
-  field: LocaleString | LocaleText | LocaleBlockContent | any,
-) => {
+  field: LocaleString | LocaleText | LocaleBlockContent | null | undefined,
+): string => {
   if (!field) return "";
-  return field && field[locale] ? field[locale] : field["fr"];
+  const localized = field as Record<string, unknown>;
+  const ret = localized[locale] ? localized[locale] : localized["fr"];
+  return ret as string;
+  // return localized[locale] ?? localized["fr"] ?? "";
 };
 
-export const _linkResolver = (node: PageModulaire | Project | any) => {
-  // console.log(node);
-  // console.log(node._type);
+export const _linkResolver = (node: PageModulaire | Project | LinkableNode) => {
   if (!node || !node._type) return "/";
   if (node._type === "home") return "/";
   switch (node._type) {
@@ -35,7 +40,7 @@ export const _linkResolver = (node: PageModulaire | Project | any) => {
   }
 };
 
-export const _preloadImages = (urls: Array<string | any>) => {
+export const _preloadImages = (urls: string[]) => {
   urls.forEach((url) => {
     const img = new Image();
     img.src = url;
@@ -51,9 +56,9 @@ export const _slugify = (str: string) => {
   str = str.toLowerCase();
 
   // remove accents, swap ñ for n, etc
-  var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
-  var to = "aaaaeeeeiiiioooouuuunc------";
-  for (var i = 0, l = from.length; i < l; i++) {
+  const from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+  const to = "aaaaeeeeiiiioooouuuunc------";
+  for (let i = 0, l = from.length; i < l; i++) {
     str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
   }
 
@@ -98,9 +103,9 @@ export const _randomNum = (number: number) => {
   return Math.random() * (max - min) + min;
 };
 
-export function _removeFromArr(arr: Array<any>, ...toRemove: Array<any> | any) {
-  toRemove.forEach((item: any) => {
-    var index = arr.indexOf(item);
+export function _removeFromArr<T>(arr: T[], ...toRemove: T[]) {
+  toRemove.forEach((item) => {
+    const index = arr.indexOf(item);
     if (index != -1) {
       arr.splice(index, 1);
     }
@@ -108,7 +113,7 @@ export function _removeFromArr(arr: Array<any>, ...toRemove: Array<any> | any) {
   return arr;
 }
 
-export const _shuffle = (array: any[]) => {
+export const _shuffle = <T>(array: T[]) => {
   return array
     .map((a) => ({ sort: Math.random(), value: a }))
     .sort((a, b) => a.sort - b.sort)
