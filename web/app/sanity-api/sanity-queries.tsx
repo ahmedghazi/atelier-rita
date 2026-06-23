@@ -7,6 +7,7 @@ import type {
   PROJECT_QUERY_RESULT,
   PROJECTS_QUERY_RESULT,
   ATELIER_QUERY_RESULT,
+  Project,
 } from "../types/sanity.types";
 
 export const SETTINGS_QUERY = defineQuery(`*[_type == "settings"][0]{
@@ -88,6 +89,23 @@ export async function getProject(slug: string): Promise<PROJECT_QUERY_RESULT> {
     query: PROJECT_QUERY,
     qParams: { slug },
     tags: ["project", `project:${slug}`],
+  });
+}
+
+/**
+ * ALL_PROJECTS_QUERY
+ *
+ */
+export const ALL_PROJECTS_QUERY = defineQuery(`
+  *[_type == "project"]{
+    ...
+  }
+`);
+
+export async function getAllProjects(): Promise<Project[]> {
+  return sanityFetch({
+    query: ALL_PROJECTS_QUERY,
+    tags: ["all-project"],
   });
 }
 

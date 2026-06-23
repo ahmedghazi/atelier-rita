@@ -1,5 +1,5 @@
 import React from "react";
-import { Settings } from "../types/schema";
+import { Settings } from "../types/sanity.types";
 
 type Props = {
   settings: Settings;

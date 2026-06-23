@@ -34,7 +34,10 @@ const Item = ({ item, locale, zIndex }: ItemProps) => {
 
   return (
     <div className='item'>
-      <Modal open={modalOpen} onClose={() => setModalOpen(false)} zIndex={modalZIndex}>
+      <Modal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        zIndex={modalZIndex}>
         <div className='text'>
           <PortableText
             value={_localizeField(locale, item.value)}
@@ -67,7 +70,7 @@ const ContentAtelier = ({ input }: Props) => {
           {_images.map((image, index: number) => (
             <div key={index + 1} className='keen-slider__slide'>
               {/* <Figure asset={image?.asset} alt={image?.asset?.altText} /> */}
-              <img src={image} alt='' srcset='' />
+              {/* <img src={image} alt='' srcset='' /> */}
             </div>
           ))}
         </KeenSlider>
