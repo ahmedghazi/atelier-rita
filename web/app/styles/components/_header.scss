@@ -40,7 +40,7 @@ header {
     .bottom {
       display: flex;
       justify-content: space-between;
-      .pusher,
+      .spacer,
       ul.menu {
         width: var(--gridder-1_5);
       }

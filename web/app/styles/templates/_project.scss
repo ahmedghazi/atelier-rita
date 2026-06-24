@@ -61,9 +61,12 @@ body:has(.template--project) {
       bottom: 0;
       left: 0;
       padding: calc(var(--spacing-md) * 0.6) var(--spacing-md);
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      align-items: baseline;
+      // display: grid;
+      // grid-template-columns: repeat(5, minmax(0, 1fr));
+      // align-items: baseline;
+      .grid {
+        position: relative;
+      }
       .title {
         max-width: 20rem;
         grid-column: span 2 / span 2;

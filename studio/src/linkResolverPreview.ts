@@ -21,19 +21,18 @@ export const linkResolverPreview: PresentationPluginOptions['resolve'] = {
         ],
       }),
     }),
-    pageModulaire: defineLocations({
+    atelier: defineLocations({
       // Select one or more fields
       select: {
         title: 'title.fr',
         slug: 'slug.current',
-        homePage: 'homePage',
       },
       // Those fields are available in the resolve callback function
       resolve: (doc) => ({
         locations: [
           {
             title: doc?.title || 'Untitled',
-            href: doc?.homePage ? '/' : `/${doc?.slug}`,
+            href: `/${doc?.slug}`,
           },
         ],
       }),

@@ -1,0 +1,15 @@
+.back-home {
+  // display: flex;
+  // justify-content: flex-end;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  svg {
+    width: 1rem;
+    height: 1rem;
+    path {
+      fill: var(--color-accent);
+      stroke-width: 1px;
+    }
+  }
+}

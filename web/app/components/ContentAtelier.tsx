@@ -8,6 +8,10 @@ import portableTextComponents from "../sanity-api/portableTextComponents";
 import Modal from "./ui/Modal";
 import KeenSlider from "./ui/KeenSlider";
 import { usePageContext } from "../context/PageContext";
+import Figure from "./ui/Figure";
+import Link from "next/link";
+import Icon from "./ui/Icon";
+import BackHome from "./ui/BackHome";
 
 type ItemProps = {
   item: KeyVal;
@@ -57,21 +61,21 @@ type Props = {
 };
 
 const ContentAtelier = ({ input }: Props) => {
-  const { items } = input;
+  const { items, images } = input;
   const { locale } = useLocale();
-  const _images = [
-    "https://picsum.photos/200/300",
-    "https://picsum.photos/220/330",
-    "https://picsum.photos/400/300",
-  ];
+  // const _images = [
+  //   "https://picsum.photos/200/300",
+  //   "https://picsum.photos/220/330",
+  //   "https://picsum.photos/400/300",
+  // ];
   const [zIndex, setZIndex] = useState<number>(0);
   return (
     <div className='content--atelier app-h'>
       <div className='slider'>
         <KeenSlider>
-          {_images.map((image, index: number) => (
+          {images?.map((image, index: number) => (
             <div key={index + 1} className='keen-slider__slide'>
-              {/* <Figure asset={image?.asset} alt={image?.asset?.altText} /> */}
+              <Figure asset={image?.asset} alt={image?.asset?.altText} />
               {/* <img src={image} alt='' srcset='' /> */}
             </div>
           ))}
@@ -79,9 +83,12 @@ const ContentAtelier = ({ input }: Props) => {
         <div className='caption '>{"caption"}</div>
       </div>
       <div className='footer'>
-        {items?.map((item: KeyVal, index: number) => (
-          <Item key={index} item={item} locale={locale} zIndex={index} />
-        ))}
+        <div className='grid md:grid-cols-5 gap-gutter'>
+          {items?.map((item: KeyVal, index: number) => (
+            <Item key={index} item={item} locale={locale} zIndex={index} />
+          ))}
+          <BackHome />
+        </div>
       </div>
       {/* <pre>{JSON.stringify(items, null, 2)}</pre> */}
     </div>

@@ -16,10 +16,8 @@ const Nav = ({ input }: Props) => {
     <nav>
       <LocalesSwitcher />
       <div className='bottom'>
-        <div className='pusher'></div>
+        <div className='spacer'></div>
         <ul className='menu'>
-          {/* <li></li>
-        <li></li> */}
           {input?.navPrimary?.map((item) => (
             <li key={item._key}>
               {item._type === "linkInternal" && (

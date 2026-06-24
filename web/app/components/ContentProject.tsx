@@ -16,6 +16,7 @@ import Modal from "./ui/Modal";
 import clsx from "clsx";
 import Link from "next/link";
 import CityAndZip from "./CityAndZip";
+import BackHome from "./ui/BackHome";
 
 type Props = {
   input: NonNullable<PROJECT_QUERY_RESULT>;
@@ -131,14 +132,17 @@ const ContentProject = ({ input }: Props) => {
         <div className='caption hidden-sm'>{caption}</div>
       </div>
       <div className='footer'>
-        <h1 className='title col-span-4 md:col-span-2 text-lg--sm md:text-lg'>
-          {_localizeField(locale, title) as string}
-          <span>, </span>
-          <CityAndZip city={city} zip={zip} />
-        </h1>
-        <button className='toggle ' onClick={() => setModalOpen(!modalOpen)}>
-          {_localizeText(locale, "text")}
-        </button>
+        <div className='grid md:grid-cols-5 gap-gutter items-baseline'>
+          <h1 className='title col-span-4 md:col-span-2 text-lg--sm md:text-lg'>
+            {_localizeField(locale, title) as string}
+            <span>, </span>
+            <CityAndZip city={city} zip={zip} />
+          </h1>
+          <button className='toggle ' onClick={() => setModalOpen(!modalOpen)}>
+            {_localizeText(locale, "text")}
+          </button>
+          <BackHome />
+        </div>
       </div>
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <div className='project-infos'>
