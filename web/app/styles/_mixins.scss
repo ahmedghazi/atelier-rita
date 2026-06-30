@@ -54,13 +54,22 @@
   @return $list;
 }
 
-$inputs-list: 'input[type="email"]', 'input[type="number"]',
-  'input[type="password"]', 'input[type="search"]', 'input[type="tel"]',
-  'input[type="text"]', 'input[type="url"]',
+$inputs-list:
+  'input[type="email"]',
+  'input[type="number"]',
+  'input[type="password"]',
+  'input[type="search"]',
+  'input[type="tel"]',
+  'input[type="text"]',
+  'input[type="url"]',
   /* Webkit & Gecko may change the display of these in the future */
-    'input[type="color"]',
-  'input[type="date"]', 'input[type="datetime"]', 'input[type="datetime-local"]',
-  'input[type="month"]', 'input[type="time"]', 'input[type="week"]';
+  'input[type="color"]',
+  'input[type="date"]',
+  'input[type="datetime"]',
+  'input[type="datetime-local"]',
+  'input[type="month"]',
+  'input[type="time"]',
+  'input[type="week"]';
 
 /* Bare inputs */
 $all-text-inputs: assign-inputs($inputs-list);
@@ -167,9 +176,15 @@ $sass-burger-add-vendor-prefixes: true !default;
     }
 
     @if $sass-burger-add-vendor-prefixes {
-      -webkit-transition-property: background-color, -webkit-transform;
-      -moz-transition-property: background-color, -moz-transform;
-      -o-transition-property: background-color, -o-transform;
+      -webkit-transition-property:
+        background-color,
+        -webkit-transform;
+      -moz-transition-property:
+        background-color,
+        -moz-transform;
+      -o-transition-property:
+        background-color,
+        -o-transform;
     }
 
     transition-property: background-color, transform;
@@ -294,14 +309,16 @@ $sass-burger-add-vendor-prefixes: true !default;
   $dynamic-top-crop: max(
       ($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)),
       0
-    ) / $crop-font-size;
+    ) /
+    $crop-font-size;
   $dynamic-bottom-crop: max(
       (
         $bottom-crop + ($line-height - $crop-line-height) *
           ($crop-font-size / 2)
       ),
       0
-    ) / $crop-font-size;
+    ) /
+    $crop-font-size;
 
   // Mixin output
   line-height: $line-height;
@@ -355,9 +372,10 @@ $sass-burger-add-vendor-prefixes: true !default;
   &:after {
     z-index: 999;
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: 0px;
+    top: calc(var(--header-h) - var(--spacing-md));
+    left: $size;
     height: $size;
     width: $size;
     background: green;
@@ -371,6 +389,7 @@ $sass-burger-add-vendor-prefixes: true !default;
     content: "";
     position: absolute;
     top: $pad;
+
     left: $pad;
     bottom: $pad;
     right: $pad;
