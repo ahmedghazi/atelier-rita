@@ -1,7 +1,7 @@
 - # seo auto gen
 - # sanity preview
 - # project > next
-- atelier slider
+- # atelier slider
 - # home infos
 - # home logo anime
 - # typo
@@ -14,5 +14,6 @@
 - # build
 - # deploy
 - mobile card home, double click pour naviguer, click pour hover
-- pb callage nav mobile
-- dans project img max size height.
+- # pb callage nav mobile
+- # dans project img max size height.
+- callage news home mobile

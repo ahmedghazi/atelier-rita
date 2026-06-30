@@ -23,14 +23,12 @@ const ContentHome = ({ input }: Props) => {
     if (randomNews) {
       setTimeout(() => {
         setModalOpen(true);
-      }, 1000);
+      }, 500);
     }
   }, [randomNews]);
 
   return (
     <div className='content--home '>
-      {/* <pre>{JSON.stringify(randomNews, null, 2)}</pre> */}
-
       {randomNews && (
         <Modal open={modalOpen} onClose={() => setModalOpen(false)} bigClose>
           <div className='news-item text-lg--sm- md:text-lg- text-lg'>
@@ -54,7 +52,7 @@ const ContentHome = ({ input }: Props) => {
           </div>
         </Modal>
       )}
-      <div className='grid md:grid-cols-5 gap-gutter' style={{}}>
+      <div className='grid md:grid-cols-5 gap-xs md:gap-gutter' style={{}}>
         {projects?.map((item, index) => (
           <CardProject input={item as unknown as Project} key={index} />
         ))}

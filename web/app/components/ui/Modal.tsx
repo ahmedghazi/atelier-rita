@@ -5,6 +5,7 @@ import Icon from "./Icon";
 import Draggable from "./Draggable";
 import { usePageContext } from "@/app/context/PageContext";
 import useDeviceDetect from "@/app/hooks/useDeviceDetect";
+import { publish } from "pubsub-js";
 type Props = {
   children: React.ReactNode;
   open?: boolean;
@@ -28,10 +29,15 @@ const Modal = ({
     y: 0,
   });
 
+  const _onClose = () => {
+    publish("FORMAT_CHANGED", {});
+    onClose?.();
+  };
+
   useEffect(() => {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
-        onClose?.();
+        _onClose();
       }
     });
   }, []);
@@ -62,7 +68,12 @@ const Modal = ({
       disabled={isMobile}>
       <div
         ref={ref}
-        className={clsx("modal", styles.modal, open && styles.modal__open)}
+        className={clsx(
+          "modal",
+          open && "modal--open",
+          styles.modal,
+          open && styles.modal__open,
+        )}
         style={{
           transform: `translate(${position.x}px, ${position.y}px)`,
           zIndex,
@@ -73,7 +84,7 @@ const Modal = ({
             <div className='handle'></div>
           </Draggable.Handle>
           <div
-            onClick={onClose}
+            onClick={_onClose}
             className={clsx(
               "modal__close",
               styles.modal__close,

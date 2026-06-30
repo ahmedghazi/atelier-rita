@@ -12,10 +12,9 @@
   color: var(--color-bg);
   width: 376px;
   height: 501px;
-  aspect-ratio: 376 / 501;
-  // height: 100%;
-  // width: 100%;
-  max-width: 376px;
+
+  max-width: 100%;
+  // max-width: 376px;
   z-index: 99;
   display: flex;
   flex-direction: column;
@@ -28,6 +27,10 @@
     right: var(--spacing-xs);
     top: var(--header-h);
     width: auto;
+    aspect-ratio: 376 / 501;
+    height: 100%;
+    width: 100%;
+
     transform: none !important;
   }
 }

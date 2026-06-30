@@ -9,6 +9,7 @@ import React, {
 import { usePathname } from "next/navigation";
 import { Settings, SETTINGS_QUERY_RESULT } from "../types/sanity.types";
 import { useRandomItem } from "../hooks/useRandomItem";
+import { subscribe, unsubscribe } from "pubsub-js";
 // import { getSettings } from "../utils/sanity-queries";
 
 type ContextProps = {
@@ -93,8 +94,11 @@ export const PageContextProvider = (props: PageContextProps) => {
     _format();
     window.addEventListener("resize", _format);
 
+    const token = subscribe("FORMAT_CHANGED", _format);
+
     return () => {
       window.removeEventListener("resize", _format);
+      unsubscribe(token);
     };
   }, []);
 

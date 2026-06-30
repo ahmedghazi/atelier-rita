@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePageContext } from "../context/PageContext";
 import { useGridShrinkRange } from "../hooks/useGridShrinkRange";
+import { publish } from "pubsub-js";
 
 gsap.registerPlugin(ScrollTrigger);
 type Props = {
@@ -35,13 +36,32 @@ const RitaLogo = ({
       return;
     }
 
+    const currentWidth = logoRef.current.getBoundingClientRect().width;
+    if (Math.round(currentWidth) === Math.round(shrink.endWidth)) {
+      gsap.set(logoRef.current, { width: shrink.endWidth });
+      return;
+    }
+
     const tween = gsap.fromTo(
       logoRef.current,
       { width: shrink.startWidth },
       {
         width: shrink.endWidth,
         ease: "none",
-        scrollTrigger: { start: 0, end: shrink.range, scrub: true },
+        scrollTrigger: {
+          start: 0,
+          end: shrink.range,
+          scrub: true,
+          onLeave: (self) => {
+            self.kill();
+            gsap.set(logoRef.current, { width: shrink.endWidth });
+          },
+        },
+        onComplete: () => {
+          setTimeout(() => {
+            publish("FORMAT_CHANGED");
+          }, 500);
+        },
       },
     );
 

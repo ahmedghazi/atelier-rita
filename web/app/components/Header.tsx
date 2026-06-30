@@ -1,5 +1,10 @@
 "use client";
-import React, { useEffect, useRef, useSyncExternalStore } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import Nav from "./Nav";
 import { SETTINGS_QUERY_RESULT } from "../types/sanity.types";
 import Link from "next/link";
@@ -37,6 +42,7 @@ const Header = ({ settings }: Props) => {
   const { locale } = useLocale();
   const { layoutReady, layoutVersion } = usePageContext();
   const { scrollDirection, scrollY } = useScroll();
+  const [scrolled, setScrolled] = useState<boolean>(false);
   const { isMobile } = useDeviceDetect();
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -48,6 +54,10 @@ const Header = ({ settings }: Props) => {
     sessionStorage.setItem(FIRST_VISIT_KEY, "1");
     headerRef.current?.classList.add("is-first-visit");
   }, []);
+
+  useEffect(() => {
+    setScrolled(scrollY > 0);
+  }, [scrollY]);
 
   const randomIndex = useSyncExternalStore(
     noop,
@@ -75,7 +85,11 @@ const Header = ({ settings }: Props) => {
   return (
     <header
       ref={headerRef}
-      className={clsx("header", isHome && `scroll-${scrollDirection}`)}>
+      className={clsx(
+        "header",
+        isHome && `scroll-${scrollDirection}`,
+        isHome && scrolled && "scrolled",
+      )}>
       <div className='grid grid-cols-2 md:grid-cols-5 gap-sm md:gap-gutter'>
         <div
           className={clsx(

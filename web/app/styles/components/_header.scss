@@ -72,11 +72,12 @@ header {
     font-size: var(--text-lg--sm);
     nav {
       height: 100%;
-      // background-color: red;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       .bottom {
+        // background-color: red;
+        background-color: transparent;
         justify-content: flex-end;
         ul.menu {
           width: unset;
@@ -93,10 +94,6 @@ body:not(.is-home) header {
   background-color: white;
 }
 body.is-home header {
-  // position: fixed;
-  // & + main {
-  //   padding-top: var(--header-h);
-  // }
   color: var(--color-white);
   svg path {
     fill: var(--color-white);
@@ -120,7 +117,7 @@ body.is-home header {
     transform: translateY(1rem);
     opacity: 0;
   }
-  &.scroll-up {
+  &.scrolled {
     .description {
       transform: translateY(-1rem);
       opacity: 0;
@@ -130,10 +127,28 @@ body.is-home header {
       opacity: 1;
     }
   }
-  &.scroll-,
-  &.scroll-down {
-    padding-bottom: calc(var(--spacing-md) * 0.8);
-  }
+  // &.scroll-up:not(.scrolled) {
+  //   .description {
+  //     transform: translateY(-1rem);
+  //     opacity: 0;
+  //   }
+  //   nav {
+  //     transform: translateY(0);
+  //     opacity: 1;
+  //   }
+  // }
+  // &.scroll-,
+  // &.scroll-down {
+  //   padding-bottom: calc(var(--spacing-md) * 0.8);
+  // }
+  // &.scroll-down {
+  //   @media all and (max-width: variables.$md) {
+  //     nav {
+  //       transform: translateY(0);
+  //       opacity: 1;
+  //     }
+  //   }
+  // }
 }
 
 body:not(.is-home) header {

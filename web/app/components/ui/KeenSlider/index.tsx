@@ -22,13 +22,13 @@ const KeenSlider = ({
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const { isMobile } = useDeviceDetect();
-  console.log({ isMobile });
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     // initial: 0,
     mode: "free-snap",
     loop: loop,
     rtl: false,
-    drag: true,
+    drag: isMobile,
+    dragSpeed: 2,
     slides: {
       perView: perView,
       spacing: isMobile ? 10 : 20,
@@ -36,7 +36,6 @@ const KeenSlider = ({
     slideChanged(slider) {
       const current = slider.track.details.rel;
       const last = slider.track.details.slides.length - 1;
-      console.log(current, last);
 
       if (slider.track.details) {
         setCurrentSlide(slider.track.details.rel);

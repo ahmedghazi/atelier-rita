@@ -18,8 +18,8 @@
     "Helvetica Neue Roman", "TeXGyreHerosRegular", "Helvetica", "Arial",
     sans-serif; */
 
-  --spacing-xs: 0.438em; /* 10px */
-  --spacing-sm: 0.625em; /* 10px */
+  --spacing-xs: 0.438rem; /* 10px */
+  --spacing-sm: 0.625rem; /* 10px */
   --spacing-md: 0.938rem; /* 15px */
   --spacing-lg: 1.875rem; /* 30px */
   --spacing-gutter: 0.938rem; /* 15px */
@@ -55,6 +55,7 @@
   --font-primary: var(--font-primary);
   --font-secondary: var(--font-secondary);
 
+  --spacing-xs: var(--spacing-xs);
   --spacing-sm: var(--spacing-sm);
   --spacing-md: var(--spacing-md);
   --spacing-lg: var(--spacing-lg);

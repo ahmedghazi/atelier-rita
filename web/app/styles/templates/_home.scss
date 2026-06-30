@@ -29,6 +29,9 @@
         top: 0 !important;
         left: 0 !important;
         margin-bottom: var(--spacing-xs);
+        &:not(.modal--open) {
+          display: none;
+        }
       }
     }
   }
