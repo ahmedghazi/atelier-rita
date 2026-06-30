@@ -25,11 +25,14 @@
   .modal {
     left: var(--spacing-xs);
     right: var(--spacing-xs);
+    inset: var(--spacing-xs);
     top: var(--header-h);
     width: auto;
     aspect-ratio: 376 / 501;
     height: 100%;
     width: 100%;
+    width: auto;
+    height: auto;
 
     transform: none !important;
   }

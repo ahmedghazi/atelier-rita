@@ -13,7 +13,7 @@
 - # mobile
 - # build
 - # deploy
-- mobile card home, double click pour naviguer, click pour hover
+- # mobile card home, double click pour naviguer, click pour hover
 - # pb callage nav mobile
 - # dans project img max size height.
-- callage news home mobile
+- # callage news home mobile
