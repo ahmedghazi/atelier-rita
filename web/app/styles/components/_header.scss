@@ -76,13 +76,22 @@ header {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      .menu li {
-        transform: translateY(0.28em);
+      .bottom {
+        justify-content: flex-end;
+        ul.menu {
+          width: unset;
+          li {
+            transform: translateY(0.28em);
+          }
+        }
       }
     }
   }
 }
 
+body:not(.is-home) header {
+  background-color: white;
+}
 body.is-home header {
   // position: fixed;
   // & + main {

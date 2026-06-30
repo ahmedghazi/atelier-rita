@@ -6,6 +6,8 @@
       // padding: 0.8462em 0;
       border-top: var(--border);
       border-bottom: var(--border);
+      background-color: var(--color-bg);
+      z-index: 99;
     }
     .thead .tr,
     .tbody .tr a {
@@ -15,6 +17,11 @@
       .card--project--text {
         border-bottom: var(--border);
       }
+    }
+    .thead,
+    figure {
+      position: sticky;
+      top: var(--header-h);
     }
 
     @media all and (max-width: variables.$md) {

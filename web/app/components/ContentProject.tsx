@@ -133,7 +133,7 @@ const ContentProject = ({ input }: Props) => {
       </div>
       <div className='footer'>
         <div className='grid md:grid-cols-5 gap-gutter items-baseline'>
-          <h1 className='title col-span-4 md:col-span-2 text-lg--sm md:text-lg'>
+          <h1 className='title col-span-4 md:col-span-3 text-lg--sm md:text-lg'>
             {_localizeField(locale, title) as string}
             <span>, </span>
             <CityAndZip city={city} zip={zip} />

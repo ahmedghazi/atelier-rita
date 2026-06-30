@@ -68,7 +68,7 @@ body:has(.template--project) {
         position: relative;
       }
       .title {
-        max-width: 20rem;
+        // max-width: 20rem;
         grid-column: span 2 / span 2;
         line-height: 1;
       }
@@ -110,8 +110,13 @@ body:has(.template--project) {
         }
       }
       .slider {
+        // img {
+        //   height: auto !important;
+        //   max-height: 60vh !important;
+        // }
         .related {
-          transform: translateX(50%);
+          width: var(--gridder-1_2);
+          // transform: translateX(50%);
         }
       }
 

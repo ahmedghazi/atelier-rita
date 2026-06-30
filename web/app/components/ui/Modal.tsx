@@ -21,7 +21,6 @@ const Modal = ({
   bigClose = false,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
-  const { modalZIndex, setModalZIndex } = usePageContext();
   const { isMobile } = useDeviceDetect();
   // const [delayOpen, setDelayOpen] = useState(false);
   const [position, setPosition] = useState<{ x: number; y: number }>({
@@ -54,7 +53,7 @@ const Modal = ({
       if (isMobile) return;
       _randomlyPlaceModal();
     }
-  }, [open, setModalZIndex, zIndex]);
+  }, [open, zIndex]);
 
   return (
     <Draggable
@@ -74,6 +73,7 @@ const Modal = ({
             <div className='handle'></div>
           </Draggable.Handle>
           <div
+            onClick={onClose}
             className={clsx(
               "modal__close",
               styles.modal__close,

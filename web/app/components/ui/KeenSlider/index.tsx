@@ -28,6 +28,7 @@ const KeenSlider = ({
     mode: "free-snap",
     loop: loop,
     rtl: false,
+    drag: true,
     slides: {
       perView: perView,
       spacing: isMobile ? 10 : 20,

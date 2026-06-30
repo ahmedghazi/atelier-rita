@@ -4,6 +4,7 @@ import { PROJECT_QUERY_RESULT } from "../types/sanity.types";
 import { _linkResolver, _localizeField } from "../sanity-api/utils";
 import useLocale from "../context/LocaleContext";
 import Link from "next/link";
+import CityAndZip from "./CityAndZip";
 
 export type ProjectImageCoverAsset = NonNullable<
   NonNullable<PROJECT_QUERY_RESULT>["imageCover"]
@@ -31,8 +32,7 @@ const CardProjectTxt = ({ input, setThumbnail }: Props) => {
           <h2 className='td'>{titleLocalized}</h2>
           <div className='td programme'>{programmeLocalized}</div>
           <div className='td location'>
-            <div>{city}</div>
-            <div>{zip}</div>
+            <CityAndZip city={city} zip={zip} />
           </div>
           <div className='td client hidden-sm'>{client}</div>
           <div className='td numbers hidden-sm'>{numbers}</div>

@@ -16,7 +16,7 @@ const Nav = ({ input }: Props) => {
     <nav>
       <LocalesSwitcher />
       <div className='bottom'>
-        <div className='spacer'></div>
+        <div className='spacer hidden-sm'></div>
         <ul className='menu'>
           {input?.navPrimary?.map((item) => (
             <li key={item._key}>

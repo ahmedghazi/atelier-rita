@@ -83,7 +83,7 @@ const ContentAtelier = ({ input }: Props) => {
         <div className='caption '>{"caption"}</div>
       </div>
       <div className='footer'>
-        <div className='grid md:grid-cols-5 gap-gutter'>
+        <div className='grid md:grid-cols-5 md:gap-gutter'>
           {items?.map((item: KeyVal, index: number) => (
             <Item key={index} item={item} locale={locale} zIndex={index} />
           ))}

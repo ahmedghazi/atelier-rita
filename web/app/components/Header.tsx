@@ -76,7 +76,7 @@ const Header = ({ settings }: Props) => {
     <header
       ref={headerRef}
       className={clsx("header", isHome && `scroll-${scrollDirection}`)}>
-      <div className='grid grid-cols-2 md:grid-cols-5 gap-xs md:gap-gutter'>
+      <div className='grid grid-cols-2 md:grid-cols-5 gap-sm md:gap-gutter'>
         <div
           className={clsx(
             isShrunk ? "col-span-1" : "col-span-2",

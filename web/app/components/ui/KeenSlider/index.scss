@@ -24,6 +24,11 @@
 
   @media all and (max-width: variables.$md) {
     max-width: calc(100dvw - calc(var(--spacing-xs) * 2));
+    .keen-slider {
+      &__controls {
+        display: none;
+      }
+    }
     img {
       max-width: calc(100dvw - calc(var(--spacing-xs) * 2));
       height: auto !important;

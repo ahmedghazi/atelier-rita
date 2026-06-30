@@ -11,5 +11,8 @@
 - # random palette
 - # hover (rfg, 0.5)
 - # mobile
-- build
-- deploy
+- # build
+- # deploy
+- mobile card home, double click pour naviguer, click pour hover
+- pb callage nav mobile
+- dans project img max size height.

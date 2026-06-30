@@ -33,7 +33,7 @@ const ContentHome = ({ input }: Props) => {
 
       {randomNews && (
         <Modal open={modalOpen} onClose={() => setModalOpen(false)} bigClose>
-          <div className='news-item text-lg--sm md:text-lg'>
+          <div className='news-item text-lg--sm- md:text-lg- text-lg'>
             <div className='title'>
               {_localizeField(locale, randomNews?.title) as string}
             </div>
