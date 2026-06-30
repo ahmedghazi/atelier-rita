@@ -31,18 +31,29 @@
   visibility: visible;
   pointer-events: all;
 }
-.modal__close {
-  /* position: absolute; */
-  /* bottom: var(--spacing-sm); */
-  /* right: var(--spacing-sm); */
-  cursor: pointer;
+.footer {
+  display: flex;
+  justify-content: space-between;
   padding: var(--spacing-xs);
+}
+.handle {
+  cursor: grab;
+  touch-action: none;
+  flex: 2;
+}
+.modal__close {
+  cursor: grab;
+  touch-action: none;
   display: flex;
   justify-content: flex-end;
+}
+.modal__close[data-dragging] {
+  cursor: grabbing;
 }
 .modal__close svg {
   width: 1rem;
   height: 1rem;
+  cursor: pointer;
 }
 .modal__close svg path {
   fill: white;

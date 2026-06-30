@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./Modal.module.scss";
 import clsx from "clsx";
 import Icon from "./Icon";
+import Draggable from "./Draggable";
 import { usePageContext } from "@/app/context/PageContext";
 import useDeviceDetect from "@/app/hooks/useDeviceDetect";
 type Props = {
@@ -45,10 +46,6 @@ const Modal = ({
     const randY = Math.random() * maxY;
     setPosition({ x: randX, y: randY });
   };
-  // const _getZIndex = () => {
-  //   const modals = document.querySelectorAll(".modal");
-  //   return 99 + modals.length;
-  // };
 
   useEffect(() => {
     if (open) {
@@ -60,24 +57,33 @@ const Modal = ({
   }, [open, setModalZIndex, zIndex]);
 
   return (
-    <div
-      ref={ref}
-      className={clsx("modal", styles.modal, open && styles.modal__open)}
-      style={{
-        transform: `translate(${position.x}px, ${position.y}px)`,
-        zIndex,
-      }}>
-      <div className={clsx(styles.modal__body, "hide-sb")}>{children}</div>
+    <Draggable
+      position={position}
+      onPositionChange={setPosition}
+      disabled={isMobile}>
       <div
-        className={clsx(
-          "modal__close",
-          styles.modal__close,
-          bigClose && styles.modal__close__big,
-        )}
-        onClick={onClose}>
-        <Icon name='x' />
+        ref={ref}
+        className={clsx("modal", styles.modal, open && styles.modal__open)}
+        style={{
+          transform: `translate(${position.x}px, ${position.y}px)`,
+          zIndex,
+        }}>
+        <div className={clsx(styles.modal__body, "hide-sb")}>{children}</div>
+        <div className={styles.footer}>
+          <Draggable.Handle className={styles.handle}>
+            <div className='handle'></div>
+          </Draggable.Handle>
+          <div
+            className={clsx(
+              "modal__close",
+              styles.modal__close,
+              bigClose && styles.modal__close__big,
+            )}>
+            <Icon name='x' />
+          </div>
+        </div>
       </div>
-    </div>
+    </Draggable>
   );
 };
 
