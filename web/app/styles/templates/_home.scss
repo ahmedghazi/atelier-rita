@@ -6,6 +6,12 @@
     .modal {
       background-color: var(--color-primary) !important;
       color: var(--color-bg) !important;
+      .modal__body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: var(--spacing-xs);
+      }
       svg path {
         fill: var(--color-bg) !important;
       }

@@ -78,7 +78,9 @@ const Modal = ({
           transform: `translate(${position.x}px, ${position.y}px)`,
           zIndex,
         }}>
-        <div className={clsx(styles.modal__body, "hide-sb")}>{children}</div>
+        <div className={clsx("modal__body", styles.modal__body, "hide-sb")}>
+          {children}
+        </div>
         <div className={styles.footer}>
           <Draggable.Handle className={styles.handle}>
             <div className='handle'></div>
