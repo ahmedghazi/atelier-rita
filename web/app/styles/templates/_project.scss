@@ -6,12 +6,13 @@ body:has(.template--project) {
   .content--project {
     &.slider-ended .slider {
       .keen-slider-container {
-        clip-path: polygon(
-          0 0,
-          var(--gridder-3_5) 0,
-          var(--gridder-3_5) 100%,
-          0 100%
-        );
+        // clip-path: polygon(
+        //   0 0,
+        //   var(--gridder-3_5) 0,
+        //   var(--gridder-3_5) 100%,
+        //   0 100%
+        // );
+        // transform: translateX(calc(var(--gridder-2_5) * -1));
       }
       .related {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -21,9 +22,9 @@ body:has(.template--project) {
     .slider {
       position: relative;
       overflow: hidden;
-      .flex {
-        gap: var(--spacing-gutter);
-      }
+      // .flex {
+      //   gap: var(--spacing-gutter);
+      // }
       .keen-slider-container,
       .related {
         transition: clip-path 0.3s ease;

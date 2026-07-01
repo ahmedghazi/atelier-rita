@@ -19,12 +19,13 @@ const KeenSlider = ({
   wheelControl = false,
 }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [loaded, setLoaded] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [loaded, setLoaded] = useState<boolean>(false);
   const { isMobile } = useDeviceDetect();
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     // initial: 0,
-    mode: "free-snap",
+    // mode: "free-snap",
+    mode: "snap",
     loop: loop,
     rtl: false,
     drag: isMobile,

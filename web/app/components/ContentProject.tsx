@@ -17,6 +17,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import CityAndZip from "./CityAndZip";
 import BackHome from "./ui/BackHome";
+import SlickSlider from "./ui/SlickSlider";
 
 type Props = {
   input: NonNullable<PROJECT_QUERY_RESULT>;
@@ -99,8 +100,8 @@ const ContentProject = ({ input }: Props) => {
         sliderEnded && "slider-ended",
       )}>
       <div className='slider'>
-        <div className='flex'>
-          <KeenSlider loop={false} wheelControl={true}>
+        <div className='flex--'>
+          {/* <KeenSlider loop={true} wheelControl={true}>
             {slides.map((image, index: number) => (
               <div key={index + 1} className='keen-slider__slide'>
                 <Figure
@@ -110,7 +111,22 @@ const ContentProject = ({ input }: Props) => {
                 />
               </div>
             ))}
-          </KeenSlider>
+          </KeenSlider> */}
+          <SlickSlider
+            controlsFloating={true}
+            settings={{
+              infinite: false,
+            }}>
+            {slides.map((image, index: number) => (
+              <div key={index + 1} className='keen-slider__slide'>
+                <Figure
+                  asset={image?.asset}
+                  alt={image?.asset?.altText}
+                  title={image?.asset?.title || undefined}
+                />
+              </div>
+            ))}
+          </SlickSlider>
 
           {related && (
             <div className='related'>

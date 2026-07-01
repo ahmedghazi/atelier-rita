@@ -79,8 +79,15 @@ const Header = ({ settings }: Props) => {
     layoutVersion,
   );
 
-  // pas d'intro sur les pages non-home => état "déjà shrink" par défaut
-  const isShrunk = !isHome || (shrink ? scrollY >= shrink.range : false);
+  // latch: once shrunk, never go back — animation plays only once
+  const [hasShrunk, setHasShrunk] = useState(!isHome);
+  useEffect(() => {
+    if (hasShrunk) return;
+    const shrunkCondition = !isHome || (shrink ? scrollY >= shrink.range : false);
+    if (shrunkCondition) setHasShrunk(true);
+  }, [isHome, shrink, scrollY, hasShrunk]);
+
+  const isShrunk = hasShrunk;
 
   return (
     <header

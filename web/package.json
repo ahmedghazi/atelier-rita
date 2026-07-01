@@ -26,8 +26,10 @@
     "react-dom": "19.2.4",
     "react-intersection-observer": "^10.0.3",
     "react-player": "^3.4.0",
+    "react-slick": "^0.31.0",
     "sanity-codegen": "^0.9.8",
     "sass": "^1.100.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^6.4.2",
     "throttle-debounce": "^5.0.2"
   },
@@ -38,6 +40,7 @@
     "@types/pubsub-js": "^1.8.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-slick": "^0.23.13",
     "@types/styled-components": "^5.1.36",
     "@types/throttle-debounce": "^5.0.2",
     "eslint": "^9",
