@@ -118,7 +118,7 @@ const ContentProject = ({ input }: Props) => {
               infinite: false,
             }}>
             {slides.map((image, index: number) => (
-              <div key={index + 1} className='keen-slider__slide'>
+              <div key={index + 1} className='ss-slider__slide'>
                 <Figure
                   asset={image?.asset}
                   alt={image?.asset?.altText}

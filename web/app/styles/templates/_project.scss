@@ -30,7 +30,7 @@ body:has(.template--project) {
         transition: clip-path 0.3s ease;
       }
       .keen-slider-container {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        // clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       }
       .related {
         clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
@@ -103,6 +103,7 @@ body:has(.template--project) {
     }
     @media all and (max-width: variables.$md) {
       &.slider-ended .slider {
+        .slick-slider-container,
         .keen-slider-container {
           clip-path: polygon(0 0, 20% 0, 20% 100%, 0 100%);
         }
