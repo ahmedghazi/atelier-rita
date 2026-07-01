@@ -80,14 +80,19 @@ const Header = ({ settings }: Props) => {
   );
 
   // latch: once shrunk, never go back — animation plays only once
-  const [hasShrunk, setHasShrunk] = useState(!isHome);
+  const [isShrunk, setIsShrunk] = useState(!isHome);
   useEffect(() => {
-    if (hasShrunk) return;
-    const shrunkCondition = !isHome || (shrink ? scrollY >= shrink.range : false);
-    if (shrunkCondition) setHasShrunk(true);
-  }, [isHome, shrink, scrollY, hasShrunk]);
-
-  const isShrunk = hasShrunk;
+    if (isShrunk || !isHome || !shrink) return;
+    const check = () => {
+      if (window.scrollY >= shrink.range) setIsShrunk(true);
+    };
+    window.addEventListener("scroll", check, { passive: true });
+    const raf = requestAnimationFrame(check);
+    return () => {
+      window.removeEventListener("scroll", check);
+      cancelAnimationFrame(raf);
+    };
+  }, [isShrunk, isHome, shrink]);
 
   return (
     <header
