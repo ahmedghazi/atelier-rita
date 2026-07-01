@@ -28,7 +28,7 @@ const KeenSlider = ({
     loop: loop,
     rtl: false,
     drag: isMobile,
-    dragSpeed: 2,
+    dragSpeed: 1.3,
     slides: {
       perView: perView,
       spacing: isMobile ? 10 : 20,

@@ -58,13 +58,6 @@ header {
       li:first-child {
         transform: translate(-0.05em, 0.27em);
       }
-      // .locales-switcher {
-      //   grid-column: span 2 / span 2;
-      //   display: flex;
-      //   li {
-      //     width: 50%;
-      //   }
-      // }
     }
   }
   @media all and (max-width: variables.$md) {
@@ -76,9 +69,9 @@ header {
       flex-direction: column;
       justify-content: space-between;
       .bottom {
-        // background-color: red;
         background-color: transparent;
         justify-content: flex-end;
+        // background-color: red;
         ul.menu {
           width: unset;
           li {
