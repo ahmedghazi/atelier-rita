@@ -9,6 +9,7 @@ import { draftMode } from "next/headers";
 import VisualEditingClient from "./components/VisualEditingClient";
 import Gridder from "./components/ui/Gridder";
 import localFont from "next/font/local";
+import { ViewTransition } from "react";
 
 const selecta = localFont({
   // src: './styles/fonts/Selecta-Medium.woff2',
@@ -55,7 +56,9 @@ export default async function RootLayout({
               <Gridder />
               <Header settings={settings} />
               {/* <DesignSystem /> */}
-              <main>{children}</main>
+              <ViewTransition>
+                <main>{children}</main>
+              </ViewTransition>
               {/* <Footer settings={settings} /> */}
               {isEnabled && <VisualEditingClient />}
             </PageContextProvider>
