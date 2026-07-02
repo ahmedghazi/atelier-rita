@@ -60,6 +60,9 @@ const CardProject = ({ input }: Props) => {
       style={{ "--flip-deg": `${flipDeg}deg` } as React.CSSProperties}
       onMouseEnter={(e) => {
         if (!isMobile) handleHover(e);
+      }}
+      onMouseLeave={(e) => {
+        if (!isMobile) handleHover(e);
       }}>
       <Link onClick={_onCick} href={_linkResolver(input)}>
         <div className='perspective'>

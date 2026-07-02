@@ -22,6 +22,8 @@
   --spacing-sm: 0.625rem; /* 10px */
   --spacing-md: 0.938rem; /* 15px */
   --spacing-lg: 1.875rem; /* 30px */
+  /* --spacing-70: 4.375rem; 70px */
+  --spacing-70: 4.375rem; /* 70px */
   --spacing-gutter: 0.938rem; /* 15px */
 
   --text-md: 0.813rem; /* 13px */
@@ -59,6 +61,7 @@
   --spacing-sm: var(--spacing-sm);
   --spacing-md: var(--spacing-md);
   --spacing-lg: var(--spacing-lg);
+  --spacing-70: var(--spacing-70);
   --spacing-gutter: var(--spacing-gutter);
 
   --text-md-mobile: var(--text-md-mobile);

@@ -17,3 +17,5 @@
 - # pb callage nav mobile
 - # dans project img max size height.
 - # callage news home mobile
+- proportion modal vs carte projet
+- carte home 3d au hover, revient à la normale après
