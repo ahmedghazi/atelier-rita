@@ -18,6 +18,7 @@
     "Helvetica Neue Roman", "TeXGyreHerosRegular", "Helvetica", "Arial",
     sans-serif; */
 
+  /* --header-h: 100px; */
   --spacing-xs: 0.438rem; /* 10px */
   --spacing-sm: 0.625rem; /* 10px */
   --spacing-md: 0.938rem; /* 15px */
@@ -63,6 +64,7 @@
   --spacing-lg: var(--spacing-lg);
   --spacing-70: var(--spacing-70);
   --spacing-gutter: var(--spacing-gutter);
+  --header-h: var(--header-h);
 
   --text-md-mobile: var(--text-md-mobile);
 

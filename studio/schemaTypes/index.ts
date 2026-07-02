@@ -18,6 +18,7 @@ import embed from './objects/embed'
 import keyVal from './objects/keyVal'
 import {seoSchema} from './features/seo'
 import news from './objects/news'
+import cardHome from './objects/cardHome'
 
 export const schemaTypes = [
   settings,
@@ -30,6 +31,7 @@ export const schemaTypes = [
   localeString,
   localeText,
   localeBlockContent,
+  cardHome,
 
   blockContent,
   linkExternal,

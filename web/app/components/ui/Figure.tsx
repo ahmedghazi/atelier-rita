@@ -1,5 +1,6 @@
 import website from "@/app/config/website";
 import { urlFor } from "@/app/sanity-api/sanity-utils";
+import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
 import { SanityImageAsset } from "sanity-codegen";
@@ -13,7 +14,13 @@ type Props = {
 
 const Figure = ({ asset, width = 1000, alt = website.title, title }: Props) => {
   return (
-    <figure>
+    <figure
+      className={clsx(
+        "figure",
+        asset?.metadata?.dimensions?.aspectRatio > 1
+          ? "is-landscape"
+          : "is-portrait",
+      )}>
       <Image
         src={urlFor(asset, width)}
         width={asset?.metadata?.dimensions.width || width}

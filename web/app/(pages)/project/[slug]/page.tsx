@@ -5,8 +5,12 @@ import { draftMode } from "next/headers";
 import ContentProject from "@/app/components/ContentProject";
 import { notFound } from "next/navigation";
 import { getClient } from "@/app/sanity-api/sanity.client";
-import { getProject, PROJECT_QUERY } from "@/app/sanity-api/sanity-queries";
-import { PROJECT_QUERY_RESULT } from "@/app/types/sanity.types";
+import {
+  getProject,
+  getProjects,
+  PROJECT_QUERY,
+} from "@/app/sanity-api/sanity-queries";
+import { Project, PROJECT_QUERY_RESULT } from "@/app/types/sanity.types";
 
 type Params = Promise<{ slug: string }>;
 
@@ -43,9 +47,16 @@ const ProjectPage: NextPage<PageProps> = async ({ params }) => {
 
   if (!data) return notFound();
 
+  const projects = await getProjects();
+  const index = projects?.items || [];
+  const currentIndex = index.findIndex((item) => item._id === data._id);
+
+  const nextProject = (index[currentIndex + 1]
+    ? index[currentIndex + 1]
+    : index[0]) as unknown as Project;
   return (
     <div className='template template--project' data-template='project'>
-      <ContentProject input={data} />
+      <ContentProject input={data} relatedByindex={nextProject} />
     </div>
   );
 };

@@ -136,6 +136,7 @@ export default defineType({
     defineField({
       name: 'related',
       title: 'Projet liés',
+      description: "Projet suivant, permet d'écraser celui généré par l'index",
       type: 'reference',
       to: [{type: 'project'}],
       // type: 'array',

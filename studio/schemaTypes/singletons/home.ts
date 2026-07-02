@@ -46,7 +46,15 @@ export default defineType({
       name: 'projects',
       title: 'Projets',
       type: 'array',
-      of: [{type: 'reference', to: [{type: 'project'}]}],
+      of: [{type: 'cardHome'}, {type: 'reference', to: [{type: 'project'}]}],
+      group: 'editorial',
+      hidden: true,
+    }),
+
+    defineField({
+      name: 'items',
+      type: 'array',
+      of: [{type: 'cardHome'}],
       group: 'editorial',
     }),
 

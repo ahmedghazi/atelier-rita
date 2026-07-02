@@ -17,5 +17,26 @@
 - # pb callage nav mobile
 - # dans project img max size height.
 - # callage news home mobile
-- proportion modal vs carte projet
-- carte home 3d au hover, revient à la normale après
+
+## Home
+
+- # carte home 3d au hover, revient à la normale après
+- # carte home + shuffle
+
+## Projet
+
+- taille modal
+
+## Projets
+
+- # image default à virer
+- # ordre des projets = ordre projet suivant
+
+## global
+
+- header-h
+- modal taille
+- # modal draggable zone plus grande, sous le texte
+- plage typo sur grands écrans
+
+## Devis additif pour les tries sur index

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
-import { PROJECT_QUERY_RESULT } from "../types/sanity.types";
+import { Project, PROJECT_QUERY_RESULT } from "../types/sanity.types";
 import Figure from "./ui/Figure";
 import {
   _linkResolver,
@@ -21,9 +21,10 @@ import SlickSlider from "./ui/SlickSlider";
 
 type Props = {
   input: NonNullable<PROJECT_QUERY_RESULT>;
+  relatedByindex: Project;
 };
 
-const ContentProject = ({ input }: Props) => {
+const ContentProject = ({ input, relatedByindex }: Props) => {
   const { locale } = useLocale();
   const {
     imageCover,
@@ -93,6 +94,7 @@ const ContentProject = ({ input }: Props) => {
     },
   ];
 
+  const _related = related ? related : relatedByindex;
   return (
     <div
       className={clsx(
@@ -101,17 +103,6 @@ const ContentProject = ({ input }: Props) => {
       )}>
       <div className='slider'>
         <div className='flex--'>
-          {/* <KeenSlider loop={true} wheelControl={true}>
-            {slides.map((image, index: number) => (
-              <div key={index + 1} className='keen-slider__slide'>
-                <Figure
-                  asset={image?.asset}
-                  alt={image?.asset?.altText}
-                  title={image?.asset?.title || undefined}
-                />
-              </div>
-            ))}
-          </KeenSlider> */}
           <SlickSlider
             controlsFloating={true}
             settings={{
@@ -128,17 +119,17 @@ const ContentProject = ({ input }: Props) => {
             ))}
           </SlickSlider>
 
-          {related && (
+          {_related && (
             <div className='related'>
-              <Link href={_linkResolver(related)}>
+              <Link href={_linkResolver(_related)}>
                 <h2 className='text-lg--sm md:text-lg'>
                   {_localizeText(locale, "nextProject")}
                 </h2>
 
                 <div className='image-cover'>
                   <Figure
-                    asset={related?.imageCover?.asset}
-                    alt={related?.slug?.current}
+                    asset={_related?.imageCover?.asset}
+                    alt={_related?.slug?.current}
                   />
                 </div>
               </Link>
@@ -148,6 +139,7 @@ const ContentProject = ({ input }: Props) => {
         <div className='caption hidden-sm'>{caption}</div>
       </div>
       <div className='footer'>
+        {/* <pre>{JSON.stringify(relatedByindex, null, 2)}</pre> */}
         <div className='grid md:grid-cols-5 gap-gutter items-baseline'>
           <h1 className='title col-span-4 md:col-span-3 text-lg--sm md:text-lg'>
             {_localizeField(locale, title) as string}

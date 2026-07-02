@@ -3,7 +3,7 @@ import { getClient } from "./sanity-api/sanity.client";
 import ContentHome from "./components/ContentHome";
 import { Metadata } from "next";
 import website from "./config/website";
-import { getHome, HOME_QUERY } from "./sanity-api/sanity-queries";
+import { getHome, getProjects, HOME_QUERY } from "./sanity-api/sanity-queries";
 import { HOME_QUERY_RESULT } from "./types/sanity.types";
 
 export const revalidate = 3600; // revalidate every hour

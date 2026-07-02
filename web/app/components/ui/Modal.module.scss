@@ -12,6 +12,9 @@
   color: var(--color-bg);
   width: 376px;
   height: 501px;
+  aspect-ratio: 376 / 501;
+  height: 60vh;
+  width: auto;
 
   max-width: 100%;
   // max-width: 376px;
@@ -54,12 +57,16 @@
   cursor: grab;
   touch-action: none;
   flex: 2;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 .modal__close {
   cursor: grab;
   touch-action: none;
   display: flex;
   justify-content: flex-end;
+  z-index: 1;
 }
 .modal__close[data-dragging] {
   cursor: grabbing;
@@ -88,5 +95,7 @@
   max-height: 100%;
   overflow-y: auto;
   padding-bottom: 2rem;
-  height: 100%;
+  z-index: 1;
+  position: relative;
+  // height: 100%;
 }

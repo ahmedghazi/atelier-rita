@@ -1,6 +1,7 @@
 @use "../variables";
 
 .card {
+  &--home,
   &--project {
     // aspect-ratio: 3 / 4;
     a:hover {
@@ -52,10 +53,15 @@
         text-align: center;
       }
     }
-    img {
-      aspect-ratio: 238 / 317 !important;
-      height: 100% !important;
-      object-fit: cover;
+    figure {
+      &.is-landscape img {
+        // aspect-ratio: 317 / 238 !important;
+      }
+      img {
+        aspect-ratio: 238 / 317 !important;
+        height: 100% !important;
+        object-fit: cover;
+      }
     }
     @media screen and (max-width: variables.$md) {
       .verso {

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Project,
   PROJECT_QUERY_RESULT,
@@ -18,10 +18,9 @@ const ContentProjects = ({ input }: Props) => {
   const { locale } = useLocale();
 
   const { items } = input;
-  const [thumbnail, setThumbnail] =
-    React.useState<ProjectImageCoverAsset | null>(
-      items?.[0]?.imageCover?.asset || null,
-    );
+  const [thumbnail, setThumbnail] = useState<ProjectImageCoverAsset | null>(
+    null,
+  );
   return (
     <div className='content content--projects'>
       <div className='grid md:grid-cols-5 gap-gutter '>

@@ -81,10 +81,11 @@ const Modal = ({
         <div className={clsx("modal__body", styles.modal__body, "hide-sb")}>
           {children}
         </div>
+        <Draggable.Handle className={clsx("handle", styles.handle)}>
+          <div className='handle-inner'></div>
+        </Draggable.Handle>
+
         <div className={styles.footer}>
-          <Draggable.Handle className={styles.handle}>
-            <div className='handle'></div>
-          </Draggable.Handle>
           <div
             onClick={_onClose}
             className={clsx(
