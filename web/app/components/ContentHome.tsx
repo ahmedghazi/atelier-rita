@@ -52,7 +52,9 @@ const ContentHome = ({ input }: Props) => {
           </div>
         </Modal>
       )}
-      <div className='grid md:grid-cols-5 gap-xs md:gap-gutter' style={{}}>
+      <div
+        className='grid grid-cols-2 md:grid-cols-5 gap-xs md:gap-gutter'
+        style={{}}>
         {projects?.map((item, index) => (
           <CardProject input={item as unknown as Project} key={index} />
         ))}
