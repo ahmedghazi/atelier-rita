@@ -103,7 +103,13 @@ export const PageContextProvider = (props: PageContextProps) => {
   }, []);
 
   useEffect(() => {
-    document.body.classList.toggle("is-home", pathname === "/");
+    const isHome = pathname === "/";
+    document.body.classList.toggle("is-home", isHome);
+
+    if (isHome) {
+      _randomColor();
+    }
+
     _format();
     setTimeout(() => {
       _format();
@@ -111,7 +117,9 @@ export const PageContextProvider = (props: PageContextProps) => {
   }, [pathname]);
 
   useEffect(() => {
-    document.body.classList.remove("is-loading");
+    setTimeout(() => {
+      document.body.classList.remove("is-loading");
+    }, 300);
   }, [layoutReady]);
 
   return (

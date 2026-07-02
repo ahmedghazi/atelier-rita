@@ -14,6 +14,7 @@ body {
   // @include debugFiletX(50%);
 
   // @include mixins.debugSquare(var(--spacing-md));
+  transition: opacity 0.3s ease;
   &.is-loading {
     opacity: 0;
   }
