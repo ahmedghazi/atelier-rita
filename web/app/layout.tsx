@@ -49,17 +49,15 @@ export default async function RootLayout({
     <html lang='fr'>
       <body
         className={["is-loading", selecta.className].join(" ")}
-        data-theme='theme-xyz'>
+        data-theme='theme-rita'>
         <div id='page'>
           <LocaleContextProvider>
             <PageContextProvider settings={settings}>
               <Gridder />
               <Header settings={settings} />
-              {/* <DesignSystem /> */}
               <ViewTransition>
                 <main>{children}</main>
               </ViewTransition>
-              {/* <Footer settings={settings} /> */}
               {isEnabled && <VisualEditingClient />}
             </PageContextProvider>
           </LocaleContextProvider>

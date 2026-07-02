@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-[data-theme="theme-xyz"] {
+[data-theme="theme-rita"] {
   --header-height: 43.5px;
   --color-bg: #fff;
   --color-primary: red;

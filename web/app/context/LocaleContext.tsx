@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, ReactNode } from "react";
+import React, { createContext, useContext, ReactNode, useEffect } from "react";
 import { useState } from "react";
 
 // const LocaleContext = createContext({});
@@ -12,15 +12,18 @@ interface LocaleContextProps {
 
 type ContextProps = {
   locale: string;
-  dispatch: Function;
+  dispatch: (locale: string) => void;
 };
 
 const LocaleContext = createContext<ContextProps>({} as ContextProps);
 // const LocaleContext = createContext({});
 
 export const LocaleContextProvider = ({ children }: LocaleContextProps) => {
-  const [locale, dispatch] = useState<string>("fr");
+  const [locale, dispatch] = useState<string>(defaultLocale);
 
+  useEffect(() => {
+    document.documentElement.setAttribute("lang", locale);
+  }, [locale]);
   //detect user lang
   // useEffect(() => {
   //   const userLang = _detectUserLang()
@@ -47,3 +50,5 @@ export const LocaleContextProvider = ({ children }: LocaleContextProps) => {
 export default function useLocale() {
   return useContext(LocaleContext);
 }
+
+export const defaultLocale = "fr";

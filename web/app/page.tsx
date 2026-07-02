@@ -8,12 +8,6 @@ import { HOME_QUERY_RESULT } from "./types/sanity.types";
 
 export const revalidate = 3600; // revalidate every hour
 
-// type PageProps = {
-//   params: {
-//     slug: string;
-//   };
-// };
-
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getHome();
   return {
