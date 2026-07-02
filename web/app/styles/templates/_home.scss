@@ -1,5 +1,11 @@
 @use "../variables";
-
+html:has(.template--home) {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: var(--header-h);
+  .card--home {
+    scroll-snap-align: start;
+  }
+}
 .template--home {
   .content--home {
     // perspective: 1000px;
