@@ -22,18 +22,19 @@
 
 - # carte home 3d au hover, revient à la normale après
 - # carte home + shuffle
-- card callage année
-- card line h entre title et prog
+- # card callage année
+- # card line h entre title et prog
 - pb carte news
 
 ## Projet
 
-- taille modal
+- # taille modal
 
 ## Projets
 
 - # image default à virer
 - # ordre des projets = ordre projet suivant
+- sort
 
 ## global
 

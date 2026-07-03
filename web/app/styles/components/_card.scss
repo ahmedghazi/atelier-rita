@@ -77,8 +77,8 @@
         aspect-ratio: 238 / 317 !important;
         height: 100% !important;
         object-fit: cover;
-        position: sticky;
-        top: var(--header-h);
+        // position: sticky;
+        // top: var(--header-h);
       }
     }
     @media screen and (max-width: variables.$md) {
