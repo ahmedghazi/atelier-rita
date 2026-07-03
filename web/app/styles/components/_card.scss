@@ -23,8 +23,13 @@
       transform-style: preserve-3d;
       position: relative;
     }
+    .recto,
+    .verso {
+      aspect-ratio: 238 / 317 !important;
+    }
     .recto {
       backface-visibility: hidden;
+      height: 100%;
     }
     .verso {
       transform: rotateY(180deg);
@@ -59,13 +64,21 @@
       }
     }
     figure {
+      height: 100%;
       &.is-landscape img {
         // aspect-ratio: 317 / 238 !important;
+        object-fit: contain;
+        object-position: top;
+        height: auto !important;
+        aspect-ratio: unset !important;
       }
+
       img {
         aspect-ratio: 238 / 317 !important;
         height: 100% !important;
         object-fit: cover;
+        position: sticky;
+        top: var(--header-h);
       }
     }
     @media screen and (max-width: variables.$md) {

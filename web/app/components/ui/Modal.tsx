@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./Modal.module.scss";
 import clsx from "clsx";
 import Icon from "./Icon";
@@ -23,6 +23,14 @@ const Modal = ({
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const { isMobile } = useDeviceDetect();
+  const { modalZIndex, setModalZIndex } = usePageContext();
+  const [localZIndex, setLocalZIndex] = useState(zIndex);
+
+  const bringToFront = useCallback(() => {
+    const newZ = modalZIndex + 1;
+    setLocalZIndex(newZ);
+    setModalZIndex(newZ);
+  }, [modalZIndex, setModalZIndex]);
   // const [delayOpen, setDelayOpen] = useState(false);
   const [position, setPosition] = useState<{ x: number; y: number }>({
     x: 0,
@@ -53,13 +61,10 @@ const Modal = ({
   };
 
   useEffect(() => {
-    if (open) {
-      return;
-    } else {
-      if (isMobile) return;
-      _randomlyPlaceModal();
-    }
-  }, [open, zIndex]);
+    if (open) return;
+    if (isMobile) return;
+    _randomlyPlaceModal();
+  }, [open, isMobile]);
 
   return (
     <Draggable
@@ -68,6 +73,7 @@ const Modal = ({
       disabled={isMobile}>
       <div
         ref={ref}
+        onMouseDown={bringToFront}
         className={clsx(
           "modal",
           open && "modal--open",
@@ -76,7 +82,7 @@ const Modal = ({
         )}
         style={{
           transform: `translate(${position.x}px, ${position.y}px)`,
-          zIndex,
+          zIndex: localZIndex,
         }}>
         <div className={clsx("modal__body", styles.modal__body, "hide-sb")}>
           {children}

@@ -52,6 +52,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  pointer-events: none;
 }
 .handle {
   cursor: grab;
@@ -62,11 +63,12 @@
   z-index: 0;
 }
 .modal__close {
-  cursor: grab;
+  // cursor: grab;
   touch-action: none;
   display: flex;
   justify-content: flex-end;
   z-index: 1;
+  pointer-events: all;
 }
 .modal__close[data-dragging] {
   cursor: grabbing;

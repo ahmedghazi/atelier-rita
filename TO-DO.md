@@ -41,5 +41,6 @@
 - modal taille
 - # modal draggable zone plus grande, sous le texte
 - # plage typo sur grands écrans
+- image
 
 ## Devis additif pour les tries sur index
