@@ -17,6 +17,7 @@ type ContextProps = {
   layoutVersion: number;
   settings: SETTINGS_QUERY_RESULT;
   modalZIndex: number;
+  headerHeight?: number;
   setModalZIndex: (zIndex: number | ((prev: number) => number)) => void;
 };
 
@@ -37,6 +38,9 @@ export const PageContextProvider = (props: PageContextProps) => {
   const [layoutReady, setLayoutReady] = useState<boolean>(false);
   const [layoutVersion, setLayoutVersion] = useState(0);
   const [modalZIndex, setModalZIndex] = useState<number>(99);
+  const [headerHeight, setHeaderHeight] = useState<number | undefined>(
+    undefined,
+  );
 
   const _randomColor = () => {
     if (!settings) return;
@@ -68,6 +72,7 @@ export const PageContextProvider = (props: PageContextProps) => {
         "--header-h",
         headerBounding.height + "px",
       );
+      setHeaderHeight(headerBounding.height);
     }
 
     const gridder = document.querySelector(".gridder");
@@ -130,6 +135,7 @@ export const PageContextProvider = (props: PageContextProps) => {
         layoutVersion,
         modalZIndex,
         setModalZIndex,
+        headerHeight,
       }}>
       {children}
     </PageContext.Provider>

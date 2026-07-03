@@ -7,6 +7,7 @@
 
   --header-height: 43.5px;
 
+  --screen-xs: 600px;
   --screen-sm: 768px;
   --screen-md: 1080px;
   --screen-lg: 1441px;
@@ -30,6 +31,19 @@
     "Helvetica Neue Roman", "TeXGyreHerosRegular", "Helvetica", "Arial",
     sans-serif;
 
+  /*
+  md (1280px) 13px
+  md (1,512px) 15px
+  md (1,728px) 17px
+  md (1,920px) 19px
+  md (2,560px) 26px
+
+  lg (1280px) 24px
+  lg (1,512px) 28px
+  lg (1,728px) 31px
+  lg (1,920px) 33px
+  lg (2,560px) 45px
+  */
   /* BODY (md) */
   --text-body-md: 0.8125rem; /* 13px */
 
@@ -143,6 +157,7 @@
 
   --gutter: var(--gutter);
 
+  --screen-xs: var(--screen-xs);
   --screen-sm: var(--screen-sm);
   --screen-md: var(--screen-md);
   --screen-lg: var(--screen-lg);

@@ -40,17 +40,22 @@
       .footer {
         display: flex;
         justify-content: space-between;
-        align-items: flex-end;
         gap: var(--spacing-lg);
         line-height: 1;
+      }
+      .header {
+        align-items: flex-start;
+      }
+      .footer {
+        align-items: flex-end;
       }
       .body {
         position: absolute;
         left: 50%;
         top: 50%;
-        // width: calc(100% - var(--spacing-lg));
         transform: translate(-50%, -50%);
         text-align: center;
+        line-height: 1;
       }
     }
     figure {
