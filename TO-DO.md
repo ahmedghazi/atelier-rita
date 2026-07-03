@@ -34,7 +34,7 @@
 
 ## global
 
-- header-h
+- # header-h
 - modal taille
 - # modal draggable zone plus grande, sous le texte
 - plage typo sur grands écrans

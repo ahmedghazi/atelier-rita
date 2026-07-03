@@ -1,10 +1,13 @@
 @use "../variables";
 html:has(.template--home) {
-  scroll-snap-type: y mandatory;
-  scroll-padding-top: var(--header-h);
-  .card--home {
-    scroll-snap-align: start;
-  }
+  // scroll-snap-type: y mandatory;
+  // &,
+  // body {
+  //   scroll-padding-top: var(--header-h);
+  // }
+  // .card--home {
+  //   scroll-snap-align: start;
+  // }
 }
 .template--home {
   .content--home {
