@@ -96,7 +96,7 @@
 //     <>
 //       <form onSubmit={handleSubmit} className={clsx("mailchimp")}>
 //         <div className="flex  items-baseline">
-//           <div className="title text-lg">NEWSLETTER</div>
+//           <div className="title text-display-lg">NEWSLETTER</div>
 //           <div className="flex-2 input-wrapper">
 //             <input
 //               {...field}

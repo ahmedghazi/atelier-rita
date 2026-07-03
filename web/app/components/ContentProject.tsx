@@ -122,7 +122,7 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
           {_related && (
             <div className='related'>
               <Link href={_linkResolver(_related)}>
-                <h2 className='text-lg--sm md:text-lg'>
+                <h2 className='text-display-lg--sm md:text-display-lg'>
                   {_localizeText(locale, "nextProject")}
                 </h2>
 
@@ -141,7 +141,7 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
       <div className='footer'>
         {/* <pre>{JSON.stringify(relatedByindex, null, 2)}</pre> */}
         <div className='grid md:grid-cols-5 gap-gutter items-baseline'>
-          <h1 className='title col-span-4 md:col-span-3 text-lg--sm md:text-lg'>
+          <h1 className='title col-span-4 md:col-span-3 text-display-lg--sm md:text-display-lg'>
             {_localizeField(locale, title) as string}
             <span>, </span>
             <CityAndZip city={city} zip={zip} />

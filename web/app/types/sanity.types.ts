@@ -162,7 +162,7 @@ export type BlockContent = Array<
         _type: "span";
         _key: string;
       }>;
-      style?: "normal" | "text-lg";
+      style?: "normal" | "text-display-lg";
       listItem?: "bullet";
       markDefs?: Array<
         | {

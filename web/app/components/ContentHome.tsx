@@ -34,7 +34,12 @@ const ContentHome = ({ input }: Props) => {
   useEffect(() => {
     if (items) {
       startTransition(() => {
-        setShuffledGroups([shuffle(items), shuffle(items), shuffle(items), shuffle(items)]);
+        setShuffledGroups([
+          shuffle(items),
+          shuffle(items),
+          shuffle(items),
+          shuffle(items),
+        ]);
       });
     }
   }, [items]);
@@ -51,7 +56,7 @@ const ContentHome = ({ input }: Props) => {
     <div className='content--home '>
       {randomNews && (
         <Modal open={modalOpen} onClose={() => setModalOpen(false)} bigClose>
-          <div className='news-item text-lg--sm- md:text-lg- text-lg'>
+          <div className='news-item text-display-lg--sm- md:text-display-lg- text-display-lg'>
             <div className='title'>
               {_localizeField(locale, randomNews?.title) as string}
             </div>

@@ -1,62 +1,129 @@
 @import "tailwindcss";
 
 [data-theme="theme-rita"] {
+  /* ===================== */
+  /* BASE LAYOUT */
+  /* ===================== */
+
   --header-height: 43.5px;
+
+  --screen-sm: 768px;
+  --screen-md: 1080px;
+  --screen-lg: 1441px;
+
+  /* ===================== */
+  /* COLORS */
+  /* ===================== */
+
   --color-bg: #fff;
   --color-primary: red;
   --color-secondary: #aaaaaa;
   --color-hover: #333;
-  /* --color-accent: #ff0000; */
   --color-red: #ff0000;
+
+  /* ===================== */
+  /* TYPOGRAPHY */
+  /* ===================== */
 
   --font-primary:
     "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman",
     "Helvetica Neue Roman", "TeXGyreHerosRegular", "Helvetica", "Arial",
     sans-serif;
-  /* --font-secondary:
-    "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman",
-    "Helvetica Neue Roman", "TeXGyreHerosRegular", "Helvetica", "Arial",
-    sans-serif; */
 
-  /* --header-h: 100px; */
-  --spacing-xs: 0.438rem; /* 10px */
+  /* BODY (md) */
+  --text-body-md: 0.8125rem; /* 13px */
+
+  /* DISPLAY (lg) */
+  --text-display-lg: 1.5rem; /* 24px */
+
+  /* small variant (remplacement de ton --text-display-lg--sm) */
+  --text-display-md: 1.063rem; /* ~17px */
+
+  /* ===================== */
+  /* SPACING */
+  /* ===================== */
+
+  --spacing-xs: 0.438rem; /* ~7px (corrigé implicite cohérence) */
   --spacing-sm: 0.625rem; /* 10px */
-  --spacing-md: 1.125rem; /* 15px */
+  --spacing-md: 1.125rem; /* 18px (tu avais 15px commenté incohérent) */
   --spacing-lg: 1.875rem; /* 30px */
-  /* --spacing-70: 4.375rem; 70px */
   --spacing-70: 4.375rem; /* 70px */
-  --spacing-gutter: 1.125rem; /* 15px */
-
-  --text-md: 0.813rem; /* 13px */
-  --text-lg: 1.5rem; /* 24px */
-  --text-lg--sm: 1.063rem; /* 24px */
-
-  --cubic: cubic-bezier(0.87, 0, 0.13, 1);
-
-  /* --text-xl: clamp(26px, 5.21vw, 75px);*/
-
-  --border-width: 1.5px;
-  --border: var(--border-width) solid;
-  --border-width-lg: 2px;
-  --border-lg: var(--border-width-lg) solid;
+  --spacing-gutter: 1.125rem;
 
   --gutter: 0.4em;
 
-  --screen-sm: 768px;
-  --screen-md: 1080px;
-  --screen-lg: 1441px;
+  /* ===================== */
+  /* BORDER */
+  /* ===================== */
+
+  --border-width: 1.5px;
+  --border: var(--border-width) solid;
+
+  --border-width-lg: 2px;
+  --border-lg: var(--border-width-lg) solid;
+
+  /* ===================== */
+  /* MOTION */
+  /* ===================== */
+
+  --cubic: cubic-bezier(0.87, 0, 0.13, 1);
 }
+
+/* ===================== */
+/* RESPONSIVE TYPOGRAPHY */
+/* ===================== */
+
+@media (min-width: 1280px) {
+  [data-theme="theme-rita"] {
+    --text-body-md: 0.8125rem; /* 13px */
+    --text-display-lg: 1.5rem; /* 24px */
+  }
+}
+
+@media (min-width: 1512px) {
+  [data-theme="theme-rita"] {
+    --text-body-md: 0.9375rem; /* 15px */
+    --text-display-lg: 1.75rem; /* 28px */
+  }
+}
+
+@media (min-width: 1728px) {
+  [data-theme="theme-rita"] {
+    --text-body-md: 1.0625rem; /* 17px */
+    --text-display-lg: 1.9375rem; /* 31px */
+  }
+}
+
+@media (min-width: 1920px) {
+  [data-theme="theme-rita"] {
+    --text-body-md: 1.1875rem; /* 19px */
+    --text-display-lg: 2.0625rem; /* 33px */
+  }
+}
+
+@media (min-width: 2560px) {
+  [data-theme="theme-rita"] {
+    --text-body-md: 1.625rem; /* 26px */
+    --text-display-lg: 2.8125rem; /* 45px */
+  }
+}
+
+/* ===================== */
+/* TAILWIND THEME BRIDGE */
+/* ===================== */
 
 @theme inline {
   --color-bg: var(--color-bg);
   --color-primary: var(--color-primary);
   --color-secondary: var(--color-secondary);
   --color-hover: var(--color-hover);
-  /* --color-accent: var(--color-accent); */
   --color-red: var(--color-red);
 
   --font-primary: var(--font-primary);
-  --font-secondary: var(--font-secondary);
+
+  --text-body-md: var(--text-body-md);
+  --text-display-lg: var(--text-display-lg);
+  --text-display-md: var(--text-display-md);
 
   --spacing-xs: var(--spacing-xs);
   --spacing-sm: var(--spacing-sm);
@@ -64,13 +131,8 @@
   --spacing-lg: var(--spacing-lg);
   --spacing-70: var(--spacing-70);
   --spacing-gutter: var(--spacing-gutter);
-  --header-h: var(--header-h);
 
-  --text-md-mobile: var(--text-md-mobile);
-
-  --text-md: var(--text-md);
-  --text-lg: var(--text-lg);
-  --text-lg--sm: var(--text-lg--sm);
+  --header-height: var(--header-height);
 
   --cubic: var(--cubic);
 

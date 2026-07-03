@@ -8,8 +8,8 @@ const portableTextComponents: PortableTextComponents = {
   //   switch (props.node?.style) {
   //     case "h2":
   //       return <h2>{props.children}</h2>
-  //     case "text-lg":
-  //       return <p className="text-lg">{props.children}</p>
+  //     case "text-display-lg":
+  //       return <p className="text-display-lg">{props.children}</p>
   //     case "text-xl":
   //       return <p className="text-xl">{props.children}</p>
   //     default:
@@ -18,8 +18,8 @@ const portableTextComponents: PortableTextComponents = {
   // },
   block: {
     h2: ({ children }) => <h2>{children}</h2>,
-    "text-lg": ({ children }) => (
-      <p className='text-md md:text-lg'>{children}</p>
+    "text-display-lg": ({ children }) => (
+      <p className='text-body-md md:text-display-lg'>{children}</p>
     ),
     // align_center: ({ children }) => <p className="text-center">{children}</p>,
   },

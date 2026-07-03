@@ -30,7 +30,7 @@
     }
 
     &.module--texts-ui {
-      font-size: var(--text-lg);
+      font-size: var(--text-display-lg);
       // min-height: calc(var(--row-size) * 2 - var(--border-width) * 1);
       .inner {
         padding: calc(var(--space-md) * 0.7) var(--space-md);
@@ -46,11 +46,11 @@
         }
       }
       @media all and (max-width: variables.$md) {
-        font-size: var(--text-lg--mobile);
+        font-size: var(--text-display-lg--mobile);
       }
     }
     &.module--list-key-val-ui {
-      font-size: var(--text-lg);
+      font-size: var(--text-display-lg);
       // min-height: calc(var(--row-size) * 2 - var(--border-width) * 1);
       min-height: calc(var(--vh) * 100 - var(--header-height));
       .inner {
@@ -60,7 +60,7 @@
         color: var(--color-white);
       }
       @media all and (max-width: variables.$md) {
-        font-size: var(--text-lg--mobile);
+        font-size: var(--text-display-lg--mobile);
       }
       .text {
         p {

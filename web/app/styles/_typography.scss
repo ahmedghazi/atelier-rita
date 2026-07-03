@@ -19,14 +19,14 @@
 body {
   color: var(--color-accent);
   font-family: var(--font-primary);
-  font-size: var(--text-md);
+  font-size: var(--text-body-md);
   line-height: 1.25;
   // text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   letter-spacing: 0.02rem;
 
   @media all and (min-width: 1080px) {
-    font-size: var(--text-md);
+    font-size: var(--text-body-md);
   }
 }
 
@@ -42,11 +42,11 @@ html {
 @media all and (min-width: 1920px) {
   html {
     // font-size: 20px;
-    font-size: 1vw;
+    // font-size: 1vw;
   }
 }
 
-.text-lg {
+.text-display-lg {
   line-height: 1.1;
 }
 .italic {
@@ -60,7 +60,7 @@ h3,
 h4,
 h5,
 h6 {
-  // font-size: var(--text-md);
+  // font-size: var(--text-body-md);
   font-weight: normal;
 }
 .headline {
@@ -72,7 +72,7 @@ h6 {
   border-bottom: var(--border);
   text-align: center;
   padding: toRem(16) 0 toRem(13);
-  font-size: var(--text-lg);
+  font-size: var(--text-display-lg);
 }
 
 button {
@@ -96,7 +96,7 @@ button {
     }
   }
   &.btn--lg {
-    font-size: var(--text-lg);
+    font-size: var(--text-display-lg);
     // line-height: toRem(53);
   }
 }

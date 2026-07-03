@@ -21,8 +21,8 @@ const DesignSystem = () => {
     "text-3xl",
     "text-2xl",
     "text-xl",
-    "text-lg",
-    "text-md",
+    "text-display-lg",
+    "text-body-md",
     "text-base",
     "text-sm",
     "text-xs",
@@ -32,7 +32,7 @@ const DesignSystem = () => {
   return (
     <div className='design-system p-md'>
       <section className=' mb-lg'>
-        <h2 className='text-lg mb-lg b-b'>Spaces ({spaces.length})</h2>
+        <h2 className='text-display-lg mb-lg b-b'>Spaces ({spaces.length})</h2>
         {spaces.map((item, i) => (
           <div className='flex gap-sm' key={i}>
             <div className='w-4/12'>{item}</div>
@@ -40,20 +40,22 @@ const DesignSystem = () => {
               className={clsx(
                 "flex-2 bg-red text-center",
                 item,
-                "mb-sm"
+                "mb-sm",
               )}></div>
           </div>
         ))}
       </section>
 
       <section className=' mb-lg '>
-        <h2 className='text-lg mb-lg b-b'>Font sizes ({texts.length})</h2>
+        <h2 className='text-display-lg mb-lg b-b'>
+          Font sizes ({texts.length})
+        </h2>
 
         {texts.map((item, i) => (
           <div className={clsx(item, "mb-md")} key={i}>
             <div className='row'>
               <div className='col-md-4'>
-                <span className='text-md'>Text {item}</span>
+                <span className='text-body-md'>Text {item}</span>
               </div>
               <div className='col-xs'>
                 <p className={clsx(`text-${item} uppercase- py-02re-`)}>
@@ -75,7 +77,7 @@ const DesignSystem = () => {
       </Section> */}
 
       <section className=' mb-lg'>
-        <p className='text-md'>
+        <p className='text-body-md'>
           Lorem ipsum <b>dolor</b> sit, amet <em>consectetur</em> adipisicing
           <br />
           elit. Beatae earum, deleniti inventore vero asperiores voluptatem!
@@ -89,7 +91,7 @@ const DesignSystem = () => {
       </section>
 
       <section className='mb-lg'>
-        <h2 className='text-lg mb-1'>Buttons</h2>
+        <h2 className='text-display-lg mb-1'>Buttons</h2>
         <ul className='flex items-baseline gap-1e'>
           <li className='pr-2'>
             <a href='#' className='  '>
@@ -113,7 +115,7 @@ const DesignSystem = () => {
       </section>
 
       <section className=' mb-lg'>
-        <h2 className='text-lg mb-1'>text image</h2>
+        <h2 className='text-display-lg mb-1'>text image</h2>
         <div className='text-image mb-md'>
           <div className='grid grid-cols-2 gap-md'>
             <figure>

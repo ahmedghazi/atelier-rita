@@ -128,7 +128,7 @@ const Header = ({ settings }: Props) => {
             "md:opacity-100 md:pointer-events-auto",
           )}>
           {isHome && (
-            <div className='description text-md hidden-sm'>
+            <div className='description text-body-md hidden-sm'>
               {_localizeField(locale, randomDescription)}
             </div>
           )}
