@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { HOME_QUERY_RESULT } from "../types/sanity.types";
 import { _linkResolver, _localizeField } from "../sanity-api/utils";
 import Figure from "./ui/Figure";
@@ -8,6 +8,26 @@ import Link from "next/link";
 import useLocale from "../context/LocaleContext";
 import useDeviceDetect from "../hooks/useDeviceDetect";
 import { useRouter } from "next/navigation";
+
+const InlineSvg = ({ url, alt }: { url: string; alt: string }) => {
+  const [markup, setMarkup] = useState("");
+
+  useEffect(() => {
+    fetch(url)
+      .then((r) => r.text())
+      .then(setMarkup)
+      .catch(() => {});
+  }, [url]);
+
+  if (!markup) return null;
+  return (
+    <span
+      role='img'
+      aria-label={alt}
+      dangerouslySetInnerHTML={{ __html: markup }}
+    />
+  );
+};
 
 type Props = {
   input: NonNullable<NonNullable<HOME_QUERY_RESULT>["items"]>[number];
@@ -60,7 +80,12 @@ const CardHomeComponent = ({ input }: Props) => {
         <div className='perspective'>
           <div className='card--project__inner'>
             <div className='recto'>
-              <Figure asset={image?.asset} alt={titleLocalized} />
+              {image?.asset?.extension !== "svg" && (
+                <Figure asset={image?.asset} alt={titleLocalized} />
+              )}
+              {image?.asset?.extension === "svg" && image?.asset?.url && (
+                <InlineSvg url={image.asset.url} alt={titleLocalized} />
+              )}
             </div>
             <div className='verso'>
               <div className='header'>

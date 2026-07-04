@@ -81,6 +81,17 @@
         // top: var(--header-h);
       }
     }
+    svg {
+      mix-blend-mode: difference;
+      rect {
+        // display: none;
+        // opacity: 0.1;
+      }
+      line,
+      path {
+        // fill: transparent;
+      }
+    }
     @media screen and (max-width: variables.$md) {
       .verso {
         padding: calc(var(--spacing-xs) * 0.5) var(--spacing-xs);

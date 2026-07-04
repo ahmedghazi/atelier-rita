@@ -13,6 +13,8 @@ type Props = {
   input: NonNullable<HOME_QUERY_RESULT>;
 };
 
+type Item = NonNullable<NonNullable<HOME_QUERY_RESULT>["items"]>[number];
+
 const shuffle = <T,>(arr: T[]): T[] => {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -22,26 +24,47 @@ const shuffle = <T,>(arr: T[]): T[] => {
   return a;
 };
 
+const mergeSvgsIntoImgs = (imgs: Item[], svgs: Item[]): Item[] => {
+  const shuffledImgs = shuffle(imgs);
+  const shuffledSvgs = shuffle(svgs);
+  const N = shuffledImgs.length;
+  // N+1 slots exist (before, between, and after each img); cap SVGs to avoid adjacency
+  const M = Math.min(shuffledSvgs.length, N + 1);
+  const slots = shuffle([...Array(N + 1).keys()]).slice(0, M).sort((a, b) => a - b);
+
+  const result: Item[] = [];
+  let svgIdx = 0;
+  let slotIdx = 0;
+
+  for (let i = 0; i <= N; i++) {
+    if (slotIdx < slots.length && slots[slotIdx] === i) {
+      result.push(shuffledSvgs[svgIdx++]);
+      slotIdx++;
+    }
+    if (i < N) result.push(shuffledImgs[i]);
+  }
+
+  return result;
+};
+
 const ContentHome = ({ input }: Props) => {
   const { locale } = useLocale();
   const { items, news } = input;
   const randomNews = useRandomItem(news) ?? "";
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-
-  type ItemRow = NonNullable<typeof items>;
-  const [shuffledGroups, setShuffledGroups] = useState<ItemRow[]>([]);
+  const [finalArr, setFinalArr] = useState<Item[]>([]);
 
   useEffect(() => {
-    if (items) {
-      startTransition(() => {
-        setShuffledGroups([
-          shuffle(items),
-          shuffle(items),
-          shuffle(items),
-          shuffle(items),
-        ]);
-      });
-    }
+    if (!items) return;
+    const arrImgs = items.filter(
+      (item) => item?.image?.asset?.extension !== "svg",
+    ) as Item[];
+    const arrSvgs = items.filter(
+      (item) => item?.image?.asset?.extension === "svg",
+    ) as Item[];
+    startTransition(() => {
+      setFinalArr(mergeSvgsIntoImgs(arrImgs, arrSvgs));
+    });
   }, [items]);
 
   useEffect(() => {
@@ -80,11 +103,9 @@ const ContentHome = ({ input }: Props) => {
       <div
         className='grid grid-cols-2 md:grid-cols-5 gap-xs md:gap-gutter md:gap-y-header-h'
         style={{}}>
-        {shuffledGroups.map((group, gi) =>
-          group.map((item, index) => (
-            <CardHomeComponent input={item} key={`${gi}-${index}`} />
-          )),
-        )}
+        {finalArr.map((item, index) => (
+          <CardHomeComponent input={item} key={index} />
+        ))}
       </div>
     </div>
   );
