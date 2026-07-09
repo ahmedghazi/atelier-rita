@@ -22,6 +22,7 @@ const InlineSvg = ({ url, alt }: { url: string; alt: string }) => {
   if (!markup) return null;
   return (
     <span
+      className='inline-svg'
       role='img'
       aria-label={alt}
       dangerouslySetInnerHTML={{ __html: markup }}
