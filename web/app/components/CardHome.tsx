@@ -11,7 +11,6 @@ import { useRouter } from "next/navigation";
 
 const InlineSvg = ({ url, alt }: { url: string; alt: string }) => {
   const [markup, setMarkup] = useState("");
-  console.log(url);
   useEffect(() => {
     fetch(`/api/svg-proxy?url=${encodeURIComponent(url)}`)
       .then((r) => r.text())
@@ -66,7 +65,7 @@ const CardHomeComponent = ({ input }: Props) => {
       }
     }
   };
-
+  console.log(image?.asset?.extension);
   return (
     <article
       className={clsx("card card--home", { "is-active": active })}
