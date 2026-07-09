@@ -65,7 +65,7 @@ const CardHomeComponent = ({ input }: Props) => {
       }
     }
   };
-  console.log(image?.asset?.extension);
+  console.log(image?.asset?.extension, image?.asset?.url);
   const isSvg = image?.asset?.extension === "svg";
   return (
     <article
