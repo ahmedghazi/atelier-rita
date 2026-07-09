@@ -84,12 +84,16 @@
     svg {
       mix-blend-mode: difference;
       rect {
-        // display: none;
-        // opacity: 0.1;
+        display: none;
       }
-      line,
+      rect,
+      polygon,
       path {
-        // fill: transparent;
+        // display: none;
+        opacity: 0.1;
+      }
+      line {
+        stroke: white;
       }
     }
     @media screen and (max-width: variables.$md) {

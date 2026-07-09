@@ -13,7 +13,7 @@ const InlineSvg = ({ url, alt }: { url: string; alt: string }) => {
   const [markup, setMarkup] = useState("");
 
   useEffect(() => {
-    fetch(url)
+    fetch(`/api/svg-proxy?url=${encodeURIComponent(url)}`)
       .then((r) => r.text())
       .then(setMarkup)
       .catch(() => {});
