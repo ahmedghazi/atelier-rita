@@ -66,6 +66,7 @@ const CardHomeComponent = ({ input }: Props) => {
     }
   };
   console.log(image?.asset?.extension);
+  const isSvg = image?.asset?.extension === "svg";
   return (
     <article
       className={clsx("card card--home", { "is-active": active })}
@@ -80,10 +81,8 @@ const CardHomeComponent = ({ input }: Props) => {
         <div className='perspective'>
           <div className='card--project__inner'>
             <div className='recto'>
-              {image?.asset?.extension !== "svg" && (
-                <Figure asset={image?.asset} alt={titleLocalized} />
-              )}
-              {image?.asset?.extension === "svg" && image?.asset?.url && (
+              {!isSvg && <Figure asset={image?.asset} alt={titleLocalized} />}
+              {isSvg && image?.asset?.url && (
                 <InlineSvg url={image.asset.url} alt={titleLocalized} />
               )}
             </div>

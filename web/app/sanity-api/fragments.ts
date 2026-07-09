@@ -23,7 +23,8 @@ export const image = `
 	asset->{
 		...,
 		altText,
-		title
+		title,
+		url
 	}
 `;
 export const figure = `
