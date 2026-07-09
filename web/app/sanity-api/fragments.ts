@@ -24,7 +24,9 @@ export const image = `
 		...,
 		altText,
 		title,
-		url
+		url,
+		extension,
+		mimeType
 	}
 `;
 export const figure = `

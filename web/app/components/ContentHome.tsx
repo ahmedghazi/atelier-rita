@@ -56,12 +56,11 @@ const ContentHome = ({ input }: Props) => {
 
   useEffect(() => {
     if (!items) return;
-    const arrImgs = items.filter(
-      (item) => item?.image?.asset?.extension !== "svg",
-    ) as Item[];
-    const arrSvgs = items.filter(
-      (item) => item?.image?.asset?.extension === "svg",
-    ) as Item[];
+    const isSvgItem = (item: Item | null) =>
+      /\.svg($|\?)/i.test(item?.image?.asset?.url ?? "") ||
+      item?.image?.asset?.extension === "svg";
+    const arrImgs = items.filter((item) => !isSvgItem(item)) as Item[];
+    const arrSvgs = items.filter((item) => isSvgItem(item)) as Item[];
     startTransition(() => {
       setFinalArr(mergeSvgsIntoImgs(arrImgs, arrSvgs));
     });

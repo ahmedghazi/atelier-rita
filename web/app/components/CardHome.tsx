@@ -65,8 +65,9 @@ const CardHomeComponent = ({ input }: Props) => {
       }
     }
   };
-  console.log(image?.asset?.extension, image?.asset?.url);
-  const isSvg = image?.asset?.extension === "svg";
+  const isSvg =
+    /\.svg($|\?)/i.test(image?.asset?.url ?? "") ||
+    image?.asset?.extension === "svg";
   return (
     <article
       className={clsx("card card--home", { "is-active": active })}
