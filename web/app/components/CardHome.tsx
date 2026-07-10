@@ -45,11 +45,11 @@ const CardHomeComponent = ({ input }: Props) => {
   const titleLocalized = _localizeField(locale, title) as string;
   const programmeLocalized = _localizeField(locale, programme) as string;
 
-  const handleHover = (e: React.MouseEvent<HTMLElement>) => {
+  const handleHover = (e: React.MouseEvent<HTMLElement>, _active: boolean) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const enteredFromRight = e.clientX - rect.left > rect.width / 2;
     setFlipDeg(enteredFromRight ? -180 : 180);
-    setActive(!active);
+    setActive(_active);
   };
 
   const _onCick = (e: React.MouseEvent<HTMLElement>) => {
@@ -58,7 +58,7 @@ const CardHomeComponent = ({ input }: Props) => {
       e.stopPropagation();
       tapCount.current += 1;
       if (tapCount.current === 1) {
-        handleHover(e);
+        handleHover(e, true);
       } else {
         router.push(_linkResolver(project));
         tapCount.current = 0;
@@ -73,10 +73,10 @@ const CardHomeComponent = ({ input }: Props) => {
       className={clsx("card card--home", { "is-active": active })}
       style={{ "--flip-deg": `${flipDeg}deg` } as React.CSSProperties}
       onMouseEnter={(e) => {
-        if (!isMobile) handleHover(e);
+        if (!isMobile) handleHover(e, true);
       }}
       onMouseLeave={(e) => {
-        if (!isMobile) handleHover(e);
+        if (!isMobile) handleHover(e, false);
       }}>
       <Link onClick={_onCick} href={_linkResolver(project)}>
         <div className='perspective'>
