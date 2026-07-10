@@ -124,7 +124,7 @@ const ContentProjects = ({ input }: Props) => {
       <div className='grid md:grid-cols-5 gap-gutter '>
         <div className='items md:col-span-3'>
           <div className='thead'>
-            <div className='tr grid grid-cols-3 md:grid-cols-6 gap-gutter'>
+            <div className='tr grid grid-cols-2 md:grid-cols-6 gap-gutter'>
               <Th
                 label={_localizeText(locale, "name")}
                 sortKey='title'
@@ -137,7 +137,7 @@ const ContentProjects = ({ input }: Props) => {
                 label={_localizeText(locale, "programme")}
                 sortKey='programme'
                 dataSort='alpha'
-                className='th programme'
+                className='th programme hidden-sm'
                 isActive={isActive("programme")}
                 onClick={handleSort}
               />
@@ -145,7 +145,7 @@ const ContentProjects = ({ input }: Props) => {
                 label={_localizeText(locale, "location")}
                 sortKey='location'
                 dataSort='alpha'
-                className='th location'
+                className='th location hidden-sm'
                 isActive={isActive("location")}
                 onClick={handleSort}
               />
@@ -169,7 +169,7 @@ const ContentProjects = ({ input }: Props) => {
                 label={_localizeText(locale, "year")}
                 sortKey='year'
                 dataSort='num'
-                className='th year hidden-sm'
+                className='th year'
                 isActive={isActive("year")}
                 onClick={handleSort}
               />

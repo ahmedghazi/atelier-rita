@@ -377,6 +377,13 @@
             "type": "string"
           },
           "optional": true
+        },
+        "en": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }
@@ -1088,6 +1095,14 @@
             "name": "blockContent"
           },
           "optional": true
+        },
+        "en": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "blockContent"
+          },
+          "optional": true
         }
       }
     }
@@ -1106,6 +1121,13 @@
           }
         },
         "fr": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "en": {
           "type": "objectAttribute",
           "value": {
             "type": "string"

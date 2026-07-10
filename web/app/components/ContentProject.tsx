@@ -142,8 +142,8 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
         {/* <pre>{JSON.stringify(relatedByindex, null, 2)}</pre> */}
         <div className='grid md:grid-cols-5 gap-gutter items-baseline'>
           <h1 className='title col-span-4 md:col-span-3 text-display-lg--sm md:text-display-lg'>
-            {_localizeField(locale, title) as string}
-            <span>, </span>
+            <div>{_localizeField(locale, title) as string},</div>
+            {/* <span>, </span> */}
             <CityAndZip city={city} zip={zip} />
           </h1>
           <button className='toggle ' onClick={() => setModalOpen(!modalOpen)}>

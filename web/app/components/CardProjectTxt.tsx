@@ -28,15 +28,15 @@ const CardProjectTxt = ({ input, setThumbnail }: Props) => {
       className='tr card card--project--text'
       onMouseEnter={() => setThumbnail(imageCover?.asset || null)}>
       <Link href={_linkResolver(input)}>
-        <div className=' grid grid-cols-3 md:grid-cols-6 gap-gutter'>
+        <div className=' grid grid-cols-2 md:grid-cols-6 gap-gutter'>
           <h2 className='td'>{titleLocalized}</h2>
-          <div className='td programme'>{programmeLocalized}</div>
-          <div className='td location'>
+          <div className='td programme hidden-sm'>{programmeLocalized}</div>
+          <div className='td location  hidden-sm'>
             <CityAndZip city={city} zip={zip} />
           </div>
           <div className='td client hidden-sm'>{client}</div>
           <div className='td numbers hidden-sm'>{numbers}</div>
-          <div className='td year hidden-sm'>{year}</div>
+          <div className='td year'>{year}</div>
         </div>
       </Link>
     </div>
