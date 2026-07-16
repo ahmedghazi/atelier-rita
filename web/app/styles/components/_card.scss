@@ -83,6 +83,9 @@
     }
     svg {
       mix-blend-mode: difference;
+      max-width: 100%;
+      aspect-ratio: 238 / 317 !important;
+      height: 100% !important;
       rect {
         display: none;
       }
