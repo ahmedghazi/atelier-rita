@@ -18,6 +18,36 @@ import Link from "next/link";
 import CityAndZip from "./CityAndZip";
 import BackHome from "./ui/BackHome";
 import SlickSlider from "./ui/SlickSlider";
+import SvgInline from "./SvgInline";
+
+type ContentProjectSlideProps = {
+  image: NonNullable<PROJECT_QUERY_RESULT>["imageCover"];
+  index: number;
+  alt: string;
+};
+
+const ContentProjectSlide = ({
+  image,
+  index,
+  alt = "",
+}: ContentProjectSlideProps) => {
+  const isSvg =
+    /\.svg($|\?)/i.test(image?.asset?.url ?? "") ||
+    image?.asset?.extension === "svg";
+  return (
+    <div key={index + 1} className='ss-slider__slide'>
+      {/* <Figure
+        asset={image?.asset}
+        alt={image?.asset?.altText}
+        title={image?.asset?.title || undefined}
+      /> */}
+      {!isSvg && <Figure asset={image?.asset} alt={alt} />}
+      {isSvg && image?.asset?.url && (
+        <SvgInline url={image.asset.url} alt={alt} />
+      )}
+    </div>
+  );
+};
 
 type Props = {
   input: NonNullable<PROJECT_QUERY_RESULT>;
@@ -88,10 +118,10 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
       key: _localizeText(locale, "numbers"),
       value: numbers,
     },
-    {
-      key: _localizeText(locale, "year"),
-      value: year,
-    },
+    // {
+    //   key: _localizeText(locale, "year"),
+    //   value: year,
+    // },
   ];
 
   const _related = related ? related : relatedByindex;
@@ -109,13 +139,12 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
               infinite: false,
             }}>
             {slides.map((image, index: number) => (
-              <div key={index + 1} className='ss-slider__slide'>
-                <Figure
-                  asset={image?.asset}
-                  alt={image?.asset?.altText}
-                  title={image?.asset?.title || undefined}
-                />
-              </div>
+              <ContentProjectSlide
+                key={index + 1}
+                image={image}
+                index={index}
+                alt={image?.asset?.altText || ""}
+              />
             ))}
           </SlickSlider>
 

@@ -8,26 +8,27 @@ import Link from "next/link";
 import useLocale from "../context/LocaleContext";
 import useDeviceDetect from "../hooks/useDeviceDetect";
 import { useRouter } from "next/navigation";
+import SvgInline from "./SvgInline";
 
-const InlineSvg = ({ url, alt }: { url: string; alt: string }) => {
-  const [markup, setMarkup] = useState("");
-  useEffect(() => {
-    fetch(`/api/svg-proxy?url=${encodeURIComponent(url)}`)
-      .then((r) => r.text())
-      .then(setMarkup)
-      .catch(() => {});
-  }, [url]);
+// const InlineSvg = ({ url, alt }: { url: string; alt: string }) => {
+//   const [markup, setMarkup] = useState("");
+//   useEffect(() => {
+//     fetch(`/api/svg-proxy?url=${encodeURIComponent(url)}`)
+//       .then((r) => r.text())
+//       .then(setMarkup)
+//       .catch(() => {});
+//   }, [url]);
 
-  if (!markup) return null;
-  return (
-    <span
-      className='inline-svg'
-      role='img'
-      aria-label={alt}
-      dangerouslySetInnerHTML={{ __html: markup }}
-    />
-  );
-};
+//   if (!markup) return null;
+//   return (
+//     <span
+//       className='inline-svg'
+//       role='img'
+//       aria-label={alt}
+//       dangerouslySetInnerHTML={{ __html: markup }}
+//     />
+//   );
+// };
 
 type Props = {
   input: NonNullable<NonNullable<HOME_QUERY_RESULT>["items"]>[number];
@@ -84,7 +85,7 @@ const CardHomeComponent = ({ input }: Props) => {
             <div className='recto'>
               {!isSvg && <Figure asset={image?.asset} alt={titleLocalized} />}
               {isSvg && image?.asset?.url && (
-                <InlineSvg url={image.asset.url} alt={titleLocalized} />
+                <SvgInline url={image.asset.url} alt={titleLocalized} />
               )}
             </div>
             <div className='verso'>
