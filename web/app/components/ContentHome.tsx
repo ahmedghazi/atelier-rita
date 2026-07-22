@@ -3,7 +3,7 @@ import React, { useEffect, useState, startTransition } from "react";
 import { HOME_QUERY_RESULT } from "../types/sanity.types";
 import { useRandomItem } from "../hooks/useRandomItem";
 import { PortableText } from "next-sanity";
-import { _localizeField } from "../sanity-api/utils";
+import { _date, _localizeField } from "../sanity-api/utils";
 import portableTextComponents from "../sanity-api/portableTextComponents";
 import useLocale from "../context/LocaleContext";
 import Modal from "./ui/Modal";
@@ -30,7 +30,9 @@ const mergeSvgsIntoImgs = (imgs: Item[], svgs: Item[]): Item[] => {
   const N = shuffledImgs.length;
   // N+1 slots exist (before, between, and after each img); cap SVGs to avoid adjacency
   const M = Math.min(shuffledSvgs.length, N + 1);
-  const slots = shuffle([...Array(N + 1).keys()]).slice(0, M).sort((a, b) => a - b);
+  const slots = shuffle([...Array(N + 1).keys()])
+    .slice(0, M)
+    .sort((a, b) => a - b);
 
   const result: Item[] = [];
   let svgIdx = 0;
@@ -82,6 +84,9 @@ const ContentHome = ({ input }: Props) => {
             <div className='title'>
               {_localizeField(locale, randomNews?.title) as string}
             </div>
+            {randomNews?.date && (
+              <div className='date'>{_date(randomNews.date)}</div>
+            )}
             <div className='text'>
               <PortableText
                 value={_localizeField(locale, randomNews.text) as string}

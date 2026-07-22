@@ -85,6 +85,9 @@ body:has(.template--project) {
         margin-bottom: var(--spacing-md);
         position: relative;
       }
+      .title {
+        max-width: calc(100% - 4em);
+      }
       .year {
         position: absolute;
         right: 0;

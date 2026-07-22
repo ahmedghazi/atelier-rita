@@ -17,7 +17,7 @@ export default defineType({
     },
     {
       name: 'seo',
-      title: 'SEO',
+      title: 'SEO (moteurs de recherche google, duckduckgo, ia, ...)',
     },
   ],
   fields: [

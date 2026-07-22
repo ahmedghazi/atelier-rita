@@ -15,10 +15,19 @@ export default defineField({
       title: 'titre',
     }),
     defineField({
+      name: 'date',
+      type: 'datetime',
+      description: 'heure optionnelle',
+      options: {
+        dateFormat: 'DD/MM/YYYY',
+      },
+    }),
+    defineField({
       name: 'text',
       type: 'localeBlockContent',
       title: 'Texte',
     }),
+
     defineField({
       name: 'link',
       type: 'linkExternal',

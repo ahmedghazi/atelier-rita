@@ -18,6 +18,7 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 export type News = {
   _type: "news";
   title?: LocaleString;
+  date?: string;
   text?: LocaleBlockContent;
   link?: LinkExternal;
 };
@@ -82,6 +83,7 @@ export type Embed = {
 export type LocaleString = {
   _type: "localeString";
   fr?: string;
+  en?: string;
 };
 
 export type Seo = {
@@ -209,11 +211,13 @@ export type CardHome = {
 export type LocaleBlockContent = {
   _type: "localeBlockContent";
   fr?: BlockContent;
+  en?: BlockContent;
 };
 
 export type LocaleText = {
   _type: "localeText";
   fr?: string;
+  en?: string;
 };
 
 export type PageModulaire = {
@@ -252,7 +256,6 @@ export type Settings = {
   _updatedAt: string;
   _rev: string;
   siteName?: string;
-  siteDescription?: LocaleString;
   siteDescriptions?: Array<
     {
       _key: string;
@@ -271,18 +274,6 @@ export type Settings = {
       _key: string;
     } & LinkIcon
   >;
-  navSecondary?: Array<
-    | ({
-        _key: string;
-      } & LinkInternal)
-    | ({
-        _key: string;
-      } & LinkExternal)
-  >;
-  baseline?: LocaleBlockContent;
-  contact?: string;
-  labelNewsletter?: LocaleString;
-  msgNewsletter?: LocaleText;
   message404?: BlockContent;
   colors?: Array<
     {
@@ -325,7 +316,6 @@ export type Project = {
   seo?: Seo;
   title?: LocaleString;
   slug?: Slug;
-  subTitle?: string;
   imageCover?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -585,7 +575,6 @@ export type SETTINGS_QUERY_RESULT = {
   _updatedAt: string;
   _rev: string;
   siteName?: string;
-  siteDescription?: LocaleString;
   siteDescriptions?: Array<
     {
       _key: string;
@@ -627,18 +616,6 @@ export type SETTINGS_QUERY_RESULT = {
       _key: string;
     } & LinkIcon
   >;
-  navSecondary?: Array<
-    | ({
-        _key: string;
-      } & LinkExternal)
-    | ({
-        _key: string;
-      } & LinkInternal)
-  >;
-  baseline?: LocaleBlockContent;
-  contact?: string;
-  labelNewsletter?: LocaleString;
-  msgNewsletter?: LocaleText;
   message404?: BlockContent;
   colors?: Array<
     {
@@ -650,7 +627,7 @@ export type SETTINGS_QUERY_RESULT = {
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
 // Variable: HOME_QUERY
-// Query: *[_type == "home"][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  projects[]->{    	_id,  _type,  slug,  title,	programme,	year,	city,	zip,	numbers,	client,	imageCover{			asset->{		...,		altText,		title	}	}  },  items[]{    image{      	asset->{		...,		altText,		title	}    },    project->{      	_id,  _type,  slug,  title,	programme,	year,	city,	zip,	numbers,	client,	imageCover{			asset->{		...,		altText,		title	}	}    }  },  news[]{    ...  }}
+// Query: *[_type == "home"][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  projects[]->{    	_id,  _type,  slug,  title,	programme,	year,	city,	zip,	numbers,	client,	imageCover{			asset->{		...,		altText,		title,		url,		extension,		mimeType	}	}  },  items[]{    image{      	asset->{		...,		altText,		title,		url,		extension,		mimeType	}    },    project->{      	_id,  _type,  slug,  title,	programme,	year,	city,	zip,	numbers,	client,	imageCover{			asset->{		...,		altText,		title,		url,		extension,		mimeType	}	}    }  },  news[]{    ...  }}
 export type HOME_QUERY_RESULT = {
   _id: string;
   _type: "home";
@@ -693,13 +670,13 @@ export type HOME_QUERY_RESULT = {
         description?: string;
         altText: string | null;
         sha1hash?: string;
-        extension?: string;
-        mimeType?: string;
+        extension: string | null;
+        mimeType: string | null;
         size?: number;
         assetId?: string;
         uploadId?: string;
         path?: string;
-        url?: string;
+        url: string | null;
         metadata?: SanityImageMetadata;
         source?: SanityAssetSourceData;
       } | null;
@@ -719,13 +696,13 @@ export type HOME_QUERY_RESULT = {
         description?: string;
         altText: string | null;
         sha1hash?: string;
-        extension?: string;
-        mimeType?: string;
+        extension: string | null;
+        mimeType: string | null;
         size?: number;
         assetId?: string;
         uploadId?: string;
         path?: string;
-        url?: string;
+        url: string | null;
         metadata?: SanityImageMetadata;
         source?: SanityAssetSourceData;
       } | null;
@@ -754,13 +731,13 @@ export type HOME_QUERY_RESULT = {
           description?: string;
           altText: string | null;
           sha1hash?: string;
-          extension?: string;
-          mimeType?: string;
+          extension: string | null;
+          mimeType: string | null;
           size?: number;
           assetId?: string;
           uploadId?: string;
           path?: string;
-          url?: string;
+          url: string | null;
           metadata?: SanityImageMetadata;
           source?: SanityAssetSourceData;
         } | null;
@@ -771,6 +748,7 @@ export type HOME_QUERY_RESULT = {
     _key: string;
     _type: "news";
     title?: LocaleString;
+    date?: string;
     text?: LocaleBlockContent;
     link?: LinkExternal;
   }> | null;
@@ -778,7 +756,7 @@ export type HOME_QUERY_RESULT = {
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
 // Variable: PROJECT_QUERY
-// Query: *[_type == "project" && slug.current == $slug][0]{    ...,    seo{      	...,	metaImage{		asset->{			url		}	}    },    imageCover{      	asset->{		...,		altText,		title	}    },    images[]{      	asset->{		...,		altText,		title	}    },    fiche_technique[]{      ...    },    related->{      _type,      slug,      imageCover{        	asset->{		...,		altText,		title	}      }    }  }
+// Query: *[_type == "project" && slug.current == $slug][0]{    ...,    seo{      	...,	metaImage{		asset->{			url		}	}    },    imageCover{      	asset->{		...,		altText,		title,		url,		extension,		mimeType	}    },    images[]{      	asset->{		...,		altText,		title,		url,		extension,		mimeType	}    },    fiche_technique[]{      ...    },    related->{      _type,      slug,      imageCover{        	asset->{		...,		altText,		title,		url,		extension,		mimeType	}      }    }  }
 export type PROJECT_QUERY_RESULT = {
   _id: string;
   _type: "project";
@@ -797,7 +775,6 @@ export type PROJECT_QUERY_RESULT = {
   } | null;
   title?: LocaleString;
   slug?: Slug;
-  subTitle?: string;
   imageCover: {
     asset: {
       _id: string;
@@ -811,13 +788,13 @@ export type PROJECT_QUERY_RESULT = {
       description?: string;
       altText: string | null;
       sha1hash?: string;
-      extension?: string;
-      mimeType?: string;
+      extension: string | null;
+      mimeType: string | null;
       size?: number;
       assetId?: string;
       uploadId?: string;
       path?: string;
-      url?: string;
+      url: string | null;
       metadata?: SanityImageMetadata;
       source?: SanityAssetSourceData;
     } | null;
@@ -835,13 +812,13 @@ export type PROJECT_QUERY_RESULT = {
       description?: string;
       altText: string | null;
       sha1hash?: string;
-      extension?: string;
-      mimeType?: string;
+      extension: string | null;
+      mimeType: string | null;
       size?: number;
       assetId?: string;
       uploadId?: string;
       path?: string;
-      url?: string;
+      url: string | null;
       metadata?: SanityImageMetadata;
       source?: SanityAssetSourceData;
     } | null;
@@ -876,13 +853,13 @@ export type PROJECT_QUERY_RESULT = {
         description?: string;
         altText: string | null;
         sha1hash?: string;
-        extension?: string;
-        mimeType?: string;
+        extension: string | null;
+        mimeType: string | null;
         size?: number;
         assetId?: string;
         uploadId?: string;
         path?: string;
-        url?: string;
+        url: string | null;
         metadata?: SanityImageMetadata;
         source?: SanityAssetSourceData;
       } | null;
@@ -903,7 +880,6 @@ export type ALL_PROJECTS_QUERY_RESULT = Array<{
   seo?: Seo;
   title?: LocaleString;
   slug?: Slug;
-  subTitle?: string;
   imageCover?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -938,7 +914,7 @@ export type ALL_PROJECTS_QUERY_RESULT = Array<{
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
 // Variable: PROJECTS_QUERY
-// Query: *[_type == "projects"][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  items[]->{    	_id,  _type,  slug,  title,	programme,	year,	city,	zip,	numbers,	client,	imageCover{			asset->{		...,		altText,		title	}	}  }}
+// Query: *[_type == "projects"][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  items[]->{    	_id,  _type,  slug,  title,	programme,	year,	city,	zip,	numbers,	client,	imageCover{			asset->{		...,		altText,		title,		url,		extension,		mimeType	}	}  }}
 export type PROJECTS_QUERY_RESULT = {
   _id: string;
   _type: "projects";
@@ -981,13 +957,13 @@ export type PROJECTS_QUERY_RESULT = {
         description?: string;
         altText: string | null;
         sha1hash?: string;
-        extension?: string;
-        mimeType?: string;
+        extension: string | null;
+        mimeType: string | null;
         size?: number;
         assetId?: string;
         uploadId?: string;
         path?: string;
-        url?: string;
+        url: string | null;
         metadata?: SanityImageMetadata;
         source?: SanityAssetSourceData;
       } | null;
@@ -997,7 +973,7 @@ export type PROJECTS_QUERY_RESULT = {
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
 // Variable: ATELIER_QUERY
-// Query: *[_type == "atelier"][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  images[]{    	asset->{		...,		altText,		title	}  },  items[]{    ...  }}
+// Query: *[_type == "atelier"][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  images[]{    	asset->{		...,		altText,		title,		url,		extension,		mimeType	}  },  items[]{    ...  }}
 export type ATELIER_QUERY_RESULT = {
   _id: string;
   _type: "atelier";
@@ -1029,13 +1005,13 @@ export type ATELIER_QUERY_RESULT = {
       description?: string;
       altText: string | null;
       sha1hash?: string;
-      extension?: string;
-      mimeType?: string;
+      extension: string | null;
+      mimeType: string | null;
       size?: number;
       assetId?: string;
       uploadId?: string;
       path?: string;
-      url?: string;
+      url: string | null;
       metadata?: SanityImageMetadata;
       source?: SanityAssetSourceData;
     } | null;
@@ -1053,10 +1029,10 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"settings\"][0]{\n  ...,\n  navPrimary[]{\n    ...,\n    _type == 'linkInternal' => {\n      ...,\n      link->{\n        _type,\n        slug\n      }\n    }\n  },\n}": SETTINGS_QUERY_RESULT;
-    '*[_type == "home"][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n  projects[]->{\n    \n\t_id,\n  _type,\n  slug,\n  title,\n\tprogramme,\n\tyear,\n\tcity,\n\tzip,\n\tnumbers,\n\tclient,\n\timageCover{\n\t\t\n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle\n\t}\n\n\t}\n\n  },\n  items[]{\n    image{\n      \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle\n\t}\n\n    },\n    project->{\n      \n\t_id,\n  _type,\n  slug,\n  title,\n\tprogramme,\n\tyear,\n\tcity,\n\tzip,\n\tnumbers,\n\tclient,\n\timageCover{\n\t\t\n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle\n\t}\n\n\t}\n\n    }\n  },\n  news[]{\n    ...\n  }\n}': HOME_QUERY_RESULT;
-    '\n  *[_type == "project" && slug.current == $slug][0]{\n    ...,\n    seo{\n      \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n    },\n    imageCover{\n      \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle\n\t}\n\n    },\n    images[]{\n      \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle\n\t}\n\n    },\n    fiche_technique[]{\n      ...\n    },\n    related->{\n      _type,\n      slug,\n      imageCover{\n        \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle\n\t}\n\n      }\n    }\n  }\n': PROJECT_QUERY_RESULT;
+    '*[_type == "home"][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n  projects[]->{\n    \n\t_id,\n  _type,\n  slug,\n  title,\n\tprogramme,\n\tyear,\n\tcity,\n\tzip,\n\tnumbers,\n\tclient,\n\timageCover{\n\t\t\n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n\t}\n\n  },\n  items[]{\n    image{\n      \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n    },\n    project->{\n      \n\t_id,\n  _type,\n  slug,\n  title,\n\tprogramme,\n\tyear,\n\tcity,\n\tzip,\n\tnumbers,\n\tclient,\n\timageCover{\n\t\t\n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n\t}\n\n    }\n  },\n  news[]{\n    ...\n  }\n}': HOME_QUERY_RESULT;
+    '\n  *[_type == "project" && slug.current == $slug][0]{\n    ...,\n    seo{\n      \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n    },\n    imageCover{\n      \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n    },\n    images[]{\n      \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n    },\n    fiche_technique[]{\n      ...\n    },\n    related->{\n      _type,\n      slug,\n      imageCover{\n        \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n      }\n    }\n  }\n': PROJECT_QUERY_RESULT;
     '\n  *[_type == "project"]{\n    ...\n  }\n': ALL_PROJECTS_QUERY_RESULT;
-    '*[_type == "projects"][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n  items[]->{\n    \n\t_id,\n  _type,\n  slug,\n  title,\n\tprogramme,\n\tyear,\n\tcity,\n\tzip,\n\tnumbers,\n\tclient,\n\timageCover{\n\t\t\n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle\n\t}\n\n\t}\n\n  }\n}': PROJECTS_QUERY_RESULT;
-    '*[_type == "atelier"][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n  images[]{\n    \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle\n\t}\n\n  },\n  items[]{\n    ...\n  }\n}': ATELIER_QUERY_RESULT;
+    '*[_type == "projects"][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n  items[]->{\n    \n\t_id,\n  _type,\n  slug,\n  title,\n\tprogramme,\n\tyear,\n\tcity,\n\tzip,\n\tnumbers,\n\tclient,\n\timageCover{\n\t\t\n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n\t}\n\n  }\n}': PROJECTS_QUERY_RESULT;
+    '*[_type == "atelier"][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n  images[]{\n    \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n  },\n  items[]{\n    ...\n  }\n}': ATELIER_QUERY_RESULT;
   }
 }

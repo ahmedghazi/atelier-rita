@@ -13,7 +13,7 @@ export default defineType({
     {
       default: true,
       name: 'editorial',
-      title: 'Editorial',
+      title: 'Fiche Projet',
     },
     {
       name: 'metas',
@@ -21,7 +21,7 @@ export default defineType({
     },
     {
       name: 'seo',
-      title: 'SEO',
+      title: 'SEO (moteurs de recherche google, duckduckgo, ia, ...)',
     },
   ],
   fields: [
@@ -34,18 +34,11 @@ export default defineType({
     }),
 
     slug,
-    defineField({
-      name: 'subTitle',
-      type: 'string',
-      title: 'Soustitre',
-      group: 'editorial',
-      hidden: true,
-    }),
 
     defineField({
       name: 'imageCover',
       type: 'image',
-      title: 'Image clef',
+      title: 'Image Index',
       description: 'Visible on liste pages, project cards (largeur 1400px)',
       group: 'editorial',
     }),
@@ -62,7 +55,7 @@ export default defineType({
       name: 'text',
       title: 'Texte',
       type: 'localeBlockContent',
-      group: 'editorial',
+      group: 'metas',
     }),
     defineField({
       name: 'type',
@@ -142,6 +135,7 @@ export default defineType({
       // type: 'array',
       // of: [{type: 'reference', to: [{type: 'project'}]}],
       group: 'editorial',
+      hidden: true,
     }),
   ],
 

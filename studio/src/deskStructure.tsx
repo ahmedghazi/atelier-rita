@@ -28,7 +28,7 @@ export const structure = (S) =>
     .title('Base')
     .items([
       S.listItem()
-        .title('Réglages (header, footer, ...)')
+        .title('Réglages (naviguation, couleurs, ...)')
         .schemaType('settings')
         .child(
           S.editor()
@@ -43,17 +43,17 @@ export const structure = (S) =>
         .schemaType('home')
         .child(S.editor().title('Home').schemaType('home').documentId('home')),
       S.divider(),
-      S.listItem()
-        .title('Atelier')
-        .schemaType('atelier')
-        .child(S.editor().title('atelier').schemaType('atelier').documentId('atelier')),
 
       S.listItem()
         .title('Projets Index')
         .schemaType('projects')
         .child(S.editor().title('projects').schemaType('projects').documentId('projects')),
-
       S.divider(),
+
+      S.listItem()
+        .title('Atelier')
+        .schemaType('atelier')
+        .child(S.editor().title('atelier').schemaType('atelier').documentId('atelier')),
 
       S.listItem().title('Projets').schemaType('project').child(S.documentTypeList('project')),
       S.divider(),

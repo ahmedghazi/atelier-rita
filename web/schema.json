@@ -20,6 +20,13 @@
           },
           "optional": true
         },
+        "date": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "text": {
           "type": "objectAttribute",
           "value": {
@@ -372,6 +379,13 @@
           }
         },
         "fr": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "en": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
@@ -1088,6 +1102,14 @@
             "name": "blockContent"
           },
           "optional": true
+        },
+        "en": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "blockContent"
+          },
+          "optional": true
         }
       }
     }
@@ -1106,6 +1128,13 @@
           }
         },
         "fr": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "en": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
@@ -1325,14 +1354,6 @@
         },
         "optional": true
       },
-      "siteDescription": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "inline",
-          "name": "localeString"
-        },
-        "optional": true
-      },
       "siteDescriptions": {
         "type": "objectAttribute",
         "value": {
@@ -1416,79 +1437,6 @@
               "name": "linkIcon"
             }
           }
-        },
-        "optional": true
-      },
-      "navSecondary": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "array",
-          "of": {
-            "type": "union",
-            "of": [
-              {
-                "type": "object",
-                "attributes": {
-                  "_key": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "inline",
-                  "name": "linkInternal"
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "_key": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "inline",
-                  "name": "linkExternal"
-                }
-              }
-            ]
-          }
-        },
-        "optional": true
-      },
-      "baseline": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "inline",
-          "name": "localeBlockContent"
-        },
-        "optional": true
-      },
-      "contact": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "labelNewsletter": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "inline",
-          "name": "localeString"
-        },
-        "optional": true
-      },
-      "msgNewsletter": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "inline",
-          "name": "localeText"
         },
         "optional": true
       },
@@ -1731,13 +1679,6 @@
         "value": {
           "type": "inline",
           "name": "slug"
-        },
-        "optional": true
-      },
-      "subTitle": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
         },
         "optional": true
       },

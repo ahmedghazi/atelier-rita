@@ -12,26 +12,27 @@ export default defineType({
     //   name: 'navigation',
     //   title: 'Navigation',
     // },
-    {
-      default: true,
-      name: 'seo',
-      title: 'Default SEO',
-    },
+    // {
+    //   default: true,
+    //   name: 'seo',
+    //   title: 'Default SEO',
+    // },
     {
       name: 'header',
-      title: 'Header',
+      title: 'Naviguation',
     },
+    // {
+    //   name: 'footer',
+    //   title: 'Footer',
+    // },
+
     {
-      name: 'footer',
-      title: 'Footer',
+      name: 'design',
+      title: 'Couleurs',
     },
     {
       name: 'misc',
       title: 'Misc',
-    },
-    {
-      name: 'design',
-      title: 'Design',
     },
   ],
   fields: [
@@ -47,12 +48,12 @@ export default defineType({
       type: 'string',
       group: 'header',
     }),
-    defineField({
-      name: 'siteDescription',
-      title: 'Description du site',
-      type: 'localeString',
-      group: 'header',
-    }),
+    // defineField({
+    //   name: 'siteDescription',
+    //   title: 'Description du site',
+    //   type: 'localeString',
+    //   group: 'header',
+    // }),
     defineField({
       name: 'siteDescriptions',
       title: 'Descriptions du site',
@@ -91,45 +92,45 @@ export default defineType({
       ],
       group: 'header',
     }),
-    defineField({
-      name: 'navSecondary',
-      title: 'Naviguation Secondary',
-      type: 'array',
-      of: [
-        {
-          type: 'linkInternal',
-        },
-        {
-          type: 'linkExternal',
-        },
-      ],
-      group: 'footer',
-    }),
+    // defineField({
+    //   name: 'navSecondary',
+    //   title: 'Naviguation Secondary',
+    //   type: 'array',
+    //   of: [
+    //     {
+    //       type: 'linkInternal',
+    //     },
+    //     {
+    //       type: 'linkExternal',
+    //     },
+    //   ],
+    //   group: 'footer',
+    // }),
 
-    defineField({
-      name: 'baseline',
-      title: 'Baseline',
-      type: 'localeBlockContent',
-      group: 'footer',
-    }),
-    defineField({
-      name: 'contact',
-      title: 'Contact',
-      type: 'string',
-      group: 'footer',
-    }),
-    defineField({
-      name: 'labelNewsletter',
-      title: 'Label newsletter',
-      type: 'localeString',
-      group: 'footer',
-    }),
-    defineField({
-      name: 'msgNewsletter',
-      title: 'Message newsletter',
-      type: 'localeText',
-      group: 'footer',
-    }),
+    // defineField({
+    //   name: 'baseline',
+    //   title: 'Baseline',
+    //   type: 'localeBlockContent',
+    //   group: 'footer',
+    // }),
+    // defineField({
+    //   name: 'contact',
+    //   title: 'Contact',
+    //   type: 'string',
+    //   group: 'footer',
+    // }),
+    // defineField({
+    //   name: 'labelNewsletter',
+    //   title: 'Label newsletter',
+    //   type: 'localeString',
+    //   group: 'footer',
+    // }),
+    // defineField({
+    //   name: 'msgNewsletter',
+    //   title: 'Message newsletter',
+    //   type: 'localeText',
+    //   group: 'footer',
+    // }),
 
     defineField({
       name: 'message404',

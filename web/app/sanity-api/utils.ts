@@ -73,12 +73,12 @@ export const _slugify = (str: string) => {
 export const _date = (d: string) => {
   const date: Date = new Date(d);
 
-  return date.toLocaleDateString("en-us", {
-    weekday: "long",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
+  return date.toLocaleDateString("fr-FR", {
+    // weekday: "long",
+    // year: "numeric",
+    // month: "short",
+    // day: "numeric",
+    // hour: "numeric",
   });
 };
 
