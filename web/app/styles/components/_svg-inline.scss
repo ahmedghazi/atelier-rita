@@ -32,3 +32,10 @@
     display: none;
   }
 }
+
+.slider {
+  .svg-inline svg {
+    --shape: var(--color-accent);
+    --line: var(--color-accent);
+  }
+}
