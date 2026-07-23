@@ -25,13 +25,18 @@
   path {
     stroke: var(--line) !important;
   }
-
   path:not([fill="none"]),
+  line:not([fill="none"]),
+  polyline:not([fill="none"]) {
+    stroke: var(--line) !important;
+  }
+
+  // path:not([fill="none"]),
   rect,
   circle,
   ellipse,
   polygon {
-    // fill: var(--shape) !important;
+    fill: var(--shape) !important;
   }
 
   // text {

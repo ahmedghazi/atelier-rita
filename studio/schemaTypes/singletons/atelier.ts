@@ -9,17 +9,17 @@ export default defineType({
   title: 'Atelier',
   type: 'document',
   icon: IoIosPeople,
-  groups: [
-    {
-      default: true,
-      name: 'editorial',
-      title: 'Editorial',
-    },
-    {
-      name: 'seo',
-      title: 'SEO (moteurs de recherche google, duckduckgo, ia, ...)',
-    },
-  ],
+  // groups: [
+  //   // {
+  //   //   default: true,
+  //   //   name: 'editorial',
+  //   //   title: 'Editorial',
+  //   // },
+  //   // {
+  //   //   name: 'seo',
+  //   //   title: 'SEO (moteurs de recherche google, duckduckgo, ia, ...)',
+  //   // },
+  // ],
   fields: [
     seoField,
 
@@ -27,7 +27,6 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'localeString',
-      group: 'editorial',
     }),
     slug,
     defineField({
@@ -35,7 +34,6 @@ export default defineType({
       title: 'Images',
       type: 'array',
       of: [{type: 'image'}],
-      group: 'editorial',
     }),
     defineField({
       name: 'items',
@@ -43,7 +41,6 @@ export default defineType({
       description: "Liste de textes s'affichant en modal (rouge)",
       type: 'array',
       of: [{type: 'keyVal'}],
-      group: 'editorial',
     }),
   ],
   preview: {

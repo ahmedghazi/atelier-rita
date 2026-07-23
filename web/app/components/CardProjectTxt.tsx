@@ -17,19 +17,29 @@ type Props = {
 
 const CardProjectTxt = ({ input, setThumbnail }: Props) => {
   const { locale } = useLocale();
-  const { title, programme, city, zip, client, numbers, year, imageCover } =
-    input;
+  const {
+    title,
+    type,
+    programme,
+    city,
+    zip,
+    client,
+    numbers,
+    year,
+    imageCover,
+  } = input;
 
   const titleLocalized = _localizeField(locale, title) as string;
   const programmeLocalized = _localizeField(locale, programme) as string;
-
+  const typeLocalized = _localizeField(locale, type) as string;
   return (
     <div
       className='tr card card--project--text'
       onMouseEnter={() => setThumbnail(imageCover?.asset || null)}>
       <Link href={_linkResolver(input)}>
-        <div className=' grid grid-cols-2 md:grid-cols-6 gap-gutter'>
+        <div className=' grid grid-cols-2 md:grid-cols-7 gap-gutter'>
           <h2 className='td'>{titleLocalized}</h2>
+          <div className='td type hidden-sm'>{typeLocalized}</div>
           <div className='td programme hidden-sm'>{programmeLocalized}</div>
           <div className='td location  hidden-sm'>
             <CityAndZip city={city} zip={zip} />

@@ -11,17 +11,17 @@ export default defineType({
   title: 'Projets Index',
   type: 'document',
   icon: AiOutlineTable,
-  groups: [
-    {
-      default: true,
-      name: 'editorial',
-      title: 'Editorial',
-    },
-    {
-      name: 'seo',
-      title: 'SEO',
-    },
-  ],
+  // groups: [
+  // {
+  //   default: true,
+  //   name: 'editorial',
+  //   title: 'Editorial',
+  // },
+  // {
+  //   name: 'seo',
+  //   title: 'SEO',
+  // },
+  // ],
   fields: [
     seoField,
 
@@ -29,7 +29,7 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'localeString',
-      group: 'editorial',
+      // group: 'editorial',
     }),
 
     slug,
@@ -40,7 +40,7 @@ export default defineType({
       description: '',
       type: 'array',
       of: [{type: 'reference', to: [{type: 'project'}]}],
-      group: 'editorial',
+      // group: 'editorial',
     }),
   ],
   preview: {

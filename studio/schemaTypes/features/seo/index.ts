@@ -7,7 +7,7 @@ export const seoField = defineField({
   name: 'seo',
   type: 'seo',
   title: 'SEO',
-  group: 'seo', // optionnel, si tu utilises des groupes
+  // group: 'seo', // optionnel, si tu utilises des groupes
 })
 
 // Helper pour déclarer le groupe (à spread dans fieldGroups du document)

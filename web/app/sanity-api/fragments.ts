@@ -46,6 +46,7 @@ export const projectCard = `
   _type,
   slug,
   title,
+	type,
 	programme,
 	year,
 	city,

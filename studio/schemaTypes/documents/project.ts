@@ -10,19 +10,19 @@ export default defineType({
   title: 'Project',
   icon: FolderIcon,
   groups: [
-    {
-      default: true,
-      name: 'editorial',
-      title: 'Fiche Projet',
-    },
-    {
-      name: 'metas',
-      title: 'Metadatas',
-    },
-    {
-      name: 'seo',
-      title: 'SEO (moteurs de recherche google, duckduckgo, ia, ...)',
-    },
+    // {
+    //   default: true,
+    //   name: 'editorial',
+    //   title: 'Fiche Projet',
+    // },
+    // {
+    //   name: 'metas',
+    //   title: 'Metadatas',
+    // },
+    // {
+    //   name: 'seo',
+    //   title: 'SEO (moteurs de recherche google, duckduckgo, ia, ...)',
+    // },
   ],
   fields: [
     seoField,
@@ -30,7 +30,7 @@ export default defineType({
       name: 'title',
       type: 'localeString',
       title: 'Titre',
-      group: 'editorial',
+      // group: 'editorial',
     }),
 
     slug,
@@ -40,7 +40,7 @@ export default defineType({
       type: 'image',
       title: 'Image Index',
       description: 'Visible on liste pages, project cards (largeur 1400px)',
-      group: 'editorial',
+      // group: 'editorial',
     }),
     defineField({
       name: 'images',
@@ -48,49 +48,49 @@ export default defineType({
       of: [{type: 'image'}],
       title: 'Images',
       description: 'Visible dans la page du projet (largeur 2500px)',
-      group: 'editorial',
+      // group: 'editorial',
     }),
 
     defineField({
       name: 'text',
       title: 'Texte',
       type: 'localeBlockContent',
-      group: 'metas',
+      // group: 'metas',
     }),
     defineField({
       name: 'type',
       type: 'localeText',
-      group: 'metas',
+      // group: 'metas',
     }),
     defineField({
       name: 'programme',
       type: 'localeText',
-      group: 'metas',
+      // group: 'metas',
     }),
     defineField({
       name: 'client',
       type: 'string',
-      group: 'metas',
+      // group: 'metas',
     }),
     defineField({
       name: 'team',
       title: 'Équipe',
       type: 'text',
       rows: 2,
-      group: 'metas',
+      // group: 'metas',
     }),
     defineField({
       name: 'city',
       title: 'Ville',
       type: 'string',
-      group: 'metas',
+      // group: 'metas',
     }),
     defineField({
       name: 'zip',
       title: 'Code postal',
       description: '18e, 44',
       type: 'string',
-      group: 'metas',
+      // group: 'metas',
     }),
     defineField({
       name: 'numbers',
@@ -98,7 +98,7 @@ export default defineType({
       description: '1 270 m² 9,2 M € HT. En majuscule',
       type: 'text',
       rows: 2,
-      group: 'metas',
+      // group: 'metas',
     }),
     defineField({
       name: 'year',
@@ -106,15 +106,15 @@ export default defineType({
       description: '2017 Concours',
       type: 'text',
       rows: 2,
-      group: 'metas',
+      // group: 'metas',
     }),
     defineField({
       name: 'metas',
-      title: 'fiche technique (libre)',
-      description: '(libre)',
+      title: 'fiche technique',
+      description: 'libre',
       type: 'array',
       of: [{type: 'keyVal'}],
-      group: 'metas',
+      // group: 'metas',
     }),
 
     // defineField({
@@ -134,7 +134,7 @@ export default defineType({
       to: [{type: 'project'}],
       // type: 'array',
       // of: [{type: 'reference', to: [{type: 'project'}]}],
-      group: 'editorial',
+      // group: 'editorial',
       hidden: true,
     }),
   ],

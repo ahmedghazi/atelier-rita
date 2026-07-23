@@ -37,7 +37,8 @@ type Props = {
 const CardHomeComponent = ({ input }: Props) => {
   const { locale } = useLocale();
   const { image, project } = input;
-  const { title, year, programme, city, client } = project ?? {};
+  const hasVerso = project !== null;
+  const { title, year, type, programme, city, client } = project ?? {};
   const [active, setActive] = useState<boolean>(false);
   const [flipDeg, setFlipDeg] = useState<number>(180);
   const tapCount = React.useRef<number>(0);
@@ -45,6 +46,7 @@ const CardHomeComponent = ({ input }: Props) => {
   const { isMobile } = useDeviceDetect();
   const titleLocalized = _localizeField(locale, title) as string;
   const programmeLocalized = _localizeField(locale, programme) as string;
+  const typeLocalized = _localizeField(locale, type) as string;
 
   const handleHover = (e: React.MouseEvent<HTMLElement>, _active: boolean) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -71,7 +73,13 @@ const CardHomeComponent = ({ input }: Props) => {
     image?.asset?.extension === "svg";
   return (
     <article
-      className={clsx("card card--home", { "is-active": active })}
+      className={clsx(
+        "card card--home",
+        { "is-active": active },
+        {
+          "has-verso": hasVerso,
+        },
+      )}
       style={{ "--flip-deg": `${flipDeg}deg` } as React.CSSProperties}
       onMouseEnter={(e) => {
         if (!isMobile) handleHover(e, true);
@@ -90,7 +98,8 @@ const CardHomeComponent = ({ input }: Props) => {
             </div>
             <div className='verso'>
               <div className='header'>
-                <div className='programme'>{programmeLocalized}</div>
+                {/* <div className='programme'>{programmeLocalized}</div> */}
+                <div className='ty'>{typeLocalized}</div>
                 <div className='year'>{year}</div>
               </div>
               <div className='body'>

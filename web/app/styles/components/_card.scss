@@ -124,6 +124,11 @@
       }
     }
   }
+  &--home {
+    &:not(.has-verso) {
+      pointer-events: none;
+    }
+  }
   &--project--text {
     border-bottom: var(--border);
     a {

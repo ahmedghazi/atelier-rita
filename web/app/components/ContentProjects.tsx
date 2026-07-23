@@ -12,6 +12,7 @@ import clsx from "clsx";
 
 type SortKey =
   | "title"
+  | "type"
   | "programme"
   | "location"
   | "client"
@@ -86,6 +87,10 @@ const ContentProjects = ({ input }: Props) => {
           aVal = (_localizeField(locale, a.title) as string) ?? "";
           bVal = (_localizeField(locale, b.title) as string) ?? "";
           break;
+        case "type":
+          aVal = (_localizeField(locale, a.type) as string) ?? "";
+          bVal = (_localizeField(locale, b.type) as string) ?? "";
+          break;
         case "programme":
           aVal = (_localizeField(locale, a.programme) as string) ?? "";
           bVal = (_localizeField(locale, b.programme) as string) ?? "";
@@ -124,13 +129,21 @@ const ContentProjects = ({ input }: Props) => {
       <div className='grid md:grid-cols-5 gap-gutter '>
         <div className='items md:col-span-3'>
           <div className='thead'>
-            <div className='tr grid grid-cols-2 md:grid-cols-6 gap-gutter'>
+            <div className='tr grid grid-cols-2 md:grid-cols-7 gap-gutter'>
               <Th
                 label={_localizeText(locale, "name")}
                 sortKey='title'
                 dataSort='alpha'
                 className='th title'
                 isActive={isActive("title")}
+                onClick={handleSort}
+              />
+              <Th
+                label={_localizeText(locale, "type")}
+                sortKey='type'
+                dataSort='alpha'
+                className='th type hidden-sm'
+                isActive={isActive("type")}
                 onClick={handleSort}
               />
               <Th

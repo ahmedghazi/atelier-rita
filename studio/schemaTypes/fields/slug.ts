@@ -12,5 +12,5 @@ export default defineField({
     maxLength: 96,
   },
   validation: (Rule) => Rule.required(),
-  group: 'editorial',
+  // group: 'editorial',
 })

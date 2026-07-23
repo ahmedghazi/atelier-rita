@@ -10,24 +10,24 @@ export default defineType({
   type: 'document',
   title: 'Home',
   icon: HomeIcon,
-  groups: [
-    {
-      default: true,
-      name: 'editorial',
-      title: 'Editorial',
-    },
-    {
-      name: 'seo',
-      title: 'SEO (moteurs de recherche google, duckduckgo, ia, ...)',
-    },
-  ],
+  // groups: [
+  // {
+  //   default: true,
+  //   name: 'editorial',
+  //   title: 'Editorial',
+  // },
+  // {
+  //   name: 'seo',
+  //   title: 'SEO (moteurs de recherche google, duckduckgo, ia, ...)',
+  // },
+  // ],
   fields: [
     seoField,
     defineField({
       name: 'title',
       type: 'localeString',
       title: 'Titre',
-      group: 'editorial',
+      // group: 'editorial',
     }),
     defineField({
       name: 'slug',
@@ -39,7 +39,7 @@ export default defineType({
         maxLength: 96,
       },
       validation: (Rule) => Rule.required(),
-      group: 'editorial',
+      // group: 'editorial',
     }),
 
     defineField({
@@ -47,7 +47,7 @@ export default defineType({
       title: 'Projets',
       type: 'array',
       of: [{type: 'cardHome'}, {type: 'reference', to: [{type: 'project'}]}],
-      group: 'editorial',
+      // group: 'editorial',
       hidden: true,
     }),
 
@@ -55,7 +55,7 @@ export default defineType({
       name: 'items',
       type: 'array',
       of: [{type: 'cardHome'}],
-      group: 'editorial',
+      // group: 'editorial',
     }),
 
     defineField({
@@ -63,7 +63,7 @@ export default defineType({
       title: 'Actualités',
       type: 'array',
       of: [{type: 'news'}],
-      group: 'editorial',
+      // group: 'editorial',
     }),
     // defineField({
     //   name: 'modules',

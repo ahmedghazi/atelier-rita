@@ -45,7 +45,7 @@ export const structure = (S) =>
       S.divider(),
 
       S.listItem()
-        .title('Projets Index')
+        .title('Index')
         .schemaType('projects')
         .child(S.editor().title('projects').schemaType('projects').documentId('projects')),
       S.divider(),
