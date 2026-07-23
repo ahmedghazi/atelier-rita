@@ -82,38 +82,38 @@
       }
     }
     svg {
-      mix-blend-mode: difference;
-      max-width: 100%;
-      aspect-ratio: 238 / 317 !important;
-      height: 100% !important;
-      --shape: #fff;
-      --line: #fff;
-      --text: #08f372;
+      // mix-blend-mode: difference;
+      // max-width: 100%;
+      // aspect-ratio: 238 / 317 !important;
+      // height: 100% !important;
+      // --shape: #fff;
+      // --line: #fff;
+      // --text: #08f372;
 
-      path[fill="none"],
-      line,
-      polyline {
-        stroke: var(--line) !important;
-      }
-      path {
-        stroke: var(--line) !important;
-      }
+      // path[fill="none"],
+      // line,
+      // polyline {
+      //   stroke: var(--line) !important;
+      // }
+      // path {
+      //   stroke: var(--line) !important;
+      // }
 
-      path:not([fill="none"]),
-      rect,
-      circle,
-      ellipse,
-      polygon {
-        fill: var(--shape) !important;
-      }
+      // path:not([fill="none"]),
+      // rect,
+      // circle,
+      // ellipse,
+      // polygon {
+      //   fill: var(--shape) !important;
+      // }
 
-      text {
-        fill: var(--text) !important;
-      }
+      // text {
+      //   fill: var(--text) !important;
+      // }
 
-      rect {
-        display: none;
-      }
+      // rect {
+      //   display: none;
+      // }
     }
     @media screen and (max-width: variables.$md) {
       .verso {

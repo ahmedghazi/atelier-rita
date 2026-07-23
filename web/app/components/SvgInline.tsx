@@ -18,7 +18,7 @@ const SvgInline = ({ url, alt }: Props) => {
   if (!markup) return null;
   return (
     <span
-      className='inline-svg'
+      className='svg-inline'
       role='img'
       aria-label={alt}
       dangerouslySetInnerHTML={{ __html: markup }}
