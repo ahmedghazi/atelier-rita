@@ -5,7 +5,17 @@
   height: 100% !important;
   --shape: #fff;
   --line: #fff;
-  --text: #08f372;
+  // --text: #08f372;
+
+  // [stroke],
+  // [style*="stroke:"] {
+  //   stroke: var(--line) !important;
+  // }
+
+  // [fill]:not([fill="none"]),
+  // [style*="fill:"]:not([style*="fill:none"]) {
+  //   fill: var(--shape) !important;
+  // }
 
   path[fill="none"],
   line,
@@ -16,13 +26,13 @@
     stroke: var(--line) !important;
   }
 
-  // path:not([fill="none"]),
-  // rect,
-  // circle,
-  // ellipse,
-  // polygon {
-  //   fill: var(--shape) !important;
-  // }
+  path:not([fill="none"]),
+  rect,
+  circle,
+  ellipse,
+  polygon {
+    // fill: var(--shape) !important;
+  }
 
   // text {
   //   fill: var(--text) !important;

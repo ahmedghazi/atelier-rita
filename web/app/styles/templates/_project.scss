@@ -101,6 +101,9 @@ body:has(.template--project) {
           .key {
             min-width: 9rem;
           }
+          .value {
+            white-space: pre;
+          }
         }
       }
     }

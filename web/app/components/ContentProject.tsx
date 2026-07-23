@@ -36,11 +36,6 @@ const ContentProjectSlide = ({
     image?.asset?.extension === "svg";
   return (
     <div key={index + 1} className='ss-slider__slide'>
-      {/* <Figure
-        asset={image?.asset}
-        alt={image?.asset?.altText}
-        title={image?.asset?.title || undefined}
-      /> */}
       {!isSvg && <Figure asset={image?.asset} alt={alt} />}
       {isSvg && image?.asset?.url && (
         <SvgInline url={image.asset.url} alt={alt} />
@@ -181,6 +176,7 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
           <BackHome />
         </div>
       </div>
+      {/* <pre>{JSON.stringify(ficheTechnique, null, 2)}</pre> */}
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <div className='project-infos'>
           <div className='header'>
