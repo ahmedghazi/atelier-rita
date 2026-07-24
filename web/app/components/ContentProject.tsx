@@ -1,6 +1,10 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
-import { Project, PROJECT_QUERY_RESULT } from "../types/sanity.types";
+import {
+  LocaleString,
+  Project,
+  PROJECT_QUERY_RESULT,
+} from "../types/sanity.types";
 import Figure from "./ui/Figure";
 import {
   _linkResolver,
@@ -18,31 +22,7 @@ import Link from "next/link";
 import CityAndZip from "./CityAndZip";
 import BackHome from "./ui/BackHome";
 import SlickSlider from "./ui/SlickSlider";
-import SvgInline from "./SvgInline";
-
-type ContentProjectSlideProps = {
-  image: NonNullable<PROJECT_QUERY_RESULT>["imageCover"];
-  index: number;
-  alt: string;
-};
-
-const ContentProjectSlide = ({
-  image,
-  index,
-  alt = "",
-}: ContentProjectSlideProps) => {
-  const isSvg =
-    /\.svg($|\?)/i.test(image?.asset?.url ?? "") ||
-    image?.asset?.extension === "svg";
-  return (
-    <div key={index + 1} className='ss-slider__slide'>
-      {!isSvg && <Figure asset={image?.asset} alt={alt} />}
-      {isSvg && image?.asset?.url && (
-        <SvgInline url={image.asset.url} alt={alt} />
-      )}
-    </div>
-  );
-};
+import SliderItem from "./ui/SliderItem";
 
 type Props = {
   input: NonNullable<PROJECT_QUERY_RESULT>;
@@ -67,16 +47,22 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
     metas,
     related,
   } = input;
-  const [caption, setCaption] = useState<string>("");
+  const [slideIndex, setSlideIndex] = useState<number>(0);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [sliderEnded, setSliderEnded] = useState<boolean>(false);
   const slides = useMemo(() => {
     return [imageCover, ...(images || [])];
   }, [imageCover, images]);
 
+  const caption =
+    _localizeField(
+      locale,
+      slides[slideIndex]?.asset?.altText as LocaleString | undefined,
+    ) || "";
+
   useEffect(() => {
     const token = subscribe("SLIDER_CHANGED", (e, d) => {
-      setCaption(slides[d]?.asset?.title || "");
+      setSlideIndex(d);
     });
     const tokenEnded = subscribe("SLIDER_ENDED", (e, d) => {
       console.log("Slider ended", d);
@@ -86,7 +72,7 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
       unsubscribe(token);
       unsubscribe(tokenEnded);
     };
-  }, [slides]);
+  }, []);
 
   const ficheTechnique = [
     {
@@ -119,7 +105,10 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
     // },
   ];
 
-  const _related = related ? related : relatedByindex;
+  // const _related = related ? related : relatedByindex;
+  const _related = relatedByindex;
+  console.log(input.imageCover);
+  console.log(input.images);
   return (
     <div
       className={clsx(
@@ -134,12 +123,9 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
               infinite: false,
             }}>
             {slides.map((image, index: number) => (
-              <ContentProjectSlide
-                key={index + 1}
-                image={image}
-                index={index}
-                alt={image?.asset?.altText || ""}
-              />
+              <div key={index + 1} className='ss-slider__slide'>
+                <SliderItem image={image} locale={locale} />
+              </div>
             ))}
           </SlickSlider>
 
@@ -163,11 +149,9 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
         <div className='caption hidden-sm'>{caption}</div>
       </div>
       <div className='footer'>
-        {/* <pre>{JSON.stringify(relatedByindex, null, 2)}</pre> */}
         <div className='grid md:grid-cols-5 gap-gutter items-baseline'>
           <h1 className='title col-span-4 md:col-span-3 text-display-lg--sm md:text-display-lg'>
             <div>{_localizeField(locale, title) as string},</div>
-            {/* <span>, </span> */}
             <CityAndZip city={city} zip={zip} />
           </h1>
           <button className='toggle ' onClick={() => setModalOpen(!modalOpen)}>

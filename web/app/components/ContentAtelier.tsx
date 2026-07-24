@@ -1,14 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ATELIER_QUERY_RESULT, KeyVal } from "../types/sanity.types";
 import { _localizeField } from "../sanity-api/utils";
+import { subscribe, unsubscribe } from "pubsub-js";
 import useLocale from "../context/LocaleContext";
 import { PortableText } from "next-sanity";
 import portableTextComponents from "../sanity-api/portableTextComponents";
 import Modal from "./ui/Modal";
 import KeenSlider from "./ui/KeenSlider";
 import { usePageContext } from "../context/PageContext";
-import Figure from "./ui/Figure";
+import SliderItem from "./ui/SliderItem";
 import Link from "next/link";
 import Icon from "./ui/Icon";
 import BackHome from "./ui/BackHome";
@@ -69,18 +70,29 @@ const ContentAtelier = ({ input }: Props) => {
   //   "https://picsum.photos/400/300",
   // ];
   const [zIndex, setZIndex] = useState<number>(0);
+  const [caption, setCaption] = useState<string>("");
+
+  useEffect(() => {
+    const token = subscribe("SLIDER_CHANGED", (e, d) => {
+      setCaption(images?.[d]?.asset?.title || "");
+    });
+    return () => {
+      unsubscribe(token);
+    };
+  }, [images]);
+
   return (
     <div className='content--atelier app-h'>
       <div className='slider'>
         <KeenSlider>
           {images?.map((image, index: number) => (
             <div key={index + 1} className='keen-slider__slide'>
-              <Figure asset={image?.asset} alt={image?.asset?.altText} />
+              <SliderItem image={image} locale={locale} />
               {/* <img src={image} alt='' srcset='' /> */}
             </div>
           ))}
         </KeenSlider>
-        <div className='caption '>{"caption"}</div>
+        <div className='caption '>{caption}</div>
       </div>
       <div className='footer'>
         <div className='grid md:grid-cols-5 md:gap-gutter'>

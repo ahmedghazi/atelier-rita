@@ -47,7 +47,6 @@ export const PageContextProvider = (props: PageContextProps) => {
     const colors = settings.colors;
     if (!colors) return;
     const _randomColor = colors[Math.floor(Math.random() * colors.length)];
-    console.log(_randomColor);
     document.documentElement.style.setProperty(
       "--color-accent",
       _randomColor?.hex || "red",
