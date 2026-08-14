@@ -297,6 +297,8 @@ export type Atelier = {
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt?: LocaleString;
+    caption?: LocaleString;
     _type: "image";
     _key: string;
   }>;
@@ -328,6 +330,8 @@ export type Project = {
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt?: LocaleString;
+    caption?: LocaleString;
     _type: "image";
     _key: string;
   }>;
@@ -627,7 +631,7 @@ export type SETTINGS_QUERY_RESULT = {
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
 // Variable: HOME_QUERY
-// Query: *[_type == "home"][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  projects[]->{    	_id,  _type,  slug,  title,	type,	programme,	year,	city,	zip,	numbers,	client,	imageCover{			asset->{		...,		altText,		title,		url,		extension,		mimeType	}	}  },  items[]{    image{      	asset->{		...,		altText,		title,		url,		extension,		mimeType	}    },    project->{      	_id,  _type,  slug,  title,	type,	programme,	year,	city,	zip,	numbers,	client,	imageCover{			asset->{		...,		altText,		title,		url,		extension,		mimeType	}	}    }  },  news[]{    ...  }}
+// Query: *[_type == "home"][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  projects[]->{    	_id,  _type,  slug,  title,	type,	programme,	year,	city,	zip,	numbers,	client,	imageCover{			asset->{		...,		url,		extension,		mimeType	},	alt,	caption,	}  },  items[]{    image{      	asset->{		...,		url,		extension,		mimeType	},	alt,	caption,    },    project->{      	_id,  _type,  slug,  title,	type,	programme,	year,	city,	zip,	numbers,	client,	imageCover{			asset->{		...,		url,		extension,		mimeType	},	alt,	caption,	}    }  },  news[]{    ...  }}
 export type HOME_QUERY_RESULT = {
   _id: string;
   _type: "home";
@@ -667,9 +671,9 @@ export type HOME_QUERY_RESULT = {
         _rev: string;
         originalFilename?: string;
         label?: string;
-        title: string | null;
+        title?: string;
         description?: string;
-        altText: string | null;
+        altText?: string;
         sha1hash?: string;
         extension: string | null;
         mimeType: string | null;
@@ -681,6 +685,8 @@ export type HOME_QUERY_RESULT = {
         metadata?: SanityImageMetadata;
         source?: SanityAssetSourceData;
       } | null;
+      alt: null;
+      caption: null;
     } | null;
   }> | null;
   items: Array<{
@@ -693,9 +699,9 @@ export type HOME_QUERY_RESULT = {
         _rev: string;
         originalFilename?: string;
         label?: string;
-        title: string | null;
+        title?: string;
         description?: string;
-        altText: string | null;
+        altText?: string;
         sha1hash?: string;
         extension: string | null;
         mimeType: string | null;
@@ -707,6 +713,8 @@ export type HOME_QUERY_RESULT = {
         metadata?: SanityImageMetadata;
         source?: SanityAssetSourceData;
       } | null;
+      alt: null;
+      caption: null;
     } | null;
     project: {
       _id: string;
@@ -729,9 +737,9 @@ export type HOME_QUERY_RESULT = {
           _rev: string;
           originalFilename?: string;
           label?: string;
-          title: string | null;
+          title?: string;
           description?: string;
-          altText: string | null;
+          altText?: string;
           sha1hash?: string;
           extension: string | null;
           mimeType: string | null;
@@ -743,6 +751,8 @@ export type HOME_QUERY_RESULT = {
           metadata?: SanityImageMetadata;
           source?: SanityAssetSourceData;
         } | null;
+        alt: null;
+        caption: null;
       } | null;
     } | null;
   }> | null;
@@ -758,7 +768,7 @@ export type HOME_QUERY_RESULT = {
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
 // Variable: PROJECT_QUERY
-// Query: *[_type == "project" && slug.current == $slug][0]{    ...,    seo{      	...,	metaImage{		asset->{			url		}	}    },    imageCover{      	asset->{		...,		altText,		title,		url,		extension,		mimeType	}    },    images[]{      	asset->{		...,		altText,		title,		url,		extension,		mimeType	}    },    fiche_technique[]{      ...    },    related->{      _type,      slug,      imageCover{        	asset->{		...,		altText,		title,		url,		extension,		mimeType	}      }    }  }
+// Query: *[_type == "project" && slug.current == $slug][0]{    ...,    seo{      	...,	metaImage{		asset->{			url		}	}    },    imageCover{      	asset->{		...,		url,		extension,		mimeType	},	alt,	caption,    },    images[]{      	asset->{		...,		url,		extension,		mimeType	},	alt,	caption,    },    fiche_technique[]{      ...    },    related->{      _type,      slug,      imageCover{        	asset->{		...,		url,		extension,		mimeType	},	alt,	caption,      }    }  }
 export type PROJECT_QUERY_RESULT = {
   _id: string;
   _type: "project";
@@ -786,9 +796,9 @@ export type PROJECT_QUERY_RESULT = {
       _rev: string;
       originalFilename?: string;
       label?: string;
-      title: string | null;
+      title?: string;
       description?: string;
-      altText: string | null;
+      altText?: string;
       sha1hash?: string;
       extension: string | null;
       mimeType: string | null;
@@ -800,6 +810,8 @@ export type PROJECT_QUERY_RESULT = {
       metadata?: SanityImageMetadata;
       source?: SanityAssetSourceData;
     } | null;
+    alt: null;
+    caption: null;
   } | null;
   images: Array<{
     asset: {
@@ -810,9 +822,9 @@ export type PROJECT_QUERY_RESULT = {
       _rev: string;
       originalFilename?: string;
       label?: string;
-      title: string | null;
+      title?: string;
       description?: string;
-      altText: string | null;
+      altText?: string;
       sha1hash?: string;
       extension: string | null;
       mimeType: string | null;
@@ -824,6 +836,8 @@ export type PROJECT_QUERY_RESULT = {
       metadata?: SanityImageMetadata;
       source?: SanityAssetSourceData;
     } | null;
+    alt: LocaleString | null;
+    caption: LocaleString | null;
   }> | null;
   text?: LocaleBlockContent;
   type?: LocaleText;
@@ -851,9 +865,9 @@ export type PROJECT_QUERY_RESULT = {
         _rev: string;
         originalFilename?: string;
         label?: string;
-        title: string | null;
+        title?: string;
         description?: string;
-        altText: string | null;
+        altText?: string;
         sha1hash?: string;
         extension: string | null;
         mimeType: string | null;
@@ -865,6 +879,8 @@ export type PROJECT_QUERY_RESULT = {
         metadata?: SanityImageMetadata;
         source?: SanityAssetSourceData;
       } | null;
+      alt: null;
+      caption: null;
     } | null;
   } | null;
   fiche_technique: null;
@@ -894,6 +910,8 @@ export type ALL_PROJECTS_QUERY_RESULT = Array<{
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt?: LocaleString;
+    caption?: LocaleString;
     _type: "image";
     _key: string;
   }>;
@@ -916,7 +934,7 @@ export type ALL_PROJECTS_QUERY_RESULT = Array<{
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
 // Variable: PROJECTS_QUERY
-// Query: *[_type == "projects"][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  items[]->{    	_id,  _type,  slug,  title,	type,	programme,	year,	city,	zip,	numbers,	client,	imageCover{			asset->{		...,		altText,		title,		url,		extension,		mimeType	}	}  }}
+// Query: *[_type == "projects"][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  items[]->{    	_id,  _type,  slug,  title,	type,	programme,	year,	city,	zip,	numbers,	client,	imageCover{			asset->{		...,		url,		extension,		mimeType	},	alt,	caption,	}  }}
 export type PROJECTS_QUERY_RESULT = {
   _id: string;
   _type: "projects";
@@ -956,9 +974,9 @@ export type PROJECTS_QUERY_RESULT = {
         _rev: string;
         originalFilename?: string;
         label?: string;
-        title: string | null;
+        title?: string;
         description?: string;
-        altText: string | null;
+        altText?: string;
         sha1hash?: string;
         extension: string | null;
         mimeType: string | null;
@@ -970,13 +988,15 @@ export type PROJECTS_QUERY_RESULT = {
         metadata?: SanityImageMetadata;
         source?: SanityAssetSourceData;
       } | null;
+      alt: null;
+      caption: null;
     } | null;
   }> | null;
 } | null;
 
 // Source: ../web/app/sanity-api/sanity-queries.tsx
 // Variable: ATELIER_QUERY
-// Query: *[_type == "atelier"][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  images[]{    	asset->{		...,		altText,		title,		url,		extension,		mimeType	}  },  items[]{    ...  }}
+// Query: *[_type == "atelier"][0]{  ...,  seo{    	...,	metaImage{		asset->{			url		}	}  },  images[]{    	asset->{		...,		url,		extension,		mimeType	},	alt,	caption,  },  items[]{    ...  }}
 export type ATELIER_QUERY_RESULT = {
   _id: string;
   _type: "atelier";
@@ -1004,9 +1024,9 @@ export type ATELIER_QUERY_RESULT = {
       _rev: string;
       originalFilename?: string;
       label?: string;
-      title: string | null;
+      title?: string;
       description?: string;
-      altText: string | null;
+      altText?: string;
       sha1hash?: string;
       extension: string | null;
       mimeType: string | null;
@@ -1018,6 +1038,8 @@ export type ATELIER_QUERY_RESULT = {
       metadata?: SanityImageMetadata;
       source?: SanityAssetSourceData;
     } | null;
+    alt: LocaleString | null;
+    caption: LocaleString | null;
   }> | null;
   items: Array<{
     _key: string;
@@ -1032,10 +1054,10 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"settings\"][0]{\n  ...,\n  navPrimary[]{\n    ...,\n    _type == 'linkInternal' => {\n      ...,\n      link->{\n        _type,\n        slug\n      }\n    }\n  },\n}": SETTINGS_QUERY_RESULT;
-    '*[_type == "home"][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n  projects[]->{\n    \n\t_id,\n  _type,\n  slug,\n  title,\n\ttype,\n\tprogramme,\n\tyear,\n\tcity,\n\tzip,\n\tnumbers,\n\tclient,\n\timageCover{\n\t\t\n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n\t}\n\n  },\n  items[]{\n    image{\n      \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n    },\n    project->{\n      \n\t_id,\n  _type,\n  slug,\n  title,\n\ttype,\n\tprogramme,\n\tyear,\n\tcity,\n\tzip,\n\tnumbers,\n\tclient,\n\timageCover{\n\t\t\n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n\t}\n\n    }\n  },\n  news[]{\n    ...\n  }\n}': HOME_QUERY_RESULT;
-    '\n  *[_type == "project" && slug.current == $slug][0]{\n    ...,\n    seo{\n      \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n    },\n    imageCover{\n      \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n    },\n    images[]{\n      \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n    },\n    fiche_technique[]{\n      ...\n    },\n    related->{\n      _type,\n      slug,\n      imageCover{\n        \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n      }\n    }\n  }\n': PROJECT_QUERY_RESULT;
+    '*[_type == "home"][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n  projects[]->{\n    \n\t_id,\n  _type,\n  slug,\n  title,\n\ttype,\n\tprogramme,\n\tyear,\n\tcity,\n\tzip,\n\tnumbers,\n\tclient,\n\timageCover{\n\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t}\n\n  },\n  items[]{\n    image{\n      \n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n    },\n    project->{\n      \n\t_id,\n  _type,\n  slug,\n  title,\n\ttype,\n\tprogramme,\n\tyear,\n\tcity,\n\tzip,\n\tnumbers,\n\tclient,\n\timageCover{\n\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t}\n\n    }\n  },\n  news[]{\n    ...\n  }\n}': HOME_QUERY_RESULT;
+    '\n  *[_type == "project" && slug.current == $slug][0]{\n    ...,\n    seo{\n      \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n    },\n    imageCover{\n      \n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n    },\n    images[]{\n      \n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n    },\n    fiche_technique[]{\n      ...\n    },\n    related->{\n      _type,\n      slug,\n      imageCover{\n        \n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n      }\n    }\n  }\n': PROJECT_QUERY_RESULT;
     '\n  *[_type == "project"]{\n    ...\n  }\n': ALL_PROJECTS_QUERY_RESULT;
-    '*[_type == "projects"][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n  items[]->{\n    \n\t_id,\n  _type,\n  slug,\n  title,\n\ttype,\n\tprogramme,\n\tyear,\n\tcity,\n\tzip,\n\tnumbers,\n\tclient,\n\timageCover{\n\t\t\n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n\t}\n\n  }\n}': PROJECTS_QUERY_RESULT;
-    '*[_type == "atelier"][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n  images[]{\n    \n\tasset->{\n\t\t...,\n\t\taltText,\n\t\ttitle,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t}\n\n  },\n  items[]{\n    ...\n  }\n}': ATELIER_QUERY_RESULT;
+    '*[_type == "projects"][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n  items[]->{\n    \n\t_id,\n  _type,\n  slug,\n  title,\n\ttype,\n\tprogramme,\n\tyear,\n\tcity,\n\tzip,\n\tnumbers,\n\tclient,\n\timageCover{\n\t\t\n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n\t}\n\n  }\n}': PROJECTS_QUERY_RESULT;
+    '*[_type == "atelier"][0]{\n  ...,\n  seo{\n    \n\t...,\n\tmetaImage{\n\t\tasset->{\n\t\t\turl\n\t\t}\n\t}\n\n  },\n  images[]{\n    \n\tasset->{\n\t\t...,\n\t\turl,\n\t\textension,\n\t\tmimeType\n\t},\n\talt,\n\tcaption,\n\n  },\n  items[]{\n    ...\n  }\n}': ATELIER_QUERY_RESULT;
   }
 }

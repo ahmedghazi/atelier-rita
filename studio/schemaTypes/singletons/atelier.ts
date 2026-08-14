@@ -3,6 +3,7 @@ import {baseLanguage} from '../locale/supportedLanguages'
 import {seoField} from '../features/seo'
 import slug from '../fields/slug'
 import {IoIosPeople} from 'react-icons/io'
+import {imageFields} from '../misc/imageFields'
 
 export default defineType({
   name: 'atelier',
@@ -33,7 +34,7 @@ export default defineType({
       name: 'images',
       title: 'Images',
       type: 'array',
-      of: [{type: 'image'}],
+      of: [{type: 'image', fields: imageFields}],
     }),
     defineField({
       name: 'items',

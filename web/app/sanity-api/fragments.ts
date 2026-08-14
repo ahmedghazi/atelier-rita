@@ -18,16 +18,17 @@ export const blockContent = `
 		}
 	}
 `;
-
+// altText,
+// title,
 export const image = `
 	asset->{
 		...,
-		altText,
-		title,
 		url,
 		extension,
 		mimeType
-	}
+	},
+	alt,
+	caption,
 `;
 export const figure = `
 	...,

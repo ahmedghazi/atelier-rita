@@ -3,6 +3,7 @@ import {FolderIcon} from '@sanity/icons'
 import {baseLanguage} from '../locale/supportedLanguages'
 import {seoField} from '../features/seo'
 import slug from '../fields/slug'
+import {imageFields} from '../misc/imageFields'
 
 export default defineType({
   type: 'document',
@@ -45,7 +46,12 @@ export default defineType({
     defineField({
       name: 'images',
       type: 'array',
-      of: [{type: 'image'}],
+      of: [
+        {
+          type: 'image',
+          fields: imageFields,
+        },
+      ],
       title: 'Images',
       description: 'Visible dans la page du projet (largeur 2500px)',
       // group: 'editorial',

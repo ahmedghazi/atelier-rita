@@ -74,13 +74,13 @@ const ContentAtelier = ({ input }: Props) => {
 
   useEffect(() => {
     const token = subscribe("SLIDER_CHANGED", (e, d) => {
-      setCaption(images?.[d]?.asset?.title || "");
+      setCaption(_localizeField(locale, images?.[d]?.caption) || "");
     });
     return () => {
       unsubscribe(token);
     };
-  }, [images]);
-
+  }, [images, locale]);
+  console.log(images);
   return (
     <div className='content--atelier app-h'>
       <div className='slider'>

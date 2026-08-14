@@ -53,11 +53,10 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
   const slides = useMemo(() => {
     return [imageCover, ...(images || [])];
   }, [imageCover, images]);
-
   const caption =
     _localizeField(
       locale,
-      slides[slideIndex]?.asset?.altText as LocaleString | undefined,
+      slides[slideIndex]?.caption as LocaleString | undefined,
     ) || "";
 
   useEffect(() => {
@@ -107,8 +106,7 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
 
   // const _related = related ? related : relatedByindex;
   const _related = relatedByindex;
-  console.log(input.imageCover);
-  console.log(input.images);
+
   return (
     <div
       className={clsx(

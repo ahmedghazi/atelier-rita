@@ -10,9 +10,15 @@ type Props = {
   title?: string;
   width?: number;
   alt?: string | any;
+  caption?: string | any;
 };
 
-const Figure = ({ asset, width = 1000, alt = website.title, title }: Props) => {
+const Figure = ({
+  asset,
+  width = 1000,
+  alt = website.title,
+  caption,
+}: Props) => {
   return (
     <figure
       className={clsx(
@@ -37,7 +43,7 @@ const Figure = ({ asset, width = 1000, alt = website.title, title }: Props) => {
         // placeholder='blur'
         placeholder={asset?.metadata?.lqip}
       />
-      {title && <figcaption className='sm-only'>{title}</figcaption>}
+      {caption && <figcaption className='sm-only'>{caption}</figcaption>}
     </figure>
   );
 };

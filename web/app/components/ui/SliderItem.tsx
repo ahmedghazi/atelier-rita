@@ -9,8 +9,9 @@ type SliderItemProps = {
         asset?: {
           url?: string | null;
           extension?: string | null;
-          altText?: unknown;
         } | null;
+        alt?: unknown;
+        caption?: unknown;
       }
     | null
     | undefined;
@@ -18,10 +19,8 @@ type SliderItemProps = {
 };
 
 const SliderItem = ({ image, locale }: SliderItemProps) => {
-  console.log(image?.asset?.altText);
   const alt =
-    _localizeField(locale, image?.asset?.altText as LocaleString | undefined) ||
-    "";
+    _localizeField(locale, image?.caption as LocaleString | undefined) || "";
   const isSvg =
     /\.svg($|\?)/i.test(image?.asset?.url ?? "") ||
     image?.asset?.extension === "svg";
