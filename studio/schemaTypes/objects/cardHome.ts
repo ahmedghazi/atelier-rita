@@ -19,15 +19,22 @@ export default defineField({
       type: 'reference',
       to: [{type: 'project'}],
     }),
+    defineField({
+      name: 'link',
+      type: 'url',
+      description: 'Lien externe si pas lié à un projet',
+    }),
   ],
   preview: {
     select: {
       title: `project.title.${baseLanguage}`,
+      link: 'link',
       image: 'image',
     },
-    prepare({title, image}) {
+    prepare({title, link, image}) {
       return {
         title: title || 'Carte Home',
+        subtitle: link ? `↗ ${link}` : '',
         media: image || RxButton,
       }
     },

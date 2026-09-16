@@ -3,21 +3,37 @@
 .card {
   &--home,
   &--project {
-    // aspect-ratio: 3 / 4;
+    color: var(--color-bg);
     a:hover {
       color: rgba(var(--color-accent-rgb), 1);
     }
-    color: var(--color-bg);
+  }
+  &--home {
+    &:not(.has-link) {
+      pointer-events: none;
+    }
+  }
+  &--project--text {
+    border-bottom: var(--border);
+    a {
+      padding: 0.8462em 0;
+      display: block;
+    }
+  }
+
+  &.card--home.has-verso {
+    // aspect-ratio: 3 / 4;
+
     .perspective {
       perspective: 600px;
       display: block;
     }
     &.is-active {
-      .card--project__inner {
+      .card--home__inner {
         transform: rotateY(var(--flip-deg, 180deg));
       }
     }
-    &__inner {
+    .card--home__inner {
       position: relative;
       transition: transform 0.45s ease-in-out;
       transform-style: preserve-3d;
@@ -81,40 +97,7 @@
         // top: var(--header-h);
       }
     }
-    svg {
-      // mix-blend-mode: difference;
-      // max-width: 100%;
-      // aspect-ratio: 238 / 317 !important;
-      // height: 100% !important;
-      // --shape: #fff;
-      // --line: #fff;
-      // --text: #08f372;
 
-      // path[fill="none"],
-      // line,
-      // polyline {
-      //   stroke: var(--line) !important;
-      // }
-      // path {
-      //   stroke: var(--line) !important;
-      // }
-
-      // path:not([fill="none"]),
-      // rect,
-      // circle,
-      // ellipse,
-      // polygon {
-      //   fill: var(--shape) !important;
-      // }
-
-      // text {
-      //   fill: var(--text) !important;
-      // }
-
-      // rect {
-      //   display: none;
-      // }
-    }
     @media screen and (max-width: variables.$md) {
       .verso {
         padding: calc(var(--spacing-xs) * 0.5) var(--spacing-xs);
@@ -123,23 +106,5 @@
         }
       }
     }
-  }
-  &--home {
-    &:not(.has-verso) {
-      pointer-events: none;
-    }
-  }
-  &--project--text {
-    border-bottom: var(--border);
-    a {
-      padding: 0.8462em 0;
-      display: block;
-    }
-    // &:hover {
-    //   background-color: var(--color-accent);
-    //   a {
-    //     color: var(--color-bg);
-    //   }
-    // }
   }
 }

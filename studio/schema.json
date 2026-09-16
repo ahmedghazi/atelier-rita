@@ -1078,6 +1078,13 @@
             "name": "project.reference"
           },
           "optional": true
+        },
+        "link": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         }
       }
     }

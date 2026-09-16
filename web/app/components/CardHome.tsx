@@ -10,33 +10,13 @@ import useDeviceDetect from "../hooks/useDeviceDetect";
 import { useRouter } from "next/navigation";
 import SvgInline from "./SvgInline";
 
-// const InlineSvg = ({ url, alt }: { url: string; alt: string }) => {
-//   const [markup, setMarkup] = useState("");
-//   useEffect(() => {
-//     fetch(`/api/svg-proxy?url=${encodeURIComponent(url)}`)
-//       .then((r) => r.text())
-//       .then(setMarkup)
-//       .catch(() => {});
-//   }, [url]);
-
-//   if (!markup) return null;
-//   return (
-//     <span
-//       className='inline-svg'
-//       role='img'
-//       aria-label={alt}
-//       dangerouslySetInnerHTML={{ __html: markup }}
-//     />
-//   );
-// };
-
 type Props = {
   input: NonNullable<NonNullable<HOME_QUERY_RESULT>["items"]>[number];
 };
 
 const CardHomeComponent = ({ input }: Props) => {
   const { locale } = useLocale();
-  const { image, project } = input;
+  const { image, project, link } = input;
   const hasVerso = project !== null;
   const { title, year, type, programme, city, client } = project ?? {};
   const [active, setActive] = useState<boolean>(false);
@@ -45,8 +25,10 @@ const CardHomeComponent = ({ input }: Props) => {
   const router = useRouter();
   const { isMobile } = useDeviceDetect();
   const titleLocalized = _localizeField(locale, title) as string;
-  const programmeLocalized = _localizeField(locale, programme) as string;
+  // const programmeLocalized = _localizeField(locale, programme) as string;
   const typeLocalized = _localizeField(locale, type) as string;
+  const linkHref = project ? _linkResolver(project) : link || "";
+  const target = project ? "_self" : "_blank";
 
   const handleHover = (e: React.MouseEvent<HTMLElement>, _active: boolean) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -79,6 +61,9 @@ const CardHomeComponent = ({ input }: Props) => {
         {
           "has-verso": hasVerso,
         },
+        {
+          "has-link": linkHref !== "",
+        },
       )}
       style={{ "--flip-deg": `${flipDeg}deg` } as React.CSSProperties}
       onMouseEnter={(e) => {
@@ -87,9 +72,9 @@ const CardHomeComponent = ({ input }: Props) => {
       onMouseLeave={(e) => {
         if (!isMobile) handleHover(e, false);
       }}>
-      <Link onClick={_onCick} href={_linkResolver(project)}>
+      <Link onClick={_onCick} href={linkHref} target={target}>
         <div className='perspective'>
-          <div className='card--project__inner'>
+          <div className='card--home__inner'>
             <div className='recto'>
               {!isSvg && <Figure asset={image?.asset} alt={titleLocalized} />}
               {isSvg && image?.asset?.url && (
