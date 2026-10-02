@@ -51,6 +51,6 @@
 
 @for $i from 1 through 1000 {
   .svg-inline svg .st#{$i} {
-    clip-path: unset;
+    // clip-path: unset;
   }
 }
