@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import website from "./config/website";
 import { getHome, getProjects, HOME_QUERY } from "./sanity-api/sanity-queries";
 import { HOME_QUERY_RESULT } from "./types/sanity.types";
+import { notFound } from "next/navigation";
 
 export const revalidate = 3600; // revalidate every hour
 
@@ -30,7 +31,7 @@ const HomePage = async function Page() {
     data = await getHome();
   }
 
-  if (!data) return <div>please edit page</div>;
+  if (!data) return notFound();
   return (
     <div className='template template--home' data-template='home'>
       <ContentHome input={data} />

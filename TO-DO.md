@@ -5,7 +5,7 @@
 - # home infos
 - # home logo anime
 - # typo
-- micro interactions
+- # micro interactions
 - # site descriptions
 - # news
 - # random palette
@@ -24,7 +24,7 @@
 - # carte home + shuffle
 - # card callage année
 - # card line h entre title et prog
-- pb carte news
+- # pb carte news
 
 ## Projet
 
@@ -34,14 +34,14 @@
 
 - # image default à virer
 - # ordre des projets = ordre projet suivant
-- sort
+- # sort
 
 ## global
 
 - # header-h
-- modal taille
+- # modal taille
 - # modal draggable zone plus grande, sous le texte
 - # plage typo sur grands écrans
-- image
+- # image
 
 ## Devis additif pour les tries sur index
