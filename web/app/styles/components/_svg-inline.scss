@@ -6,17 +6,6 @@
   height: 100% !important;
   --shape: #fff;
   --line: #fff;
-  // --text: #08f372;
-
-  // [stroke],
-  // [style*="stroke:"] {
-  //   stroke: var(--line) !important;
-  // }
-
-  // [fill]:not([fill="none"]),
-  // [style*="fill:"]:not([style*="fill:none"]) {
-  //   fill: var(--shape) !important;
-  // }
 
   path[fill="none"],
   line,
@@ -53,5 +42,15 @@
   .svg-inline svg {
     --shape: var(--color-accent);
     --line: var(--color-accent);
+  }
+}
+
+.card--home:not(.has-verso) .svg-inline svg {
+  mix-blend-mode: unset;
+}
+
+@for $i from 1 through 1000 {
+  .svg-inline svg .st#{$i} {
+    clip-path: unset;
   }
 }
