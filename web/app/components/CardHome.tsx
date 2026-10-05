@@ -18,7 +18,7 @@ const CardHomeComponent = ({ input }: Props) => {
   const { locale } = useLocale();
   const { image, project, link } = input;
   const hasVerso = project !== null;
-  console.log("project", project);
+  // console.log("project", project);
   const { title, year, type, programme, city, client } = project ?? {};
   const [active, setActive] = useState<boolean>(false);
   const [flipDeg, setFlipDeg] = useState<number>(180);
