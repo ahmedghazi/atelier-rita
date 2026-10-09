@@ -1,56 +1,132 @@
-.svg-inline svg,
-.card.has-verso .svg-inline svg {
-  mix-blend-mode: difference;
+.svg-inline svg {
   max-width: 100%;
   aspect-ratio: 238 / 317 !important;
   height: 100% !important;
   --shape: #fff;
   --line: #fff;
+  --paper: var(--color-bg);
 
-  path[fill="none"],
-  line,
-  polyline {
-    stroke: var(--line) !important;
-  }
-  path {
-    stroke: var(--line) !important;
-  }
-  path:not([fill="none"]),
-  line:not([fill="none"]),
-  polyline:not([fill="none"]) {
-    stroke: var(--line) !important;
-  }
-
-  // path:not([fill="none"]),
-  rect,
-  circle,
-  ellipse,
-  polygon {
+  [data-paint~="fill"] {
     fill: var(--shape) !important;
   }
-
-  // text {
-  //   fill: var(--text) !important;
-  // }
+  [data-paint~="knockout"] {
+    fill: var(--paper) !important;
+  }
+  [data-paint~="stroke"] {
+    stroke: var(--line) !important;
+  }
 
   rect {
     display: none;
   }
 }
 
-.slider {
-  .svg-inline svg {
-    --shape: var(--color-accent);
-    --line: var(--color-accent);
-  }
+.slider .svg-inline svg {
+  --shape: var(--color-accent);
+  --line: var(--color-accent);
 }
 
-.card--home:not(.has-verso) .svg-inline svg {
-  mix-blend-mode: unset;
-}
+// .svg-inline svg {
+//   mix-blend-mode: normal;
+//   max-width: 100%;
+//   aspect-ratio: 238 / 317 !important;
+//   height: 100% !important;
+//   --shape: #fff;
+//   --line: #fff;
+//   // noir = neutre en mix-blend-mode: difference
+//   --paper: #000;
 
-@for $i from 1 through 1000 {
-  .svg-inline svg .st#{$i} {
-    // clip-path: unset;
-  }
-}
+//   [data-paint~="fill"] {
+//     fill: var(--shape) !important;
+//     // fill: white !important;
+//   }
+//   [data-paint~="knockout"] {
+//     fill: var(--paper) !important;
+//   }
+//   [data-paint~="stroke"] {
+//     stroke: var(--line) !important;
+//   }
+
+//   rect {
+//     display: none;
+//   }
+// }
+
+// .slider .svg-inline svg {
+//   --shape: var(--color-accent);
+//   --line: var(--color-accent);
+//   --paper: #fff;
+// }
+
+// .card--home:not(.has-verso) .svg-inline svg {
+//   mix-blend-mode: unset;
+//   --paper: transparent;
+// }
+
+// .svg-inline svg,
+// .card.has-verso .svg-inline svg {
+//   mix-blend-mode: difference;
+//   max-width: 100%;
+//   aspect-ratio: 238 / 317 !important;
+//   height: 100% !important;
+//   --shape: #fff;
+//   --line: #fff;
+
+//   // path[fill="none"],
+//   // line,
+//   // polyline {
+//   //   stroke: var(--line) !important;
+//   // }
+//   // path {
+//   //   stroke: var(--line) !important;
+//   // }
+//   line,
+//   polyline,
+//   path,
+//   path:not([fill="none"]),
+//   line:not([fill="none"]),
+//   polyline:not([fill="none"]) {
+//     stroke: var(--line) !important;
+//     // fill: none !important;
+//   }
+//   line[style*="fill:#" i],
+//   line[style*="fill: #" i],
+//   path[style*="fill:#" i],
+//   path[style*="fill: #" i],
+//   polyline[style*="fill:#" i],
+//   polyline[style*="fill: #" i] {
+//     fill: white !important;
+//   }
+//   // path,
+//   // polyline {
+//   //   // fill: var(--line) !important;
+//   // }
+
+//   rect,
+//   circle,
+//   ellipse,
+//   polygon {
+//     fill: var(--shape) !important;
+//   }
+
+//   rect {
+//     display: none;
+//   }
+// }
+
+// .slider {
+//   .svg-inline svg {
+//     --shape: var(--color-accent);
+//     --line: var(--color-accent);
+//   }
+// }
+
+// .card--home:not(.has-verso) .svg-inline svg {
+//   mix-blend-mode: unset;
+// }
+
+// @for $i from 1 through 1000 {
+//   .svg-inline svg .st#{$i} {
+//     // clip-path: unset;
+//   }
+// }
