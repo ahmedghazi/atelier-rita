@@ -50,6 +50,7 @@ export default defineType({
         {
           type: 'image',
           fields: imageFields,
+          validation: (Rule) => Rule.required(),
         },
       ],
       title: 'Images',

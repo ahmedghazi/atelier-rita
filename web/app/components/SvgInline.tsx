@@ -1,4 +1,5 @@
 "use client";
+import clsx from "clsx";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 type Props = { url: string; alt: string };
@@ -45,6 +46,10 @@ function tagPaint(root: HTMLElement) {
 const SvgInline = ({ url, alt }: Props) => {
   const [markup, setMarkup] = useState("");
   const ref = useRef<HTMLSpanElement>(null);
+  const [dimensions, setDimensions] = useState<{ w: number; h: number }>({
+    w: 0,
+    h: 0,
+  });
 
   useEffect(() => {
     let cancelled = false;
@@ -58,17 +63,41 @@ const SvgInline = ({ url, alt }: Props) => {
   }, [url]);
 
   useLayoutEffect(() => {
-    if (markup && ref.current) tagPaint(ref.current);
-  }, [markup]);
+    if (markup && ref.current) {
+      tagPaint(ref.current);
 
+      const svg = ref.current.querySelector("svg");
+      if (svg) {
+        const viewBox = svg.getAttribute("viewBox")?.split(" ");
+        if (viewBox) {
+          setDimensions({
+            w: parseFloat(viewBox[2]),
+            h: parseFloat(viewBox[3]),
+          });
+          console.log(viewBox);
+          console.log(viewBox[2], viewBox[3]);
+        }
+      }
+    }
+  }, [markup]);
+  // console.log(dimensions);
   if (!markup) return null;
   return (
     <span
       ref={ref}
-      className='svg-inline'
+      className={clsx(
+        "svg-inline",
+        dimensions && dimensions.w > dimensions.h ? "is-landscape" : "",
+        dimensions && dimensions.w < dimensions.h ? "is-portrait" : "",
+      )}
       role='img'
       aria-label={alt}
       dangerouslySetInnerHTML={{ __html: markup }}
+      style={
+        {
+          "--aspectRatio": `${dimensions.w}/${dimensions.h}`,
+        } as React.CSSProperties
+      }
     />
   );
 };
