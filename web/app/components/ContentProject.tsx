@@ -50,9 +50,10 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
   const [slideIndex, setSlideIndex] = useState<number>(0);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [sliderEnded, setSliderEnded] = useState<boolean>(false);
-  const slides = useMemo(() => {
-    return [imageCover, ...(images || [])];
-  }, [imageCover, images]);
+  // const slides = useMemo(() => {
+  //   return [imageCover, ...(images || [])];
+  // }, [imageCover, images]);
+  const slides = images;
   const caption =
     _localizeField(
       locale,
