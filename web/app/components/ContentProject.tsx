@@ -54,11 +54,12 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
   //   return [imageCover, ...(images || [])];
   // }, [imageCover, images]);
   const slides = images;
-  const caption =
-    _localizeField(
-      locale,
-      slides[slideIndex]?.caption as LocaleString | undefined,
-    ) || "";
+  const caption = slides
+    ? _localizeField(
+        locale,
+        slides[slideIndex]?.caption as LocaleString | undefined,
+      ) || ""
+    : "";
 
   useEffect(() => {
     const token = subscribe("SLIDER_CHANGED", (e, d) => {
