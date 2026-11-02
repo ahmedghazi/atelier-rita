@@ -122,7 +122,7 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
             settings={{
               infinite: false,
             }}>
-            {slides.map((image, index: number) => (
+            {slides?.map((image, index: number) => (
               <div key={index + 1} className='ss-slider__slide'>
                 <SliderItem image={image} locale={locale} />
               </div>
@@ -138,7 +138,7 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
 
                 <div className='image-cover'>
                   <Figure
-                    asset={_related?.imageCover?.asset}
+                    image={_related?.imageCover}
                     alt={_related?.slug?.current}
                   />
                 </div>

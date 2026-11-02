@@ -4,7 +4,7 @@ import {
   PROJECT_QUERY_RESULT,
   PROJECTS_QUERY_RESULT,
 } from "../types/sanity.types";
-import CardProjectTxt, { ProjectImageCoverAsset } from "./CardProjectTxt";
+import CardProjectTxt, { ProjectImageCover } from "./CardProjectTxt";
 import Figure from "./ui/Figure";
 import { _localizeField, _localizeText } from "../sanity-api/utils";
 import useLocale from "../context/LocaleContext";
@@ -61,7 +61,7 @@ const ContentProjects = ({ input }: Props) => {
   const { locale } = useLocale();
 
   const { items } = input;
-  const [thumbnail, setThumbnail] = useState<ProjectImageCoverAsset | null>(
+  const [thumbnail, setThumbnail] = useState<ProjectImageCover | null>(
     null,
   );
   const [sortKey, setSortKey] = useState<SortKey | null>(null);
@@ -204,7 +204,7 @@ const ContentProjects = ({ input }: Props) => {
           </div>
         </div>
         <div className='tbumnail md:col-span-2 hidden-sm'>
-          {thumbnail && <Figure asset={thumbnail} />}
+          {thumbnail && <Figure image={thumbnail} />}
         </div>
       </div>
     </div>

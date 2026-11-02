@@ -27,6 +27,8 @@ export const image = `
 		extension,
 		mimeType
 	},
+	hotspot,
+	crop,
 	alt,
 	caption,
 `;

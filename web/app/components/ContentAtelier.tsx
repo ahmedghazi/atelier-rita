@@ -13,6 +13,7 @@ import SliderItem from "./ui/SliderItem";
 import Link from "next/link";
 import Icon from "./ui/Icon";
 import BackHome from "./ui/BackHome";
+import SlickSlider from "./ui/SlickSlider";
 
 type ItemProps = {
   item: KeyVal;
@@ -70,28 +71,54 @@ const ContentAtelier = ({ input }: Props) => {
   //   "https://picsum.photos/400/300",
   // ];
   const [zIndex, setZIndex] = useState<number>(0);
-  const [caption, setCaption] = useState<string>("");
+  // const [caption, setCaption] = useState<string>("");
+  const [slideIndex, setSlideIndex] = useState<number>(0);
+
+  // useEffect(() => {
+  //   const token = subscribe("SLIDER_CHANGED", (e, d) => {
+  //     setCaption(_localizeField(locale, images?.[d]?.caption) || "");
+  //   });
+  //   return () => {
+  //     unsubscribe(token);
+  //   };
+  // }, [images, locale]);
 
   useEffect(() => {
     const token = subscribe("SLIDER_CHANGED", (e, d) => {
-      setCaption(_localizeField(locale, images?.[d]?.caption) || "");
+      setSlideIndex(d);
     });
+
     return () => {
       unsubscribe(token);
     };
-  }, [images, locale]);
-  console.log(images);
+  }, []);
+
+  const caption = images
+    ? _localizeField(locale, images[slideIndex]?.caption) || ""
+    : "";
+
   return (
     <div className='content--atelier app-h'>
       <div className='slider'>
-        <KeenSlider>
+        {/* <KeenSlider>
           {images?.map((image, index: number) => (
             <div key={index + 1} className='keen-slider__slide'>
               <SliderItem image={image} locale={locale} />
-              {/* <img src={image} alt='' srcset='' /> */}
+
             </div>
           ))}
-        </KeenSlider>
+        </KeenSlider> */}
+        <SlickSlider
+          controlsFloating={true}
+          settings={{
+            infinite: false,
+          }}>
+          {images?.map((image, index: number) => (
+            <div key={index + 1} className='ss-slider__slide'>
+              <SliderItem image={image} locale={locale} />
+            </div>
+          ))}
+        </SlickSlider>
         <div className='caption '>{caption}</div>
       </div>
       <div className='footer'>

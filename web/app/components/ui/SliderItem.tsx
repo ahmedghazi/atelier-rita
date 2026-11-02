@@ -26,7 +26,7 @@ const SliderItem = ({ image, locale }: SliderItemProps) => {
     image?.asset?.extension === "svg";
   return (
     <>
-      {!isSvg && <Figure asset={image?.asset} alt={alt} />}
+      {!isSvg && <Figure image={image} alt={alt} />}
       {isSvg && image?.asset?.url && (
         <SvgInline url={image.asset.url} alt={alt} />
       )}

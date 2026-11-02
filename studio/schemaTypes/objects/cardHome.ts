@@ -21,8 +21,8 @@ export default defineField({
     }),
     defineField({
       name: 'link',
-      type: 'url',
-      description: 'Lien externe si pas lié à un projet',
+      type: 'string',
+      description: 'Lien autre',
     }),
   ],
   preview: {

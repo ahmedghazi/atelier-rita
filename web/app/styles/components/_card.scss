@@ -93,6 +93,7 @@
         aspect-ratio: 238 / 317 !important;
         height: 100% !important;
         object-fit: cover;
+        object-position: var(--object-position, 50% 50%);
         // position: sticky;
         // top: var(--header-h);
       }
@@ -113,6 +114,7 @@
         aspect-ratio: 238 / 317 !important;
         height: 100% !important;
         object-fit: cover;
+        object-position: var(--object-position, 50% 50%);
       }
     }
   }

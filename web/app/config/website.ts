@@ -4,7 +4,7 @@ const website = {
   titleAlt: "Rita", // Title for JSONLD
   description: "...",
   headline: "", // Headline for schema.org JSONLD
-  url: "https://aaa.fr", // Domain of your site. No trailing slash!
+  url: "https://www.atelierrita.org", // Domain of your site. No trailing slash!
   image: "", // Used for SEO
   ogLanguage: "fr_FR", // Facebook Language
 

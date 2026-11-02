@@ -6,13 +6,13 @@ import useLocale from "../context/LocaleContext";
 import Link from "next/link";
 import CityAndZip from "./CityAndZip";
 
-export type ProjectImageCoverAsset = NonNullable<
+export type ProjectImageCover = NonNullable<
   NonNullable<PROJECT_QUERY_RESULT>["imageCover"]
->["asset"];
+>;
 
 type Props = {
   input: NonNullable<PROJECT_QUERY_RESULT>;
-  setThumbnail: (thumbnail: ProjectImageCoverAsset | null) => void;
+  setThumbnail: (thumbnail: ProjectImageCover | null) => void;
 };
 
 const CardProjectTxt = ({ input, setThumbnail }: Props) => {
@@ -35,7 +35,7 @@ const CardProjectTxt = ({ input, setThumbnail }: Props) => {
   return (
     <div
       className='tr card card--project--text'
-      onMouseEnter={() => setThumbnail(imageCover?.asset || null)}>
+      onMouseEnter={() => setThumbnail(imageCover || null)}>
       <Link href={_linkResolver(input)}>
         <div className=' grid grid-cols-2 md:grid-cols-7 gap-gutter'>
           <h2 className='td'>{titleLocalized}</h2>

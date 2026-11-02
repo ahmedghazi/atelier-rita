@@ -9,6 +9,7 @@ import useLocale from "../context/LocaleContext";
 import useDeviceDetect from "../hooks/useDeviceDetect";
 import { useRouter } from "next/navigation";
 import SvgInline from "./SvgInline";
+import website from "../config/website";
 
 type Props = {
   input: NonNullable<NonNullable<HOME_QUERY_RESULT>["items"]>[number];
@@ -29,7 +30,8 @@ const CardHomeComponent = ({ input }: Props) => {
   // const programmeLocalized = _localizeField(locale, programme) as string;
   const typeLocalized = _localizeField(locale, type) as string;
   const linkHref = project ? _linkResolver(project) : link || "";
-  const target = project ? "_self" : "_blank";
+  const isExternalLink = linkHref.indexOf(website.title.toLowerCase()) === -1;
+  const target = isExternalLink ? "_blank" : "_self";
 
   const handleHover = (e: React.MouseEvent<HTMLElement>, _active: boolean) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -77,7 +79,7 @@ const CardHomeComponent = ({ input }: Props) => {
         <div className='perspective'>
           <div className='card--home__inner'>
             <div className='recto'>
-              {!isSvg && <Figure asset={image?.asset} alt={titleLocalized} />}
+              {!isSvg && <Figure image={image} alt={titleLocalized} />}
               {isSvg && image?.asset?.url && (
                 <SvgInline url={image.asset.url} alt={titleLocalized} />
               )}
