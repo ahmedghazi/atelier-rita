@@ -8,6 +8,7 @@ import portableTextComponents from "../sanity-api/portableTextComponents";
 import useLocale from "../context/LocaleContext";
 import Modal from "./ui/Modal";
 import CardHomeComponent from "./CardHome";
+import NewsComponent from "./News";
 
 type Props = {
   input: NonNullable<HOME_QUERY_RESULT>;
@@ -68,17 +69,18 @@ const ContentHome = ({ input }: Props) => {
     });
   }, [items]);
 
-  useEffect(() => {
-    if (randomNews) {
-      setTimeout(() => {
-        setModalOpen(true);
-      }, 500);
-    }
-  }, [randomNews]);
+  // useEffect(() => {
+  //   if (randomNews) {
+  //     setTimeout(() => {
+  //       setModalOpen(true);
+  //     }, 500);
+  //   }
+  // }, [randomNews]);
 
+  console.log("news", news);
   return (
     <div className='content--home '>
-      {randomNews && (
+      {/* {randomNews && (
         <Modal open={modalOpen} onClose={() => setModalOpen(false)} bigClose>
           <div className='news-item text-display-lg--sm- md:text-display-lg- text-display-lg'>
             <div className='title'>
@@ -103,7 +105,10 @@ const ContentHome = ({ input }: Props) => {
             )}
           </div>
         </Modal>
-      )}
+      )} */}
+      {news?.map((newsItem, index) => (
+        <NewsComponent key={index} news={newsItem} />
+      ))}
       <div
         className='grid grid-cols-2 md:grid-cols-5 gap-xs md:gap-gutter md:gap-y-header-h'
         style={{}}>

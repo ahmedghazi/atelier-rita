@@ -74,8 +74,8 @@ const SvgInline = ({ url, alt }: Props) => {
             w: parseFloat(viewBox[2]),
             h: parseFloat(viewBox[3]),
           });
-          console.log(viewBox);
-          console.log(viewBox[2], viewBox[3]);
+          // console.log(viewBox);
+          // console.log(viewBox[2], viewBox[3]);
         }
       }
     }
