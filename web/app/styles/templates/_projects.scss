@@ -38,6 +38,13 @@
       position: sticky;
       top: var(--header-h);
     }
+    figure img {
+      max-height: calc(
+        100vh - calc(var(--header-h) + var(--spacing-gutter) * 1)
+      );
+      object-fit: contain;
+      object-position: left top;
+    }
 
     @media all and (max-width: variables.$md) {
       .thead .tr,

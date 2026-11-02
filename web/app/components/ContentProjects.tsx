@@ -116,9 +116,14 @@ const ContentProjects = ({ input }: Props) => {
       if (typeof aVal === "number" && typeof bVal === "number") {
         return sortDir === "asc" ? aVal - bVal : bVal - aVal;
       }
-      return sortDir === "asc"
-        ? String(aVal).localeCompare(String(bVal))
-        : String(bVal).localeCompare(String(aVal));
+      // numeric: "27 logements" < "131 logements" instead of char-by-char
+      const cmp = String(aVal)
+        .trim()
+        .localeCompare(String(bVal).trim(), locale, {
+          numeric: true,
+          sensitivity: "base",
+        });
+      return sortDir === "asc" ? cmp : -cmp;
     });
   }, [items, sortKey, sortDir, locale]);
 
