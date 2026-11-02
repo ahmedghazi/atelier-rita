@@ -69,43 +69,8 @@ const ContentHome = ({ input }: Props) => {
     });
   }, [items]);
 
-  // useEffect(() => {
-  //   if (randomNews) {
-  //     setTimeout(() => {
-  //       setModalOpen(true);
-  //     }, 500);
-  //   }
-  // }, [randomNews]);
-
-  console.log("news", news);
   return (
     <div className='content--home '>
-      {/* {randomNews && (
-        <Modal open={modalOpen} onClose={() => setModalOpen(false)} bigClose>
-          <div className='news-item text-display-lg--sm- md:text-display-lg- text-display-lg'>
-            <div className='title'>
-              {_localizeField(locale, randomNews?.title) as string}
-            </div>
-            {randomNews?.date && (
-              <div className='date'>{_date(randomNews.date)}</div>
-            )}
-            <div className='text'>
-              <PortableText
-                value={_localizeField(locale, randomNews.text) as string}
-                components={portableTextComponents}
-              />
-            </div>
-            {randomNews?.link && (
-              <a
-                href={randomNews?.link?.link}
-                target='_blank'
-                rel='noopener noreferrer'>
-                {randomNews?.link?.label}
-              </a>
-            )}
-          </div>
-        </Modal>
-      )} */}
       {news?.map((newsItem, index) => (
         <NewsComponent key={index} news={newsItem} />
       ))}

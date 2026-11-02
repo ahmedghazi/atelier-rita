@@ -1,7 +1,7 @@
 import {defineField} from 'sanity'
 
 export default defineField({
-  title: 'SEO',
+  title: 'SEO (référencement)',
   name: 'seo',
   type: 'object',
   description: 'Apparence sur les moteurs de recherche (titre, description, image)',

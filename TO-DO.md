@@ -1,47 +1,26 @@
-- # seo auto gen
-- # sanity preview
-- # project > next
-- # atelier slider
-- # home infos
-- # home logo anime
-- # typo
-- # micro interactions
-- # site descriptions
-- # news
-- # random palette
-- # hover (rfg, 0.5)
-- # mobile
-- # build
-- # deploy
-- # mobile card home, double click pour naviguer, click pour hover
-- # pb callage nav mobile
-- # dans project img max size height.
-- # callage news home mobile
+1. 1.1 recadrage au format vertical partout- OK
 
-## Home
+2. il faut des svg standard, là la matière visible autour des plan est dans le svg.
 
-- # carte home 3d au hover, revient à la normale après
-- # carte home + shuffle
-- # card callage année
-- # card line h entre title et prog
-- # pb carte news
+3. 3.2. trie programme - OK
+   3.3. image cover supprimée du slider - OK
+   mais l'image cover ne suffit pas? il faut un champs en plus à administrer pour l'index?
 
-## Projet
+4.
 
-- # taille modal
+- Certains réglages semblent fonctionner puis ne plus fonctionner ???
+- Outil de recadrage mis en place pour les images de couverture (home, index)
+- La gestion de l'image d'index. À préciser
+- Des problèmes de publication et de dépublication. En attente de pouvoir reproduire
+- Upload », « Select Media » et « Rita Back-office ». fixé ne reste que la mediatheque
 
-## Projets
+5. RUBRIQUE ATELIER
 
-- # image default à virer
-- # ordre des projets = ordre projet suivant
-- # sort
+- affichage des légendes ??
+- slider non infini - OK
 
-## global
+  5.3. Lien depuis la Home - OK
 
-- # header-h
-- # modal taille
-- # modal draggable zone plus grande, sous le texte
-- # plage typo sur grands écrans
-- # image
+6.
 
-## Devis additif pour les tries sur index
+Donner le ratio des images de couverture

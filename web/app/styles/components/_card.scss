@@ -82,11 +82,11 @@
     figure {
       height: 100%;
       &.is-landscape img {
-        // aspect-ratio: 317 / 238 !important;
-        // object-fit: contain;
-        // object-position: top;
-        // height: auto !important;
-        // aspect-ratio: unset !important;
+        aspect-ratio: 317 / 238 !important;
+        object-fit: contain;
+        object-position: top;
+        height: auto !important;
+        aspect-ratio: unset !important;
       }
 
       img {

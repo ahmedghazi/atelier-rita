@@ -39,8 +39,8 @@ export default defineType({
     defineField({
       name: 'imageCover',
       type: 'image',
-      title: 'Image de couverture (home, index)',
-      description: "Visible sur la page d'accueil et dans l'index",
+      title: 'Image de couverture (index)',
+      description: "Visible dans l'index",
       options: {hotspot: true},
       // group: 'editorial',
     }),
