@@ -90,7 +90,7 @@ const ContentAtelier = ({ input }: Props) => {
           {items?.map((item: KeyVal, index: number) => (
             <Item key={index} item={item} locale={locale} zIndex={index} />
           ))}
-          <BackHome />
+          {/* <BackHome /> */}
         </div>
       </div>
       {/* <pre>{JSON.stringify(items, null, 2)}</pre> */}

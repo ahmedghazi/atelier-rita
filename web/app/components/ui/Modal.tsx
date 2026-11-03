@@ -53,10 +53,36 @@ const Modal = ({
   const _randomlyPlaceModal = () => {
     const el = ref.current?.getBoundingClientRect();
     if (!el) return;
+    const logo = document.querySelector("header .rita-logo");
+    const logoRect = logo?.getBoundingClientRect();
+
     const maxX = window.innerWidth - el.width;
     const maxY = window.innerHeight - el.height;
-    const randX = Math.random() * maxX;
-    const randY = Math.random() * maxY;
+    let randX = Math.random() * maxX;
+    let randY = Math.random() * maxY;
+    console.log(logoRect);
+    // Check if the random position would overlap with the logo
+    if (logoRect) {
+      const logoRight = logoRect.left + logoRect.width;
+      const logoBottom = logoRect.top + logoRect.height;
+      const margin = Math.random() * 20;
+      // If modal would overlap with logo, adjust position
+      if (
+        randX < logoRight &&
+        randX + el.width > logoRect.left &&
+        randY < logoBottom &&
+        randY + el.height > logoRect.top
+      ) {
+        // Move modal to a position that doesn't overlap with logo
+        // Try to position it to the right or below the logo
+        if (logoRight + el.width < window.innerWidth) {
+          randX = logoRight + margin; // Position to the right of logo with some margin
+        } else if (logoBottom + el.height < window.innerHeight) {
+          randY = logoBottom + margin; // Position below the logo with some margin
+        }
+      }
+    }
+
     setPosition({ x: randX, y: randY });
   };
 

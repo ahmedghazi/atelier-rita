@@ -26,8 +26,12 @@ html:has(.template--home) {
         justify-content: center;
         padding: var(--spacing-xs);
       }
-      svg path {
-        fill: var(--color-bg) !important;
+      svg {
+        // transform: scale(2);
+        path {
+          // fill: var(--color-bg) !important;
+          stroke: var(--color-bg) !important;
+        }
       }
       .news-item {
         text-align: center;

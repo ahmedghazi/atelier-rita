@@ -79,7 +79,8 @@
   cursor: pointer;
 }
 .modal__close svg path {
-  fill: white;
+  // fill: white;
+  stroke: white;
 }
 .modal__close__big {
   /* bottom: var(--spacing-md); */

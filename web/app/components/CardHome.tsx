@@ -96,7 +96,7 @@ const CardHomeComponent = ({ input }: Props) => {
               </div>
               <div className='footer'>
                 <div className='city'>{city}</div>
-                <div className='client'>{client}</div>
+                <div className='client text-right'>{client}</div>
               </div>
             </div>
           </div>
