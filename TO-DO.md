@@ -24,3 +24,8 @@
 6.
 
 Donner le ratio des images de couverture
+
+Mobile
+
+- pb slider mobile
+- pb atelier

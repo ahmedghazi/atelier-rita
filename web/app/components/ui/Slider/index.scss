@@ -1,3 +1,5 @@
+@use "@/app/styles/variables";
+
 .slick-slider-container {
   position: relative;
 
@@ -65,6 +67,51 @@
       .next {
         cursor: e-resize;
       }
+    }
+  }
+}
+
+// page wrapper around the slider + caption (atelier, project), keep both identical
+.slider {
+  gap: var(--spacing-gutter);
+  .ss-slider__slide {
+    width: auto !important;
+    flex-shrink: 0;
+  }
+  img,
+  svg {
+    height: 60vh !important;
+    width: auto !important;
+  }
+  figcaption,
+  .caption {
+    padding: 0.5em 0;
+  }
+  .svg-inline svg {
+    border: 1px solid var(--color-accent);
+  }
+  .svg-inline.is-landscape svg {
+    aspect-ratio: var(--aspectRatio) !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 60vh;
+    max-width: calc(80dvw - (var(--spacing-lg) + var(--spacing-gutter)));
+  }
+
+  @media all and (max-width: variables.$md) {
+    .ss-slider__slide {
+      width: 100% !important;
+    }
+  }
+
+  @media all and (max-width: variables.$sm) {
+    .slick-slide {
+      width: calc(100dvw - var(--spacing-xs) * 2) !important;
+    }
+    img {
+      height: 70vh !important;
+      object-fit: contain;
+      object-position: left top;
     }
   }
 }

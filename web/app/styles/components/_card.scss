@@ -1,6 +1,7 @@
 @use "../variables";
 
 .card {
+  --aspect-ratio: 238 / 317;
   &--home,
   &--project {
     color: var(--color-bg);
@@ -41,7 +42,7 @@
     }
     .recto,
     .verso {
-      aspect-ratio: 238 / 317 !important;
+      aspect-ratio: var(--aspect-ratio) !important;
     }
     .recto {
       backface-visibility: hidden;
@@ -82,7 +83,7 @@
     figure {
       height: 100%;
       &.is-landscape img {
-        aspect-ratio: 317 / 238 !important;
+        // aspect-ratio: 317 / 238 !important;
         object-fit: contain;
         object-position: top;
         height: auto !important;
@@ -90,7 +91,7 @@
       }
 
       img {
-        aspect-ratio: 238 / 317 !important;
+        aspect-ratio: var(--aspect-ratio) !important;
         height: 100% !important;
         object-fit: cover;
         object-position: var(--object-position, 50% 50%);
@@ -111,7 +112,7 @@
   &.card--home {
     figure {
       img {
-        aspect-ratio: 238 / 317 !important;
+        aspect-ratio: var(--aspect-ratio) !important;
         height: 100% !important;
         object-fit: cover;
         object-position: var(--object-position, 50% 50%);

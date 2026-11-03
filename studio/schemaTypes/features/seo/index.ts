@@ -6,7 +6,7 @@ export {seoSchema} from './schema'
 export const seoField = defineField({
   name: 'seo',
   type: 'seo',
-  title: 'SEO',
+  title: 'SEO (référencement google, linkedin, whatsapp, ia, ...)',
   // group: 'seo', // optionnel, si tu utilises des groupes
 })
 

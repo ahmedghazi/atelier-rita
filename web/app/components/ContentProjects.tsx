@@ -61,9 +61,7 @@ const ContentProjects = ({ input }: Props) => {
   const { locale } = useLocale();
 
   const { items } = input;
-  const [thumbnail, setThumbnail] = useState<ProjectImageCover | null>(
-    null,
-  );
+  const [thumbnail, setThumbnail] = useState<ProjectImageCover | null>(null);
   const [sortKey, setSortKey] = useState<SortKey | null>(null);
   const [sortDir, setSortDir] = useState<SortDir>("asc");
 
@@ -104,12 +102,12 @@ const ContentProjects = ({ input }: Props) => {
           bVal = b.client ?? "";
           break;
         case "numbers":
-          aVal = a.numbers ?? "";
-          bVal = b.numbers ?? "";
+          aVal = (_localizeField(locale, a.numbers) as string) ?? "";
+          bVal = (_localizeField(locale, b.numbers) as string) ?? "";
           break;
         case "year":
-          aVal = a.year ?? 0;
-          bVal = b.year ?? 0;
+          aVal = (_localizeField(locale, a.year) as string) ?? "";
+          bVal = (_localizeField(locale, b.year) as string) ?? "";
           break;
       }
 

@@ -5,15 +5,6 @@ body:has(.template--project) {
 .template--project {
   .content--project {
     &.slider-ended .slider {
-      .keen-slider-container {
-        // clip-path: polygon(
-        //   0 0,
-        //   var(--gridder-3_5) 0,
-        //   var(--gridder-3_5) 100%,
-        //   0 100%
-        // );
-        // transform: translateX(calc(var(--gridder-2_5) * -1));
-      }
       .related {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       }
@@ -25,15 +16,8 @@ body:has(.template--project) {
       // .flex {
       //   gap: var(--spacing-gutter);
       // }
-      .keen-slider-container,
       .related {
         transition: clip-path 0.3s ease;
-      }
-      .keen-slider-container {
-        // clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-      }
-      .svg-inline svg {
-        border: 1px solid var(--color-accent);
       }
       .related {
         clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
@@ -112,8 +96,7 @@ body:has(.template--project) {
     }
     @media all and (max-width: variables.$md) {
       &.slider-ended .slider {
-        .slick-slider-container,
-        .keen-slider-container {
+        .slick-slider-container {
           clip-path: polygon(0 0, 20% 0, 20% 100%, 0 100%);
         }
         .related {
@@ -121,13 +104,12 @@ body:has(.template--project) {
         }
       }
       .slider {
-        // img {
-        //   height: auto !important;
-        //   max-height: 60vh !important;
-        // }
         .related {
           width: var(--gridder-1_2);
-          // transform: translateX(50%);
+          img {
+            height: 70vh !important;
+            width: calc(100% - var(--spacing-gutter) * 2) !important;
+          }
         }
       }
 

@@ -39,13 +39,14 @@ export default defineType({
     defineField({
       name: 'imageCover',
       type: 'image',
-      title: 'Image de couverture (index)',
-      description: "Visible dans l'index",
+      title: "Image visible dans l'index, dans le projet > projet suivant",
+      // description: "Visible dans l'index",
       options: {hotspot: true},
       // group: 'editorial',
     }),
     defineField({
       name: 'images',
+      title: 'Images slider',
       type: 'array',
       of: [
         {
@@ -54,8 +55,7 @@ export default defineType({
           validation: (Rule) => Rule.required(),
         },
       ],
-      title: 'Images',
-      description: 'Visible dans la page du projet (largeur 2500px)',
+      description: 'Visible dans le slider de la page du projet (largeur 2500px)',
       // group: 'editorial',
     }),
 
@@ -104,16 +104,16 @@ export default defineType({
       name: 'numbers',
       title: 'Chiffres',
       description: '1 270 m² 9,2 M € HT. En majuscule',
-      type: 'text',
-      rows: 2,
+      type: 'localeText',
+      // rows: 2,
       // group: 'metas',
     }),
     defineField({
       name: 'year',
       title: 'Année',
       description: '2017 Concours',
-      type: 'text',
-      rows: 2,
+      type: 'localeText',
+      // rows: 2,
       // group: 'metas',
     }),
     defineField({

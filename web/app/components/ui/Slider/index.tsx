@@ -1,28 +1,28 @@
 "use client";
-import React, { ReactNode, useRef, useState } from "react";
-import Slider, { Settings } from "react-slick";
-import { publish } from "pubsub-js";
+import React, { useRef } from "react";
+import ReactSlick, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./index.scss";
+import SliderItem, { SliderImage } from "./SliderItem";
 
 type Props = {
-  children: ReactNode;
-  perView?: number | "auto";
+  images: SliderImage[] | null | undefined;
+  locale: string;
   controlsFloating?: boolean;
   settings?: Partial<Settings>;
+  onChange?: (index: number, isEnd: boolean) => void;
 };
 
-const SlickSlider = ({
-  children,
-  perView = "auto",
+const Slider = ({
+  images,
+  locale,
   controlsFloating = true,
   settings: settingsOverride = {},
+  onChange,
 }: Props) => {
-  const sliderRef = useRef<Slider>(null);
-  const [isEnd, setIsEnd] = useState<boolean>(false);
-
-  const isAuto = perView === "auto";
+  const sliderRef = useRef<ReactSlick>(null);
+  const slides = images ?? [];
 
   const settings: Settings = {
     infinite: false,
@@ -34,21 +34,28 @@ const SlickSlider = ({
     prevArrow: <Arrow left />,
     nextArrow: <Arrow />,
     afterChange: (currentSlide) => {
-      const last = React.Children.count(children) - 1;
-      publish("SLIDER_CHANGED", currentSlide);
-      publish("SLIDER_ENDED", currentSlide === last);
+      onChange?.(currentSlide, currentSlide === slides.length - 1);
     },
-    // ...(isAuto
-    //   ? { variableWidth: true, slidesToShow: 1 }
-    //   : { slidesToShow: perView as number }),
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          variableWidth: false,
+        },
+      },
+    ],
     ...settingsOverride,
   };
 
   return (
     <div className='slick-slider-container'>
-      <Slider ref={sliderRef} {...settings}>
-        {children}
-      </Slider>
+      <ReactSlick ref={sliderRef} {...settings}>
+        {slides.map((image, index) => (
+          <div key={index} className='ss-slider__slide'>
+            <SliderItem image={image} locale={locale} />
+          </div>
+        ))}
+      </ReactSlick>
       {controlsFloating && (
         <div className='slick-slider__controls slick-slider__controls-floating'>
           <div
@@ -65,7 +72,7 @@ const SlickSlider = ({
   );
 };
 
-export default SlickSlider;
+export default Slider;
 
 function Arrow(props: { left?: boolean; onClick?: (e: any) => void }) {
   return (

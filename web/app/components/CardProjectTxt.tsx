@@ -32,6 +32,8 @@ const CardProjectTxt = ({ input, setThumbnail }: Props) => {
   const titleLocalized = _localizeField(locale, title) as string;
   const programmeLocalized = _localizeField(locale, programme) as string;
   const typeLocalized = _localizeField(locale, type) as string;
+  const numbersLocalized = _localizeField(locale, numbers) as string;
+  const yearLocalized = _localizeField(locale, year) as string;
   return (
     <div
       className='tr card card--project--text'
@@ -45,8 +47,8 @@ const CardProjectTxt = ({ input, setThumbnail }: Props) => {
             <CityAndZip city={city} zip={zip} />
           </div>
           <div className='td client hidden-sm'>{client}</div>
-          <div className='td numbers hidden-sm'>{numbers}</div>
-          <div className='td year'>{year}</div>
+          <div className='td numbers hidden-sm'>{numbersLocalized}</div>
+          <div className='td year'>{yearLocalized}</div>
         </div>
       </Link>
     </div>

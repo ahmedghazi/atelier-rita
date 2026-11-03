@@ -25,13 +25,3 @@
   --shape: var(--color-accent);
   --line: var(--color-accent);
 }
-
-.content--project .svg-inline.is-landscape {
-  svg {
-    aspect-ratio: var(--aspectRatio) !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 60vh;
-    max-width: calc(80dvw - (var(--spacing-lg) + var(--spacing-gutter)));
-  }
-}

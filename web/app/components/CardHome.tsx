@@ -29,8 +29,11 @@ const CardHomeComponent = ({ input }: Props) => {
   const titleLocalized = _localizeField(locale, title) as string;
   // const programmeLocalized = _localizeField(locale, programme) as string;
   const typeLocalized = _localizeField(locale, type) as string;
+  const yearLocalized = _localizeField(locale, year) as string;
   const linkHref = project ? _linkResolver(project) : link || "";
-  const isExternalLink = linkHref.indexOf(website.title.toLowerCase()) === -1;
+  console.log(linkHref);
+  const isExternalLink = linkHref.startsWith("http");
+  console.log(isExternalLink);
   const target = isExternalLink ? "_blank" : "_self";
 
   const handleHover = (e: React.MouseEvent<HTMLElement>, _active: boolean) => {
@@ -88,7 +91,7 @@ const CardHomeComponent = ({ input }: Props) => {
               <div className='header'>
                 {/* <div className='programme'>{programmeLocalized}</div> */}
                 <div className='ty'>{typeLocalized}</div>
-                <div className='year'>{year}</div>
+                <div className='year'>{yearLocalized}</div>
               </div>
               <div className='body'>
                 <h2>{titleLocalized}</h2>

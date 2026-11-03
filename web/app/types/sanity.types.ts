@@ -343,8 +343,8 @@ export type Project = {
   team?: string;
   city?: string;
   zip?: string;
-  numbers?: string;
-  year?: string;
+  numbers?: LocaleText;
+  year?: LocaleText;
   metas?: Array<
     {
       _key: string;
@@ -658,10 +658,10 @@ export type HOME_QUERY_RESULT = {
     title: LocaleString | null;
     type: LocaleText | null;
     programme: LocaleText | null;
-    year: string | null;
+    year: LocaleText | null;
     city: string | null;
     zip: string | null;
-    numbers: string | null;
+    numbers: LocaleText | null;
     client: string | null;
     imageCover: {
       asset: {
@@ -728,10 +728,10 @@ export type HOME_QUERY_RESULT = {
       title: LocaleString | null;
       type: LocaleText | null;
       programme: LocaleText | null;
-      year: string | null;
+      year: LocaleText | null;
       city: string | null;
       zip: string | null;
-      numbers: string | null;
+      numbers: LocaleText | null;
       client: string | null;
       imageCover: {
         asset: {
@@ -858,8 +858,8 @@ export type PROJECT_QUERY_RESULT = {
   team?: string;
   city?: string;
   zip?: string;
-  numbers?: string;
-  year?: string;
+  numbers?: LocaleText;
+  year?: LocaleText;
   metas?: Array<
     {
       _key: string;
@@ -936,8 +936,8 @@ export type ALL_PROJECTS_QUERY_RESULT = Array<{
   team?: string;
   city?: string;
   zip?: string;
-  numbers?: string;
-  year?: string;
+  numbers?: LocaleText;
+  year?: LocaleText;
   metas?: Array<
     {
       _key: string;
@@ -974,10 +974,10 @@ export type PROJECTS_QUERY_RESULT = {
     title: LocaleString | null;
     type: LocaleText | null;
     programme: LocaleText | null;
-    year: string | null;
+    year: LocaleText | null;
     city: string | null;
     zip: string | null;
-    numbers: string | null;
+    numbers: LocaleText | null;
     client: string | null;
     imageCover: {
       asset: {

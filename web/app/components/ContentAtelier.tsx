@@ -1,19 +1,16 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ATELIER_QUERY_RESULT, KeyVal } from "../types/sanity.types";
 import { _localizeField } from "../sanity-api/utils";
-import { subscribe, unsubscribe } from "pubsub-js";
 import useLocale from "../context/LocaleContext";
 import { PortableText } from "next-sanity";
 import portableTextComponents from "../sanity-api/portableTextComponents";
 import Modal from "./ui/Modal";
-import KeenSlider from "./ui/KeenSlider";
 import { usePageContext } from "../context/PageContext";
-import SliderItem from "./ui/SliderItem";
 import Link from "next/link";
 import Icon from "./ui/Icon";
 import BackHome from "./ui/BackHome";
-import SlickSlider from "./ui/SlickSlider";
+import Slider from "./ui/Slider";
 
 type ItemProps = {
   item: KeyVal;
@@ -74,25 +71,6 @@ const ContentAtelier = ({ input }: Props) => {
   // const [caption, setCaption] = useState<string>("");
   const [slideIndex, setSlideIndex] = useState<number>(0);
 
-  // useEffect(() => {
-  //   const token = subscribe("SLIDER_CHANGED", (e, d) => {
-  //     setCaption(_localizeField(locale, images?.[d]?.caption) || "");
-  //   });
-  //   return () => {
-  //     unsubscribe(token);
-  //   };
-  // }, [images, locale]);
-
-  useEffect(() => {
-    const token = subscribe("SLIDER_CHANGED", (e, d) => {
-      setSlideIndex(d);
-    });
-
-    return () => {
-      unsubscribe(token);
-    };
-  }, []);
-
   const caption = images
     ? _localizeField(locale, images[slideIndex]?.caption) || ""
     : "";
@@ -100,25 +78,11 @@ const ContentAtelier = ({ input }: Props) => {
   return (
     <div className='content--atelier app-h'>
       <div className='slider'>
-        {/* <KeenSlider>
-          {images?.map((image, index: number) => (
-            <div key={index + 1} className='keen-slider__slide'>
-              <SliderItem image={image} locale={locale} />
-
-            </div>
-          ))}
-        </KeenSlider> */}
-        <SlickSlider
-          controlsFloating={true}
-          settings={{
-            infinite: false,
-          }}>
-          {images?.map((image, index: number) => (
-            <div key={index + 1} className='ss-slider__slide'>
-              <SliderItem image={image} locale={locale} />
-            </div>
-          ))}
-        </SlickSlider>
+        <Slider
+          images={images}
+          locale={locale}
+          onChange={(index) => setSlideIndex(index)}
+        />
         <div className='caption '>{caption}</div>
       </div>
       <div className='footer'>

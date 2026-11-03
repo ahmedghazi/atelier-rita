@@ -1,20 +1,28 @@
-import Figure from "./Figure";
-import SvgInline from "../SvgInline";
-import { _localizeField } from "../../sanity-api/utils";
-import type { LocaleString } from "../../types/sanity.types";
+import Figure from "../Figure";
+import SvgInline from "../../SvgInline";
+import { _localizeField } from "../../../sanity-api/utils";
+import type {
+  LocaleString,
+  SanityImageCrop,
+  SanityImageHotspot,
+} from "../../../types/sanity.types";
+
+export type SliderImage =
+  | {
+      asset?: {
+        url?: string | null;
+        extension?: string | null;
+      } | null;
+      hotspot?: SanityImageHotspot | null;
+      crop?: SanityImageCrop | null;
+      alt?: unknown;
+      caption?: unknown;
+    }
+  | null
+  | undefined;
 
 type SliderItemProps = {
-  image:
-    | {
-        asset?: {
-          url?: string | null;
-          extension?: string | null;
-        } | null;
-        alt?: unknown;
-        caption?: unknown;
-      }
-    | null
-    | undefined;
+  image: SliderImage;
   locale: string;
 };
 

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useState } from "react";
 import {
   LocaleString,
   Project,
@@ -11,8 +11,6 @@ import {
   _localizeField,
   _localizeText,
 } from "../sanity-api/utils";
-import KeenSlider from "./ui/KeenSlider";
-import { subscribe, unsubscribe } from "pubsub-js";
 import useLocale from "../context/LocaleContext";
 import portableTextComponents from "../sanity-api/portableTextComponents";
 import { PortableText } from "next-sanity";
@@ -21,8 +19,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import CityAndZip from "./CityAndZip";
 import BackHome from "./ui/BackHome";
-import SlickSlider from "./ui/SlickSlider";
-import SliderItem from "./ui/SliderItem";
+import Slider from "./ui/Slider";
 
 type Props = {
   input: NonNullable<PROJECT_QUERY_RESULT>;
@@ -61,20 +58,6 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
       ) || ""
     : "";
 
-  useEffect(() => {
-    const token = subscribe("SLIDER_CHANGED", (e, d) => {
-      setSlideIndex(d);
-    });
-    const tokenEnded = subscribe("SLIDER_ENDED", (e, d) => {
-      console.log("Slider ended", d);
-      setSliderEnded(d);
-    });
-    return () => {
-      unsubscribe(token);
-      unsubscribe(tokenEnded);
-    };
-  }, []);
-
   const ficheTechnique = [
     {
       key: _localizeText(locale, "type"),
@@ -98,7 +81,7 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
     },
     {
       key: _localizeText(locale, "numbers"),
-      value: numbers,
+      value: _localizeField(locale, numbers),
     },
     // {
     //   key: _localizeText(locale, "year"),
@@ -117,17 +100,14 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
       )}>
       <div className='slider'>
         <div className='flex--'>
-          <SlickSlider
-            controlsFloating={true}
-            settings={{
-              infinite: false,
-            }}>
-            {slides?.map((image, index: number) => (
-              <div key={index + 1} className='ss-slider__slide'>
-                <SliderItem image={image} locale={locale} />
-              </div>
-            ))}
-          </SlickSlider>
+          <Slider
+            images={slides}
+            locale={locale}
+            onChange={(index, isEnd) => {
+              setSlideIndex(index);
+              setSliderEnded(isEnd);
+            }}
+          />
 
           {_related && (
             <div className='related'>
@@ -169,7 +149,7 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
               <span>, </span>
               <CityAndZip city={city} zip={zip} />
             </div>
-            <div className='year'>{year}</div>
+            <div className='year'>{_localizeField(locale, year) as string}</div>
           </div>
           <div className='text'>
             <PortableText
@@ -199,7 +179,6 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
                     value={_localizeField(locale, item.value) as string}
                     components={portableTextComponents}
                   />
-                  {/* {_localizeField(locale, item.value)} */}
                 </div>
               </li>
             ))}
