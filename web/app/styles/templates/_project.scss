@@ -115,6 +115,12 @@ body:has(.template--project) {
 
       .footer {
         padding: calc(var(--spacing-xs) * 0.6) var(--spacing-xs);
+        flex-direction: column;
+        position: fixed;
+        bottom: var(--spacing-sm);
+        left: var(--spacing-sm);
+        padding: 0;
+
         .title {
           max-width: unset;
           grid-column: span 4 / span 4;
