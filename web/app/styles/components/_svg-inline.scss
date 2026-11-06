@@ -19,6 +19,9 @@
   rect {
     display: none;
   }
+  text {
+    fill: var(--shape) !important;
+  }
 }
 
 .slider .svg-inline svg {
