@@ -41,6 +41,10 @@ html:has(.template--home) {
         }
       }
     }
+    .credits {
+      padding-top: var(--spacing-gutter);
+      color: var(--color-white);
+    }
   }
 }
 

@@ -81,6 +81,30 @@ const ContentHome = ({ input }: Props) => {
           <CardHomeComponent input={item} key={index} />
         ))}
       </div>
+      <div className='credits'>
+        <p>
+          Production{" "}
+          <a href='www.aha-paris.com' rel='noreferrer noopener' target='_blank'>
+            AHA
+          </a>
+          <br />
+          Design{" "}
+          <a
+            href='http://jbparre.com/'
+            rel='noreferrer noopener'
+            target='_blank'>
+            Jean-Baptiste Parré
+          </a>
+          <br />
+          Code{" "}
+          <a
+            href='https://ahmedghazi.com/'
+            rel='noreferrer noopener'
+            target='_blank'>
+            Ahmed Ghazi
+          </a>
+        </p>
+      </div>
     </div>
   );
 };
