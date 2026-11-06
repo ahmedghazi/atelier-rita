@@ -113,5 +113,9 @@
       object-fit: contain;
       object-position: left top;
     }
+    .svg-inline.is-landscape svg {
+      height: 70vh !important;
+      max-width: 100%;
+    }
   }
 }

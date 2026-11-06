@@ -89,7 +89,7 @@ const CardHomeComponent = ({ input }: Props) => {
               <div className='header'>
                 {/* <div className='programme'>{programmeLocalized}</div> */}
                 <div className='ty'>{typeLocalized}</div>
-                <div className='year'>{yearLocalized}</div>
+                <div className='year text-right'>{yearLocalized}</div>
               </div>
               <div className='body'>
                 <h2>{titleLocalized}</h2>

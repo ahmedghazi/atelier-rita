@@ -20,6 +20,7 @@ import Link from "next/link";
 import CityAndZip from "./CityAndZip";
 import BackHome from "./ui/BackHome";
 import Slider from "./ui/Slider";
+import useDeviceDetect from "../hooks/useDeviceDetect";
 
 type Props = {
   input: NonNullable<PROJECT_QUERY_RESULT>;
@@ -29,7 +30,7 @@ type Props = {
 const ContentProject = ({ input, relatedByindex }: Props) => {
   const { locale } = useLocale();
   const {
-    imageCover,
+    // imageCover,
     images,
     title,
     type,
@@ -42,11 +43,13 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
     numbers,
     text,
     metas,
-    related,
+    // related,
   } = input;
   const [slideIndex, setSlideIndex] = useState<number>(0);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [sliderEnded, setSliderEnded] = useState<boolean>(false);
+  const { isMobile } = useDeviceDetect();
+  const hasRelated = relatedByindex !== null && !isMobile;
   // const slides = useMemo(() => {
   //   return [imageCover, ...(images || [])];
   // }, [imageCover, images]);
@@ -96,7 +99,8 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
     <div
       className={clsx(
         "content content--project app-h",
-        sliderEnded && "slider-ended",
+        hasRelated && sliderEnded && "slider-ended",
+        hasRelated && "has-related",
       )}>
       <div className='slider'>
         <div className='flex--'>
@@ -109,7 +113,7 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
             }}
           />
 
-          {_related && (
+          {hasRelated && _related && (
             <div className='related'>
               <Link href={_linkResolver(_related)}>
                 <h2 className='text-display-lg--sm md:text-display-lg'>
