@@ -124,6 +124,7 @@ const ContentProject = ({ input, relatedByindex }: Props) => {
                   <Figure
                     image={_related?.imageCover}
                     alt={_related?.slug?.current}
+                    sizes='(max-width: 1500px) 100vw, 1500px'
                   />
                 </div>
               </Link>
