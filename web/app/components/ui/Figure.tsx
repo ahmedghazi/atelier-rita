@@ -1,5 +1,6 @@
+"use client";
 import website from "@/app/config/website";
-import { urlFor } from "@/app/sanity-api/sanity-utils";
+import { sanityHotspot, sanityLoader, urlFor } from "@/app/sanity-api/sanity-utils";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
@@ -17,25 +18,15 @@ type Props = {
     | undefined;
   title?: string;
   width?: number;
+  sizes?: string;
   alt?: string | any;
   caption?: string | any;
-};
-
-// hotspot is relative to the full image, object-position needs it relative to the cropped one
-const getObjectPosition = (
-  hotspot?: SanityImageHotspot | null,
-  crop?: SanityImageCrop | null,
-) => {
-  if (hotspot?.x == null || hotspot?.y == null) return undefined;
-  const { top = 0, bottom = 0, left = 0, right = 0 } = crop ?? {};
-  const x = (hotspot.x - left) / (1 - left - right);
-  const y = (hotspot.y - top) / (1 - top - bottom);
-  return `${x * 100}% ${y * 100}%`;
 };
 
 const Figure = ({
   image,
   width = 1000,
+  sizes = "100vw",
   alt = website.title,
   caption,
 }: Props) => {
@@ -50,7 +41,7 @@ const Figure = ({
     : width;
   // passing crop to the builder makes it return the cropped rect
   const src = urlFor(asset && (image as any), width);
-  const objectPosition = getObjectPosition(hotspot, crop);
+  const objectPosition = sanityHotspot(hotspot, crop);
 
   return (
     <figure
@@ -65,11 +56,12 @@ const Figure = ({
           : undefined
       }>
       <Image
+        loader={sanityLoader}
         src={src}
         width={imgWidth}
         height={imgHeight}
         alt={alt || ""}
-        sizes='100vw'
+        sizes={sizes}
         // style={{
         //   width: "100%",
         //   height: "auto",

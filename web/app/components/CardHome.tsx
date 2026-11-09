@@ -80,7 +80,14 @@ const CardHomeComponent = ({ input }: Props) => {
         <div className='perspective'>
           <div className='card--home__inner'>
             <div className='recto'>
-              {!isSvg && <Figure image={image} alt={titleLocalized} />}
+              {!isSvg && (
+                <Figure
+                  image={image}
+                  alt={titleLocalized}
+                  width={800}
+                  sizes='(max-width: 800px) 100vw, 800px'
+                />
+              )}
               {isSvg && image?.asset?.url && (
                 <SvgInline url={image.asset.url} alt={titleLocalized} />
               )}
