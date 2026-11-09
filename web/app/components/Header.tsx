@@ -109,7 +109,7 @@ const Header = ({ settings }: Props) => {
             "md:col-span-3",
           )}>
           <div className='site-name'>
-            <Link href='/'>
+            <Link href='/' title='Rita acceuil'>
               <RitaLogo
                 animated={isHome}
                 playIntro={isHome}
