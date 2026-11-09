@@ -24,6 +24,8 @@ const CardHomeComponent = ({ input }: Props) => {
   const [active, setActive] = useState<boolean>(false);
   const [flipDeg, setFlipDeg] = useState<number>(180);
   const tapCount = React.useRef<number>(0);
+  const cardRef = React.useRef<HTMLElement>(null);
+  const [inView, setInView] = useState<boolean>(false);
   const router = useRouter();
   const { isMobile } = useDeviceDetect();
   const titleLocalized = _localizeField(locale, title) as string;
@@ -54,11 +56,29 @@ const CardHomeComponent = ({ input }: Props) => {
       }
     }
   };
+  // defer the (heavy) inline svg until the card gets near the viewport
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const isSvg =
     /\.svg($|\?)/i.test(image?.asset?.url ?? "") ||
     image?.asset?.extension === "svg";
   return (
     <article
+      ref={cardRef}
       className={clsx(
         "card card--home",
         { "is-active": active },
@@ -92,13 +112,12 @@ const CardHomeComponent = ({ input }: Props) => {
                   sizes='(max-width: 800px) 100vw, 800px'
                 />
               )}
-              {isSvg && image?.asset?.url && (
+              {isSvg && inView && image?.asset?.url && (
                 <SvgInline url={image.asset.url} alt={titleLocalized} />
               )}
             </div>
             <div className='verso'>
               <div className='header'>
-                {/* <div className='programme'>{programmeLocalized}</div> */}
                 <div className='ty'>{typeLocalized}</div>
                 <div className='year text-right'>{yearLocalized}</div>
               </div>
