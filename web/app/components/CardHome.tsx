@@ -76,7 +76,11 @@ const CardHomeComponent = ({ input }: Props) => {
       onMouseLeave={(e) => {
         if (!isMobile) handleHover(e, false);
       }}>
-      <Link onClick={_onCick} href={linkHref} target={target}>
+      <Link
+        onClick={_onCick}
+        href={linkHref}
+        target={target}
+        title={titleLocalized}>
         <div className='perspective'>
           <div className='card--home__inner'>
             <div className='recto'>
