@@ -24,6 +24,7 @@
 
   &.card--home.has-verso {
     // aspect-ratio: 3 / 4;
+    aspect-ratio: var(--aspect-ratio);
 
     .perspective {
       perspective: 600px;
@@ -39,6 +40,7 @@
       transition: transform 0.45s ease-in-out;
       transform-style: preserve-3d;
       position: relative;
+      aspect-ratio: var(--aspect-ratio);
     }
     .recto,
     .verso {

@@ -20,16 +20,29 @@
       figure {
         // display: flex;
         // justify-content: center;
+        img {
+          // height: auto !important;
+          // object-fit: cover;
+          // width: 100% !important;
+        }
       }
       .caption {
-        text-align: right;
+        // text-align: right;
+        padding-top: 0;
       }
     }
     .footer {
-      flex-direction: column;
+      // flex-direction: column;
       position: fixed;
       bottom: var(--spacing-sm);
       left: var(--spacing-sm);
+      right: var(--spacing-sm);
+      .grid {
+        width: 100%;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        // display: flex;
+        // justify-content: space-between;
+      }
     }
   }
 }

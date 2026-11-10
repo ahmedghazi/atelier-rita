@@ -1,6 +1,8 @@
 import { PortableTextComponents } from "@portabletext/react";
 import { urlFor } from "./sanity-utils";
 import Image from "next/image";
+import Link from "next/link";
+import { _linkResolver } from "./utils";
 
 const portableTextComponents: PortableTextComponents = {
   // block(props) {
@@ -50,6 +52,9 @@ const portableTextComponents: PortableTextComponents = {
           {children}
         </a>
       );
+    },
+    linkInternal: ({ children, value }) => {
+      return <Link href={_linkResolver(value.link)}>{children}</Link>;
     },
     linkExternal: ({ children, value }) => {
       return (
