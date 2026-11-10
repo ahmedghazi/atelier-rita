@@ -37,7 +37,7 @@
     }
     .card--home__inner {
       position: relative;
-      // transition: transform 0.45s ease-in-out;
+      transition: transform 0.45s ease-in-out;
       transform-style: preserve-3d;
       position: relative;
       aspect-ratio: var(--aspect-ratio);
