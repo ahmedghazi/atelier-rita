@@ -21,7 +21,7 @@
         // display: flex;
         // justify-content: center;
         img {
-          // height: auto !important;
+          height: auto !important;
           // object-fit: cover;
           // width: 100% !important;
         }
@@ -34,14 +34,17 @@
     .footer {
       // flex-direction: column;
       position: fixed;
-      bottom: var(--spacing-sm);
-      left: var(--spacing-sm);
-      right: var(--spacing-sm);
+      // bottom: var(--spacing-sm);
+      // left: var(--spacing-sm);
+      // right: var(--spacing-sm);
+      bottom: 0;
+      left: 0;
+      padding: var(--spacing-sm);
       .grid {
         width: 100%;
         grid-template-columns: repeat(5, minmax(0, 1fr));
-        // display: flex;
-        // justify-content: space-between;
+        display: flex;
+        justify-content: space-between;
       }
     }
   }
