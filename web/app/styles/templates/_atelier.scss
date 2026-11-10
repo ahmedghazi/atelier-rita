@@ -20,6 +20,10 @@
       &:active {
         z-index: 999;
       }
+      a:hover {
+        color: white;
+        text-decoration: underline;
+      }
     }
   }
 
