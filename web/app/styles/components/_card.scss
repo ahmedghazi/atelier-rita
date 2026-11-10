@@ -45,16 +45,16 @@
     .recto,
     .verso {
       aspect-ratio: var(--aspect-ratio) !important;
+      backface-visibility: hidden;
     }
     .recto {
-      backface-visibility: hidden;
       height: 100%;
     }
     .verso {
       transform: rotateY(180deg);
-      backface-visibility: hidden;
       position: absolute;
       inset: 0;
+      overflow: hidden;
       background-color: white;
       display: flex;
       flex-direction: column;
