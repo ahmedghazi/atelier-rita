@@ -33,7 +33,7 @@ const CardHomeComponent = ({ input }: Props) => {
   const typeLocalized = _localizeField(locale, type) as string;
   const yearLocalized = _localizeField(locale, year) as string;
   const linkHref = project ? _linkResolver(project) : link || "";
-  const isExternalLink = linkHref.startsWith("http");
+  const isExternalLink = !linkHref.includes("rita");
   const target = isExternalLink ? "_blank" : "_self";
 
   const handleHover = (e: React.MouseEvent<HTMLElement>, _active: boolean) => {

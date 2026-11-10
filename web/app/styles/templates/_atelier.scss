@@ -5,9 +5,17 @@
     position: relative;
   }
   .footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
+    padding: var(--spacing-md);
+    .grid {
+      width: 100%;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      display: flex;
+      justify-content: space-between;
+    }
     .item {
       &:active {
         z-index: 999;
@@ -32,20 +40,22 @@
       }
     }
     .footer {
-      // flex-direction: column;
-      position: fixed;
-      // bottom: var(--spacing-sm);
-      // left: var(--spacing-sm);
-      // right: var(--spacing-sm);
-      bottom: 0;
-      left: 0;
       padding: var(--spacing-sm);
-      .grid {
-        width: 100%;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        display: flex;
-        justify-content: space-between;
-      }
+
+      // flex-direction: column;
+      // position: fixed;
+      // // bottom: var(--spacing-sm);
+      // // left: var(--spacing-sm);
+      // // right: var(--spacing-sm);
+      // bottom: 0;
+      // left: 0;
+
+      // .grid {
+      //   width: 100%;
+      //   grid-template-columns: repeat(5, minmax(0, 1fr));
+      //   display: flex;
+      //   justify-content: space-between;
+      // }
     }
   }
 }
