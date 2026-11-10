@@ -83,8 +83,11 @@ header {
   }
 }
 
+body:has(.content--projects) header {
+  // background-color: white;
+}
 body:not(.is-home) header {
-  background-color: white;
+  // background-color: white;
 }
 body.is-home header {
   color: var(--color-white);
