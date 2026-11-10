@@ -46,6 +46,7 @@
     .verso {
       aspect-ratio: var(--aspect-ratio) !important;
       backface-visibility: hidden;
+      height: 100%;
     }
     .recto {
       height: 100%;
@@ -54,6 +55,10 @@
       transform: rotateY(180deg);
       position: absolute;
       inset: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
       overflow: hidden;
       background-color: white;
       display: flex;
