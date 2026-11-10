@@ -84,7 +84,8 @@ header {
 }
 
 body:has(.content--projects) header {
-  // background-color: white;
+  background-color: white;
+  border: none;
 }
 body:not(.is-home) header {
   // background-color: white;
