@@ -60,7 +60,6 @@ const Modal = ({
     const maxY = window.innerHeight - el.height;
     let randX = Math.random() * maxX;
     let randY = Math.random() * maxY;
-    console.log(logoRect);
     // Check if the random position would overlap with the logo
     if (logoRect) {
       const logoRight = logoRect.left + logoRect.width;

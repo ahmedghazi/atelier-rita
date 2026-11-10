@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ATELIER_QUERY_RESULT, KeyVal } from "../types/sanity.types";
-import { _localizeField } from "../sanity-api/utils";
+import { _localizeField, _slugify } from "../sanity-api/utils";
 import useLocale from "../context/LocaleContext";
 import { PortableText } from "next-sanity";
 import portableTextComponents from "../sanity-api/portableTextComponents";
@@ -11,6 +11,8 @@ import Link from "next/link";
 import Icon from "./ui/Icon";
 import BackHome from "./ui/BackHome";
 import Slider from "./ui/Slider";
+import useDeviceDetect from "../hooks/useDeviceDetect";
+import { publish, subscribe, unsubscribe } from "pubsub-js";
 
 type ItemProps = {
   item: KeyVal;
@@ -19,9 +21,11 @@ type ItemProps = {
 };
 
 const Item = ({ item, locale, zIndex }: ItemProps) => {
+  const { isMobile } = useDeviceDetect();
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const { modalZIndex: topZIndex, setModalZIndex: setTopZIndex } =
     usePageContext();
+  const id = _slugify(item.key?.fr || "");
   const [modalZIndex, setLocalZIndex] = useState<number>(
     () => topZIndex + zIndex,
   );
@@ -35,8 +39,29 @@ const Item = ({ item, locale, zIndex }: ItemProps) => {
     setModalOpen(!modalOpen);
   };
 
+  useEffect(() => {
+    const token = subscribe("atelier:modal", (event, data) => {
+      if (!isMobile) {
+        return;
+      }
+      if (data !== id) {
+        setModalOpen(false);
+      }
+    });
+    return () => {
+      unsubscribe(token);
+    };
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (!isMobile) {
+      return;
+    }
+    if (modalOpen) publish("atelier:modal", id);
+  }, [modalOpen, isMobile, id]);
+
   return (
-    <div className='item'>
+    <div className='item' id={item.key?.fr || ""}>
       <Modal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
@@ -62,11 +87,7 @@ type Props = {
 const ContentAtelier = ({ input }: Props) => {
   const { items, images } = input;
   const { locale } = useLocale();
-  // const _images = [
-  //   "https://picsum.photos/200/300",
-  //   "https://picsum.photos/220/330",
-  //   "https://picsum.photos/400/300",
-  // ];
+
   const [zIndex, setZIndex] = useState<number>(0);
   // const [caption, setCaption] = useState<string>("");
   const [slideIndex, setSlideIndex] = useState<number>(0);

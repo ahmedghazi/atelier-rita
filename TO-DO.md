@@ -7,4 +7,5 @@
 - pb hauteur image atelier
 - pb slider mobile atelier, remove max height,
 - modal atelier, order au click, ou 1 seule modale ouverte
+- update le champs liens de la carte home atelier + target dans cardHome
 -
