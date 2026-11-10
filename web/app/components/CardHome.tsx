@@ -20,7 +20,7 @@ const CardHomeComponent = ({ input }: Props) => {
   const { image, project, link } = input;
   const hasVerso = project !== null;
   // console.log("project", project);
-  const { title, year, type, programme, city, client } = project ?? {};
+  const { title, year, type, city, client } = project ?? {};
   const [active, setActive] = useState<boolean>(false);
   const [flipDeg, setFlipDeg] = useState<number>(180);
   const tapCount = React.useRef<number>(0);
@@ -33,8 +33,10 @@ const CardHomeComponent = ({ input }: Props) => {
   const typeLocalized = _localizeField(locale, type) as string;
   const yearLocalized = _localizeField(locale, year) as string;
   const linkHref = project ? _linkResolver(project) : link || "";
-  const isExternalLink = !linkHref.includes("rita");
-  const target = isExternalLink ? "_blank" : "_self";
+  const isExternalLink = !linkHref.includes("atelierrita");
+  // const target = isExternalLink ? "_blank" : "_self";
+  const target = "_self";
+  // console.log(linkHref, target);
 
   const handleHover = (e: React.MouseEvent<HTMLElement>, _active: boolean) => {
     const rect = e.currentTarget.getBoundingClientRect();

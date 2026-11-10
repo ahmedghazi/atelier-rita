@@ -10,7 +10,7 @@ import {resolveProductionUrl} from './src/actions/resolveProductionUrl'
 import {media, mediaAssetSource} from 'sanity-plugin-media'
 // import {defaultDocumentNode} from './src/defaultDocumentNode'
 
-const remoteURL = 'https://atelier-rita.vercel.app'
+const remoteURL = 'https://www.atelierrita.org'
 const localURL = 'http://localhost:3000'
 const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 
