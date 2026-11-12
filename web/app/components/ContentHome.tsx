@@ -103,6 +103,14 @@ const ContentHome = ({ input }: Props) => {
             target='_blank'>
             Ahmed Ghazi
           </a>
+          <br />
+          Illustration{" "}
+          <a
+            href='https://www.instagram.com/zoe.bourhis/'
+            rel='noreferrer noopener'
+            target='_blank'>
+            Zoe Bourhis
+          </a>
         </p>
       </div>
     </div>
