@@ -104,12 +104,12 @@ const ContentHome = ({ input }: Props) => {
             Ahmed Ghazi
           </a>
           <br />
-          Illustration{" "}
+          Illustration carte Rita{" "}
           <a
             href='https://www.instagram.com/zoe.bourhis/'
             rel='noreferrer noopener'
             target='_blank'>
-            Zoe Bourhis
+            Zoé Bourhis
           </a>
         </p>
       </div>
